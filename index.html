@@ -159,7 +159,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/08/hexo-github%E4%BB%A5%E5%8F%8Ahexo%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E7%9A%84%E9%97%AE%E9%A2%98/">hexo+github以及hexo上传本地图片的问题</a>
+      <a class="article-title" href="/2022/04/08/hexo-github%E4%BB%A5%E5%8F%8Ahexo%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E7%9A%84%E9%97%AE%E9%A2%98/">hexo+github</a>
     </h1>
   
 
@@ -172,8 +172,71 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="hexo和github连接"><a href="#hexo和github连接" class="headerlink" title="hexo和github连接"></a>hexo和github连接</h3><p>一 先下载<strong>node</strong>和<strong>git</strong>，这个我都已经下载了，所以这一步详细步骤省略，等之后在笔记本上尝试时再添加。</p>
-<p>二 注册<strong>github</strong>账号， </p>
+        <h3 id="hexo和github连接免费搭建个人博客网站-小白"><a href="#hexo和github连接免费搭建个人博客网站-小白" class="headerlink" title="hexo和github连接免费搭建个人博客网站(小白)"></a>hexo和github连接免费搭建个人博客网站(小白)</h3><p>一  先下载<strong>node</strong>和<strong>git</strong>，这个我都已经下载了，所以这一步详细步骤省略，等之后在笔记本上尝试时再添加。下载完成后可以通过 -v &#x2F;-version查看node、npm和git版本确定是否下载成功</p>
+<p>二  注册<strong>github</strong>账号，并创建仓库，设置ssh连接</p>
+<ul>
+<li><p>（1）点击头像，选择new reposity，新建一个名为：<strong>用户名.github.io</strong>的仓库，比如说我的用户名是leoamang，那么我需要建立一个名为<strong>leoamang.github.io</strong>的仓库。</p>
+</li>
+<li><p>（2）配置<strong>SSH key</strong>：使用ssh key解决本地和服务器的连接问题。</p>
+</li>
+</ul>
+<p>a：在桌面上（我做的时候并没有在桌面上，就是任意的文件夹，不知道是否只有桌面才成功，待验证）使用git base here进行命令行，输入</p>
+<blockquote>
+<p>git config –global user.name “username”</p>
+<p>(例如：git config –global user.name “leoamang”)，</p>
+<p>输入git config –global user.email “youremail”</p>
+<p>(例如git config –global user.email “***@qq.com”）。</p>
+</blockquote>
+<p>b：创建SSH，输入后一路回车就行</p>
+<blockquote>
+<p>ssh-keygen -t rsa -C “youremail”（C大写）</p>
+</blockquote>
+<p>​       C：在路径C:\Users\DELL.ssh的id_rsa.pub可以看到生成的ssh密钥。打开并复制。</p>
+<ul>
+<li><p>（3）在github上设置密钥：点击头像→settings→找到ssh and GPG keys→new ssh key→粘贴复制的ssh密钥，随意起个名字，并保存。检查设置是否成功</p>
+<blockquote>
+<p>ssh <a href="mailto:&#x67;&#x69;&#116;&#64;&#103;&#x69;&#116;&#104;&#x75;&#x62;&#46;&#99;&#111;&#109;">&#x67;&#x69;&#116;&#64;&#103;&#x69;&#116;&#104;&#x75;&#x62;&#46;&#99;&#111;&#109;</a></p>
+</blockquote>
+</li>
+</ul>
+<p>三 下载hexo</p>
+<p><strong>在自己想要的位置创建一个文件夹，名叫hexo，在这个文件夹下打开git base here</strong></p>
+<p>使用npm全局安装hexo框架和deployer：</p>
+<blockquote>
+<p>npm install -g hexo-cli </p>
+<p>npm install hexo-deployer-git –save</p>
+</blockquote>
+<p>若安装速度慢，或者不成功，更换npm镜像源（我第一次没成功，更换镜像源后成功）</p>
+<blockquote>
+<p>npm config set registry <a target="_blank" rel="noopener" href="https://registry.npm.taobao.org./">https://registry.npm.taobao.org。</a></p>
+</blockquote>
+<p>安装完成后，初始化博客，会在hexo文件夹下面创建一个blog文件，或者直接hexo init不会创建blog文件夹</p>
+<blockquote>
+<p>npm init blog</p>
+</blockquote>
+<p>检测是否可以，新建一个新的博客，然后执行g和s，打开浏览器访问4000端口查看。</p>
+<blockquote>
+<p>hexo n “test“ &#x3D;&#x3D;&#x3D; hexo new ”test“</p>
+<p>hexo g</p>
+<p>hexo s </p>
+</blockquote>
+<p>ctrl+c可以退出hexo服务器</p>
+<p>四 推送博客</p>
+<p>在blog文件下面找到config.yml配置及文件，修改最后的内容为：</p>
+<blockquote>
+<p>type: git<br>repo: github下的仓库的完整路径<br>branch: master</p>
+</blockquote>
+<p>上述都成功后，可以在blog&#x2F;source&#x2F;__post下面创建md文件，写完之后可以通过</p>
+<blockquote>
+<p>hexo g -d 或者hexo d推送</p>
+</blockquote>
+<p>常用命令：</p>
+<p>hexo n “博客名” &#x3D;&#x3D;&#x3D; hexo new “博客名”</p>
+<p>hexo g &#x3D;&#x3D;&#x3D; hexo generate 生成静态页面至public目录</p>
+<p>hexo s &#x3D;&#x3D;&#x3D; hexo server 开启预览访问端口（ctrl+c退出）</p>
+<p>hexo d &#x3D;&#x3D;&#x3D; hexo deploy 部署到github</p>
+<p>hexo s -g 生成并本地预览</p>
+<p>hexo g -d 生成并上传</p>
 
       
 
