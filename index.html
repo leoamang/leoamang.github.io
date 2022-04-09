@@ -152,6 +152,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-hexo-github-二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/04/09/hexo-github-%E4%BA%8C/">hexo+github(二)</a>
+    </h1>
+  
+
+        
+        <a href="/2022/04/09/hexo-github-%E4%BA%8C/" class="archive-article-date">
+  	<time datetime="2022-04-09T13:50:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 一 选择hexo自带的的图片插件</p>
+<p>a:下载插件</p>
+<blockquote>
+<p><strong>hexo-asset-image</strong></p>
+<p>npm install hexo-asset-image –save</p>
+</blockquote>
+<p>b：如果想添加图片到已经存在的md文件，那么这个时候直接自己创建一个与md文件同名的文件夹存放图片；</p>
+<p>​      如果这个时候还没有创建md文件，可以选择hexo n 新建一个md文件，这个时候可以看到自动创建了一个与md同名的文件夹。</p>
+<p>c：更改congif.yml文件里面的post_asset_folder: false更改为post_asset_folder: true。</p>
+<p>d：更改node.module&#x2F;hexo-asset-image下面的配置文件index.js为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">&#x27;use strict&#x27;;</span><br><span class="line">var cheerio = require(&#x27;cheerio&#x27;);</span><br><span class="line"></span><br><span class="line">// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string</span><br><span class="line">function getPosition(str, m, i) &#123;</span><br><span class="line">  return str.split(m, i).join(m).length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hexo.extend.filter.register(&#x27;after_post_render&#x27;, function(data)&#123;</span><br><span class="line">  var config = hexo.config;</span><br><span class="line">  if(config.post_asset_folder)&#123;</span><br><span class="line">    var link = data.permalink;</span><br><span class="line">    var beginPos = getPosition(link, &#x27;/&#x27;, 3) + 1;</span><br><span class="line">    var appendLink = &#x27;&#x27;;</span><br><span class="line">    // In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.</span><br><span class="line">    // if not with index.html endpos = link.lastIndexOf(&#x27;.&#x27;) + 1 support hexo-abbrlink</span><br><span class="line">    if(/.*\/index\.html$/.test(link)) &#123;</span><br><span class="line">      // when permalink is end with index.html, for example 2019/02/20/xxtitle/index.html</span><br><span class="line">      // image in xxtitle/ will go to xxtitle/index/</span><br><span class="line">      appendLink = &#x27;index/&#x27;;</span><br><span class="line">      var endPos = link.lastIndexOf(&#x27;.&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">      var endPos = link.lastIndexOf(&#x27;/&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    link = link.substring(beginPos, endPos) + &#x27;/&#x27; + appendLink;</span><br><span class="line"></span><br><span class="line">    var toprocess = [&#x27;excerpt&#x27;, &#x27;more&#x27;, &#x27;content&#x27;];</span><br><span class="line">    for(var i = 0; i &lt; toprocess.length; i++)&#123;</span><br><span class="line">      var key = toprocess[i];</span><br><span class="line"></span><br><span class="line">      var $ = cheerio.load(data[key], &#123;</span><br><span class="line">        ignoreWhitespace: false,</span><br><span class="line">        xmlMode: false,</span><br><span class="line">        lowerCaseTags: false,</span><br><span class="line">        decodeEntities: false</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(&#x27;img&#x27;).each(function()&#123;</span><br><span class="line">        if ($(this).attr(&#x27;src&#x27;))&#123;</span><br><span class="line">          // For windows style path, we replace &#x27;\&#x27; to &#x27;/&#x27;.</span><br><span class="line">          var src = $(this).attr(&#x27;src&#x27;).replace(&#x27;\\&#x27;, &#x27;/&#x27;);</span><br><span class="line">          if(!(/http[s]*.*|\/\/.*/.test(src)</span><br><span class="line">            || /^\s+\//.test(src)</span><br><span class="line">            || /^\s*\/uploads|images\//.test(src))) &#123;</span><br><span class="line">            // For &quot;about&quot; page, the first part of &quot;src&quot; can&#x27;t be removed.</span><br><span class="line">            // In addition, to support multi-level local directory.</span><br><span class="line">            var linkArray = link.split(&#x27;/&#x27;).filter(function(elem)&#123;</span><br><span class="line">              return elem != &#x27;&#x27;;</span><br><span class="line">            &#125;);</span><br><span class="line">            var srcArray = src.split(&#x27;/&#x27;).filter(function(elem)&#123;</span><br><span class="line">              return elem != &#x27;&#x27; &amp;&amp; elem != &#x27;.&#x27;;</span><br><span class="line">            &#125;);</span><br><span class="line">            if(srcArray.length &gt; 1)</span><br><span class="line">            srcArray.shift();</span><br><span class="line">            src = srcArray.join(&#x27;/&#x27;);</span><br><span class="line"></span><br><span class="line">            $(this).attr(&#x27;src&#x27;, config.root + link + src);</span><br><span class="line">            console.info&amp;&amp;console.info(&quot;update link as:--&gt;&quot;+config.root + link + src);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          console.info&amp;&amp;console.info(&quot;no src attr, skipped...&quot;);</span><br><span class="line">          console.info&amp;&amp;console.info($(this));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      data[key] = $.html();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>tips：在本人尝试时为成功，老师指导后知道，是因为源程序正则表达式有问题，在博客对图片进行检查时发现映射的地址为.&#x2F;com，这个地址并不是本地的地址，更改正则表达式后发现可以找到本地图片的地址。</p>
+<p>可以在index.js中加入console.info语句打印变量，查看问题！！！！</p>
+<p>f：重启hexo服务器</p>
+<p>hexo s</p>
+<p>如果重启后仍然看不到图片，可以按顺序运行以下代码：</p>
+<blockquote>
+<p>hexo clean</p>
+<p>hexo g</p>
+<p>hexo d</p>
+<p>hexo s</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/04/09/hexo-github-%E4%BA%8C/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hexo-github-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -251,68 +347,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/04/08/hexo-github-%E4%B8%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-first-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/06/first-blog/">first-blog</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/06/first-blog/" class="archive-article-date">
-  	<time datetime="2022-04-06T13:58:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/06/first-blog/">展开全文 >></a>
         </p>
       
 
@@ -508,6 +542,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
