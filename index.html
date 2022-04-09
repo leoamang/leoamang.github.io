@@ -152,19 +152,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-hexo-github(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-hexo-github-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/08/hexo-github(%E4%B8%80)/">hexo+github</a>
+      <a class="article-title" href="/2022/04/08/hexo-github-%E4%B8%80/">hexo+github</a>
     </h1>
   
 
         
-        <a href="/2022/04/08/hexo-github(%E4%B8%80)/" class="archive-article-date">
+        <a href="/2022/04/08/hexo-github-%E4%B8%80/" class="archive-article-date">
   	<time datetime="2022-04-08T13:57:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-08</time>
 </a>
         
@@ -195,10 +195,11 @@
 <ul>
 <li><p>（3）在github上设置密钥：点击头像→settings→找到ssh and GPG keys→new ssh key→粘贴复制的ssh密钥，随意起个名字，并保存。检查设置是否成功</p>
 <blockquote>
-<p>ssh <a href="mailto:&#x67;&#105;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#x6d;">&#x67;&#105;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#x6d;</a></p>
+<p>ssh -T <a href="mailto:&#x67;&#105;&#x74;&#x40;&#103;&#105;&#116;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#109;">&#x67;&#105;&#x74;&#x40;&#103;&#105;&#116;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#109;</a></p>
 </blockquote>
 </li>
 </ul>
+<p>若出现Hi username！  You’ve successfully authenticated, but GitHub does not provide shell access.</p>
 <p>三 下载hexo</p>
 <p><strong>在自己想要的位置创建一个文件夹，名叫hexo，在这个文件夹下打开git base here</strong></p>
 <p>使用npm全局安装hexo框架和deployer：</p>
@@ -222,7 +223,7 @@
 </blockquote>
 <p>ctrl+c可以退出hexo服务器</p>
 <p>四 推送博客</p>
-<p>在blog文件下面找到config.yml配置及文件，修改最后的内容为：</p>
+<p>在blog文件下面找到config.yml配置及文件，修改最后的内容为（<strong>注意冒号之后有空格，不然会提示出错</strong>）：</p>
 <blockquote>
 <p>type: git<br>repo: github下的仓库的完整路径<br>branch: master</p>
 </blockquote>
@@ -236,7 +237,7 @@
 <p>hexo s &#x3D;&#x3D;&#x3D; hexo server 开启预览访问端口（ctrl+c退出）</p>
 <p>hexo d &#x3D;&#x3D;&#x3D; hexo deploy 部署到github</p>
 <p>hexo s -g 生成并本地预览</p>
-<p>hexo g -d 生成并上传</p>
+<p>hexo g -d 生成并上传 &#x3D;&#x3D;&#x3D; hexo d -g</p>
 
       
 
@@ -249,7 +250,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/08/hexo-github(%E4%B8%80)/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/04/08/hexo-github-%E4%B8%80/">展开全文 >></a>
         </p>
       
 
