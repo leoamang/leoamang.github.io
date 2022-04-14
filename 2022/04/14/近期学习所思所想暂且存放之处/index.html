@@ -16,7 +16,7 @@
 <meta property="og:description" content="2022.4.14首先是ES6的学习今日大概搞清楚了生成器函数的声明和调用，通过下述的例子，表明我个人的理解： 题目：1）异步编程；2）1s后控制台打印111，2s后222，3s后333 思考：本文可以用setTimeout嵌套进行设计，但是如果嵌套的多，会有回调地狱，所以根据课程，本文使用生成器函数进行调用，生成器函数的声明和调用： 123456789101112function * gen()">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-14T12:40:01.000Z">
-<meta property="article:modified_time" content="2022-04-14T13:19:49.486Z">
+<meta property="article:modified_time" content="2022-04-14T14:01:05.722Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -193,8 +193,8 @@
 <p>（2）调用时，可以把next()函数写在一起，也可以把它写在yield调用的函数里面。例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function one()&#123;</span><br><span class="line">               setTimeout(()=&gt;&#123;</span><br><span class="line">                   console.log(111)</span><br><span class="line">                   iterator.next()</span><br><span class="line">               &#125;,1000)</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure>
 
-
-
+<p>生成器函数应用2</p>
+<p>调用用户数据订单数据和商品数据</p>
 
       
 
