@@ -8,21 +8,39 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>docker安装及使用经验 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="docker前提是在vscode上面使用docker时发现命令无法识别，在vscode中下载扩展docker也依旧不行，后推断原因是本机并没有下载过docker,因此下面探究如何下载docker。 -1. 安装docker，搜索官网，下载适合于windows版本的docker，下载成功后可以通过命令行输入 docker --version 查看是否下载docker成功。 -2. 运行docker">
+  <meta name="description" content="docker[TOC] 前提是在vscode上面使用docker命令时发现命令无法识别，在vscode中下载扩展docker后也依旧不行，后推断原因是本机并没有下载过docker,因此下面探究如何在windows系统下下载并使用docker。整个思路：首先下载docker desktop并配置好，之后在vscode中下载扩展，最后在程序中使用docker命令进行操作。 本机以前装过虚拟机，在很多教">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker安装及使用经验">
 <meta property="og:url" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="docker前提是在vscode上面使用docker时发现命令无法识别，在vscode中下载扩展docker也依旧不行，后推断原因是本机并没有下载过docker,因此下面探究如何下载docker。 -1. 安装docker，搜索官网，下载适合于windows版本的docker，下载成功后可以通过命令行输入 docker --version 查看是否下载docker成功。 -2. 运行docker">
+<meta property="og:description" content="docker[TOC] 前提是在vscode上面使用docker命令时发现命令无法识别，在vscode中下载扩展docker后也依旧不行，后推断原因是本机并没有下载过docker,因此下面探究如何在windows系统下下载并使用docker。整个思路：首先下载docker desktop并配置好，之后在vscode中下载扩展，最后在程序中使用docker命令进行操作。 本机以前装过虚拟机，在很多教">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603094337756.png">
-<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603083827521.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604205534083.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604210057562.png">
 <meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603084232285.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603083827521.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604223751498.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604212919357.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604213046801.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/image-20220604220045857.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604215001126.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604220636148.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604221121829.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604221141831.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604222145276.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604222259184.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/image-20220604221851726-16543523994561.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604222515634.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604222658069.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604223117272.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603094337756.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604223939423.png">
+<meta property="og:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604224415870.png">
 <meta property="article:published_time" content="2022-06-03T00:31:14.000Z">
-<meta property="article:modified_time" content="2022-06-03T12:07:53.378Z">
+<meta property="article:modified_time" content="2022-06-04T14:47:19.612Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603094337756.png">
+<meta name="twitter:image" content="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604205534083.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -178,60 +196,133 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><p>前提是在vscode上面使用docker时发现命令无法识别，在vscode中下载扩展docker也依旧不行，后推断原因是本机并没有下载过docker,因此下面探究如何下载docker。</p>
-<p>-1. 安装docker，搜索官网，下载适合于windows版本的docker，下载成功后可以通过命令行输入</p>
+        <h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><p>[TOC]</p>
+<p>前提是在vscode上面使用docker命令时发现命令无法识别，在vscode中下载扩展docker后也依旧不行，后推断原因是本机并没有下载过docker,因此下面探究如何在<strong>windows系统下</strong>下载并使用docker。整个思路：首先下载docker desktop并配置好，之后在vscode中下载扩展，最后在程序中使用docker命令进行操作。</p>
+<p><strong>本机以前装过虚拟机，在很多教程中都需要下载hype，但是有解释说hyper下载后其他的虚拟机不能使用，所以本教程是在未下载hyper的情况下使用docker</strong></p>
+<h5 id="关键词：docker-wsl-2，-docker-vscode，远程连接已有的docker镜像并上传内容"><a href="#关键词：docker-wsl-2，-docker-vscode，远程连接已有的docker镜像并上传内容" class="headerlink" title="关键词：docker+wsl 2， docker+vscode，远程连接已有的docker镜像并上传内容"></a>关键词：docker+wsl 2， docker+vscode，远程连接已有的docker镜像并上传内容</h5><h2 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h2><ol>
+<li>搜索docker官网，下载适合于windows版本的docker desktop，下载成功后可以通过命令行cmd输入</li>
+</ol>
 <p><code>docker --version</code></p>
+<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604205534083.png" alt="image-20220604205534083"></p>
 <p>查看是否下载docker成功。</p>
-<p>-2. 运行docker run hello-world时发现报错，打开docker desktop 同样发现报错，提示未下载WL2，所以根据网上教程和windows官方教程开始下载 WL2.</p>
-<p>直接下载WL2：</p>
-<p>以管理员身份运行powershell&#x3D;&#x3D;win+r 输入powershell   +  打开后输入<em>start-process PowerShell -verb runas</em>即可输入下面的代码：</p>
+<ol start="2">
+<li>运行docker run hello-world时发现报错，打开docker desktop 同样发现报错，提示未下载WL2，网上教程和windows官方教程开始下载 WL2.</li>
+</ol>
+<h2 id="下载WL2"><a href="#下载WL2" class="headerlink" title="下载WL2"></a>下载WL2</h2><ol>
+<li>以管理员身份运行powershell  &#x3D;&#x3D;  （win+r 输入powershell ）  +  （打开后输入<em>start-process PowerShell -verb runas</em>即可进入管理员 模式的powershell，输入下面的代码：</li>
+</ol>
 <p><code>*wsl --install*</code></p>
-<p>–install 命令执行以下操作：</p>
+<p>若运行之后返回帮助文档，即下列情况：</p>
+<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604210057562.png" alt="image-20220604210057562">那么这个时候需要按顺序输入：</p>
+<p>*<code>wsl --list --online</code>*→查看可用发行版本</p>
+<p>运行*<code>wsl --install -d &lt;DistroName&gt;</code>*→我选的ubuntu，把-d后面的替换掉即可&#x3D;&#x3D;<em>wsl –install -d ubuntu</em></p>
+<p>之后会要求设置账号和密码，设置linux用户名和密码，在下载时系统会提醒设置username和password，此用户名和密码特定于安装的每个单独的linux分发版，与windows用户名无关；能够运行sudo（super user do）管理命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">账号：amang</span><br><span class="line"></span><br><span class="line">密码：</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>输入命令</li>
+</ol>
+<p><code>wsl --list --verbose</code></p>
+<p> 查看安装在 Windows 计算机上的 Linux 发行版列表，其中包括状态（发行版是正在运行还是已停止）。</p>
+<p>ubuntu默认的wsl版本是1，此时不要慌张，上述步骤是wsl官方给的安装目录下的第一个安装教程，接下来跳到第二个安装教程：**<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package">旧版本的手动安装步骤</a>**。</p>
+<p><strong>启用适用于linux的windows子系统</strong></p>
+<p>（1） 启用适用于 Linux 的 Windows 子系统：</p>
+<p>以管理员身份运行powershell</p>
+<p><code>dism.exe /online /enable-feature /featurename:Microsoft-Windodiws-Subsystem-Linux /all /norestart</code></p>
+<p>结果会出现：</p>
+<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603084232285.png" alt="image-20220603084232285"></p>
+<p>-（2）检查自己电脑是否满足wl2的运行要求</p>
+<p>以本机为例：X64，内部版本号19043，次要版本号1706，均高于所需的。查看自己电脑的版本。win+r输入winver，可以查看到</p>
+<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603083827521.png"></p>
+<p>-（3）启用虚拟机功能</p>
+<p>安装 WSL 2 之前，必须启用“虚拟机平台”可选功能。 计算机需要<em>虚拟化功能</em>才能使用此功能。</p>
+<p>在powershell下面运行：</p>
+<p><code>dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart~~</code></p>
+<p>-（4）<strong>下载linux内核更新包</strong>← 非常重要！！！！非常重要</p>
+<p><a target="_blank" rel="noopener" href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">下载适用于x64计算的WSL2 linux 内核更新包</a></p>
+<p>下载完后打开docker desktop会发现不报错了，不会再提醒WSL2没下载成功！！！</p>
+<p>查看wsl，会发现</p>
+<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604223751498.png" alt="image-20220604223751498"></p>
+<p>此时代表docker  desktop可以打开了！</p>
+<h2 id="配置docker"><a href="#配置docker" class="headerlink" title="配置docker"></a>配置docker</h2><p>首先知道报错的类型：</p>
+<ol>
+<li><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604212919357.png" alt="image-20220604212919357"></li>
+</ol>
+<p> 代表docker没有打开，这个时候可以看 docker desktop打开后是否表明正在运行</p>
+<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604213046801.png" alt="image-20220604213046801"></p>
+<p>↑ 这里是绿色，表示正在运行！！  如果是别的颜色，表示没有运行。</p>
+<p>上述报错可以从以下考虑：</p>
+<p>-（1）wsl2没配置好–可以从docker  desktop上提示看到</p>
+<p>…</p>
+<ol start="2">
+<li>​       <img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/image-20220604220045857.png" alt="image-20220604220045857"></li>
+</ol>
+<p>docker没有配置信任路径：<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604215001126.png" alt="image-20220604215001126"></p>
+<p>上述是原始代码，需要加入</p>
+<p> “insecure-registries”: [<br>    “信任路径”]</p>
+<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604220636148.png" alt="image-20220604220636148"></p>
+<p>然后登录，可以发现ok了。</p>
+<h2 id="在vscode中使用docker"><a href="#在vscode中使用docker" class="headerlink" title="在vscode中使用docker"></a>在vscode中使用docker</h2><ol>
+<li><p>下载扩展</p>
+<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604221121829.png" alt="image-20220604221121829"></p>
+</li>
+</ol>
+<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604221141831.png" alt="image-20220604221141831"></p>
+<p>之后就可以在vscode中使用docker了。</p>
+<p>如何在连接docker的问题：通过登录docker</p>
+<p>docker login dorker镜像网址</p>
+<p>docker pull 路径:latest</p>
+<p>docker build -t 路径latest  .  ← 有一个点，代表一层</p>
+<p>docker push hub.路径:latest</p>
+<p>2.出错类型及解决：</p>
+<p>（1）build时报错<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604222145276.png" alt="image-20220604222145276"></p>
+<p>push时报错<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604222259184.png" alt="image-20220604222259184"></p>
+<p>这个时候虽然镜像容器会create，但是实则不会push成功。</p>
+<p>使用时需要查看有没有<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/image-20220604221851726-16543523994561.png" alt="image-20220604221851726">这个文件，同时根据需要修改<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604222515634.png" alt="image-20220604222515634">后面的路径</p>
+<p>（2）当（1）中的问题解决以后，会出现<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604222658069.png" alt="image-20220604222658069"></p>
+<p>X509错误，这个时候build之前最好pull一下之前的文件，之后build，push，会发现成功了。</p>
+<p>总结：</p>
+<p>（1）docker最好用在虚拟环境下，但通过本教程可以在windows下面使用docker.</p>
+<p>（2）doker下载完之后需要配置WSL2，如果没有的话需要自行配置，不管是wsl 1 还是wsl 2 ，可以在控制面板→程序→启用或关闭windows功能，查看</p>
+<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604223117272.png" alt="image-20220604223117272"></p>
+<p>这个是否勾选。</p>
+<p>（3）下载过程中发现了一个很好用的软件：windows teminals。</p>
 <ul>
-<li><p>启用可选的 WSL 和虚拟机平台组件</p>
-</li>
-<li><p>下载并安装最新 Linux 内核</p>
-</li>
-<li><p>将 WSL 2 设置为默认值</p>
-</li>
-<li><p>下载并安装 Ubuntu Linux 发行版（可能需要重新启动）</p>
-</li>
+<li>安装</li>
 </ul>
-<p>运行之后返回帮助文档，那么这个时候需要输入：</p>
-<p>*<code>wsl --list --online</code><em>查看可用发行版本并运行</em><code>wsl --install -d &lt;DistroName&gt;</code>*，我选的ubuntu，把-d后面的替换掉即可，</p>
-<p>账号：amang</p>
-<p>密码：</p>
-<p>设置linux 用户信息，安装WSL后，需要为新安装的linux发行版创建用户账户和密码，参阅[WLS开发环境的最佳指南](<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/windows/wsl/setup/environment#set-up-your-linux-username-and-password">设置 WSL 开发环境 | Microsoft Docs</a>)：</p>
-<p>设置linux用户名和密码，在下载时系统会提醒设置username和password，此用户名和密码特定于安装的每个单独的linux分发版，与windows用户名无关；此账户被视为linux管路元，能够运行sudo（super user do）管理命令。</p>
-<p>-3. 安装windows teminals。</p>
 <p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-CN/windows/terminal/install">Windows 终端安装 | Microsoft Docs</a></p>
 <p>Windows Terminal 可以使用命令行接口运行任何应用程序。 它的主要功能包括多个选项卡、窗格、Unicode 和 UTF-8 字符支持、GPU 加速文本呈现引擎，你还可用它来创建你自己的主题并自定义文本、颜色、背景和快捷方式。</p>
 <p>每当安装新的 WSL Linux 发行版时，都会在 Windows Terminal 中为其创建一个新实例，该实例可根据你的偏好进行自定义。</p>
-<p>-4. 开始通过适用于 Linux 的 Windows 子系统使用 Visual Studio Code</p>
-<p>（1）在vscode中下载扩展 Remote - WSL。</p>
-<p>（2）在vscode中打开WSL项目。</p>
+<p>（4）开始通过适用于 Linux 的 Windows 子系统使用 Visual Studio Code</p>
+<ul>
+<li><p>a 在vscode中下载扩展 Remote - WSL。</p>
+</li>
+<li><p>b 在vscode中打开WSL项目。</p>
+</li>
+</ul>
 <p>在刚才下载的windows终端输入</p>
 <p> <code>code .</code></p>
 <p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603094337756.png" alt="image-20220603094337756"></p>
-<p>（3）从vscode中下载</p>
+<ul>
+<li>c 从vscode中下载</li>
+</ul>
 <p>还可以通过使用 VS Code 中的快捷方式 <code>CTRL+SHIFT+P</code> 调出命令面板，以访问更多 VS Code 远程选项。 如果随后键入 <code>Remote-WSL</code>，将看到可用的 VS Code 远程选项列表，使你可以在远程会话中重新打开文件夹，指定要在哪个发行版中打开，等等。</p>
-<p>-5. </p>
-<p><del>以下内容为自己尝试手动安装，可不看。</del></p>
-<p><del>首先查看自己电脑的版本。win+r输入winver，可以查看到</del></p>
-<p><del><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603083827521.png" alt="image-20220603083827521"></del></p>
-<p><del>-（1） 启用适用于 Linux 的 Windows 子系统：</del></p>
-<p><del>以管理员身份运行powershell&#x3D;&#x3D;win+r 输入powershell   +  打开后输入<em>start-process PowerShell -verb runas</em>即可输入下面的代码：</del></p>
-<p><del><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</code></del></p>
-<p><del>结果会出现：</del></p>
-<p><del><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603084232285.png" alt="image-20220603084232285"></del></p>
-<p><del>-（2）检查自己电脑是否满足wl2的运行要求</del></p>
-<p><del>以本机为例：X64，内部版本号19043，次要版本号1706，均高于所需的。</del></p>
-<p><del>-（3）启用虚拟机功能</del></p>
-<p><del>安装 WSL 2 之前，必须启用“虚拟机平台”可选功能。 计算机需要<em>虚拟化功能</em>才能使用此功能。</del></p>
-<p><del>在powershell下面运行：</del></p>
-<pre><code class="`dism.exe">
-
-</code></pre>
+<ul>
+<li><p>（5）用第一种安装方式安装WSL时选择ubuntu ，通过windows teminals可以发现建立了一个ubuntu虚拟机，</p>
+<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604223939423.png" alt="image-20220604223939423"></p>
+</li>
+</ul>
+<p>而且对应的wsl是 1，可以在windows powershell 管理员模式下输入wsl –set-version <distro name> 2，<distro name> 就是更新的linux发行版的名称，比如我最开始使用的是ubuntu，这里直接替换为<code>wsl --set-version ubuntu 2</code>，通过命令<code>wsl --list --verbose</code>可以看到版本变了：<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604224415870.png" alt="image-20220604224415870"></distro></distro></p>
+<p>这里有个思考，其实docker desktop用的其实是手动安装的wsl安装包下载的wsl2.</p>
+<ul>
+<li><p>（6）一些wsl 2代码</p>
+<p> <code>wsl --set-version</code>&#x3D;&#x3D;<code>wsl -l -v</code> →查看linux发行版的wsl版本</p>
+<p><code>wsl --install</code></p>
+<p><code>wsl --list --online</code></p>
+<p> <code>wsl --install -d &lt;DistroName&gt;</code></p>
+</li>
+</ul>
+<p>​    2022.06.04完成</p>
 
       
 
