@@ -152,6 +152,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-win10用命令行运行python脚本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/">win10用命令行运行python脚本</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/" class="archive-article-date">
+  	<time datetime="2022-06-05T03:10:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.解决输入pyhton后转入microsoft store </p>
+<p>（1）将anaconda加入环境变量中</p>
+<p>此电脑右键→属性→<em>关于</em>下面的<em>高级系统设置</em>→对<em>用户变量和</em>系统变量<em>的</em>path*进行编辑→新建三个anaconda环境变量（最下面的三个）</p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605120831179.png" alt="image-20220605120831179"></p>
+<p>（2）windows搜索栏输入管理应用执行别名→应用安装程序python取消勾选</p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605120912368.png" alt="image-20220605120912368"></p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605120951367.png" alt="image-20220605120951367"></p>
+<ol start="2">
+<li><p>打开cmd命令行</p>
+<p>（1）输入python代表进入python交互模式，可以通过输入代码得到相应的结果。</p>
+<p>如果输入python没有进入交互模式，因为本机用的是anaconda，所以输入</p>
+<p><code>conda info --envs</code><br>查看环境</p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605200110678.png" alt="image-20220605200110678"></p>
+<p>将py3虚拟环境激活：</p>
+<p><code>conda activate py3</code></p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605200144512.png" alt="image-20220605200144512"></p>
+<p>激活后自动进入python虚拟环境，此时进入了交互模式。</p>
+<p>（2）进入.py文件所在的位置，打开cmd命令行，输入python test.py，可以运行python脚本，例如：</p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605195645973.png" alt="image-20220605195645973"></p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-docker安装及使用经验" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
