@@ -8,24 +8,24 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>win10用命令行运行python脚本 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.解决输入pyhton后转入microsoft store  （1）将anaconda加入环境变量中 此电脑右键→属性→关于下面的高级系统设置→对用户变量和系统变量的path*进行编辑→新建三个anaconda环境变量（最下面的三个）  （2）windows搜索栏输入管理应用执行别名→应用安装程序python取消勾选    打开cmd命令行 （1）输入python代表进入python交互模式，可">
+  <meta name="description" content="[TOC] win10用命令行运行python脚本1.解决输入pyhton后转入microsoft store  （1）将anaconda加入环境变量中 此电脑右键→属性→关于下面的高级系统设置→对用户变量和系统变量的path*进行编辑→新建三个anaconda环境变量（最下面的三个）  （2）windows搜索栏输入管理应用执行别名→应用安装程序python取消勾选   2.打开cmd命令行 （">
 <meta property="og:type" content="article">
 <meta property="og:title" content="win10用命令行运行python脚本">
 <meta property="og:url" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.解决输入pyhton后转入microsoft store  （1）将anaconda加入环境变量中 此电脑右键→属性→关于下面的高级系统设置→对用户变量和系统变量的path*进行编辑→新建三个anaconda环境变量（最下面的三个）  （2）windows搜索栏输入管理应用执行别名→应用安装程序python取消勾选    打开cmd命令行 （1）输入python代表进入python交互模式，可">
+<meta property="og:description" content="[TOC] win10用命令行运行python脚本1.解决输入pyhton后转入microsoft store  （1）将anaconda加入环境变量中 此电脑右键→属性→关于下面的高级系统设置→对用户变量和系统变量的path*进行编辑→新建三个anaconda环境变量（最下面的三个）  （2）windows搜索栏输入管理应用执行别名→应用安装程序python取消勾选   2.打开cmd命令行 （">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605120831179.png">
-<meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605120912368.png">
-<meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605120951367.png">
-<meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605200110678.png">
-<meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605200144512.png">
-<meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605195645973.png">
+<meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201300369.png">
+<meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201354598.png">
+<meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201452418.png">
+<meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201620917.png">
+<meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201633552.png">
+<meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201645039.png">
 <meta property="article:published_time" content="2022-06-05T03:10:12.000Z">
-<meta property="article:modified_time" content="2022-06-05T12:02:12.278Z">
+<meta property="article:modified_time" content="2022-06-05T14:43:57.330Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605120831179.png">
+<meta name="twitter:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201300369.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -181,27 +181,82 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.解决输入pyhton后转入microsoft store </p>
+        <p>[TOC]</p>
+<h1 id="win10用命令行运行python脚本"><a href="#win10用命令行运行python脚本" class="headerlink" title="win10用命令行运行python脚本"></a>win10用命令行运行python脚本</h1><p>1.解决输入pyhton后转入microsoft store </p>
 <p>（1）将anaconda加入环境变量中</p>
 <p>此电脑右键→属性→<em>关于</em>下面的<em>高级系统设置</em>→对<em>用户变量和</em>系统变量<em>的</em>path*进行编辑→新建三个anaconda环境变量（最下面的三个）</p>
-<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605120831179.png" alt="image-20220605120831179"></p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201300369.png" alt="image-20220605201300369"></p>
 <p>（2）windows搜索栏输入管理应用执行别名→应用安装程序python取消勾选</p>
-<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605120912368.png" alt="image-20220605120912368"></p>
-<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605120951367.png" alt="image-20220605120951367"></p>
-<ol start="2">
-<li><p>打开cmd命令行</p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201354598.png" alt="image-20220605201354598"></p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201452418.png" alt="image-20220605201452418"></p>
+<p>2.打开cmd命令行</p>
 <p>（1）输入python代表进入python交互模式，可以通过输入代码得到相应的结果。</p>
 <p>如果输入python没有进入交互模式，因为本机用的是anaconda，所以输入</p>
 <p><code>conda info --envs</code><br>查看环境</p>
-<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605200110678.png" alt="image-20220605200110678"></p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201620917.png" alt="image-20220605201620917"></p>
 <p>将py3虚拟环境激活：</p>
 <p><code>conda activate py3</code></p>
-<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605200144512.png" alt="image-20220605200144512"></p>
-<p>激活后自动进入python虚拟环境，此时进入了交互模式。</p>
-<p>（2）进入.py文件所在的位置，打开cmd命令行，输入python test.py，可以运行python脚本，例如：</p>
-<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605195645973.png" alt="image-20220605195645973"></p>
-</li>
-</ol>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201633552.png" alt="image-20220605201633552"></p>
+<p>激活后自动进入python虚拟环境，此时进入了交互模式</p>
+<p>（2）进入.py文件所在的位置，打开cmd命令行，（等价于在当前文件夹右键打开windows powershell）输入python test.py，可以运行python脚本，例如：</p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201645039.png" alt="image-20220605201645039"></p>
+<h1 id="python调用cmd"><a href="#python调用cmd" class="headerlink" title="python调用cmd"></a>python调用cmd</h1><p>3种方式</p>
+<h2 id="1-python的OS模块"><a href="#1-python的OS模块" class="headerlink" title="1.python的OS模块"></a>1.python的OS模块</h2><p> OS模块调用CMD命令有两种方式：**os.popen()<strong>、</strong>os.system()**都是用当前进程来调用。</p>
+<p>OS.system是无法获取返回值的。当运行结束后接着往下面执行程序。用法如：OS.system(“ipconfig”).这是最简单的一种方法，特点是执行的时候程序会打出cmd在Linux上执行的信息。使用前需要<code>import os  [python]  os.system(&quot;ls&quot;)</code></p>
+<p>OS.popen带返回值的，如何获取返回值。如：</p>
+<p><code>p=os.popen(cmd)</code></p>
+<p>print p.read().得到的是个字符串。</p>
+<p>这两个都是用当前进程来调用，也就是说它们都是阻塞式的。</p>
+<p>（上述来自于<a target="_blank" rel="noopener" href="https://www.yisu.com/zixun/225591.html">这个连接</a>）</p>
+<h2 id="2-管道subprocess模块（使用Popen模块产生新的process）"><a href="#2-管道subprocess模块（使用Popen模块产生新的process）" class="headerlink" title="2.管道subprocess模块（使用Popen模块产生新的process）"></a>2.管道subprocess模块（使用Popen模块产生新的process）</h2><p>运行原理会在当前进程下面产生子进程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sub=subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)</span><br><span class="line">sub.wait()</span><br><span class="line">print sub.read()</span><br></pre></td></tr></table></figure>
+
+<p>现在大部分人都喜欢使用Popen。Popen方法不会打印出cmd在linux上执行的信息。的确，Popen非常强大，支持多种参数和模式。使用前需要from subprocess import Popen, PIPE。但是Popen函数有一个缺陷，就是它是一个阻塞的方法。如果运行cmd时产生的内容非常多，函数非常容易阻塞住。解决办法是不使用wait()方法，但是也不能获得执行的返回值了。</p>
+<p>Popen原型是：</p>
+<p>[python]</p>
+<p>subprocess.Popen(args, bufsize&#x3D;0, executable&#x3D;None, stdin&#x3D;None, stdout&#x3D;None, stderr&#x3D;None, preexec_fn&#x3D;None, close_fds&#x3D;False, shell&#x3D;False, cwd&#x3D;None, env&#x3D;None, universal_newlines&#x3D;False, startupinfo&#x3D;None, creationflags&#x3D;0)</p>
+<p>参数bufsize：指定缓冲。我到现在还不清楚这个参数的具体含义，望各个大牛指点。</p>
+<p>参数executable用于指定可执行程序。一般情况下我们通过args参数来设置所要运行的程序。如果将参数shell设为 True，executable将指定程序使用的shell。在windows平台下，默认的shell由COMSPEC环境变量来指定。</p>
+<p>参数stdin, stdout, stderr分别表示程序的标准输入、输出、错误句柄。他们可以是PIPE，文件描述符或文件对象，也可以设置为None，表示从父进程继承。</p>
+<p>参数preexec_fn只在Unix平台下有效，用于指定一个可执行对象(callable object)，它将在子进程运行之前被调用。</p>
+<p>参数Close_sfs：在windows平台下，如果close_fds被设置为True，则新创建的子进程将不会继承父进程的输入、输出、错误管 道。我们不能将close_fds设置为True同时重定向子进程的标准输入、输出与错误(stdin, stdout, stderr)。</p>
+<p>如果参数shell设为true，程序将通过shell来执行。</p>
+<p>参数cwd用于设置子进程的当前目录。</p>
+<p>参数env是字典类型，用于指定子进程的环境变量。如果env &#x3D; None，子进程的环境变量将从父进程中继承。</p>
+<p>参数Universal_newlines:不同操作系统下，文本的换行符是不一样的。如：windows下用’&#x2F;r&#x2F;n’表示换，而Linux下用 ‘&#x2F;n’。如果将此参数设置为True，Python统一把这些换行符当作’&#x2F;n’来处理。</p>
+<p>参数startupinfo与createionflags只在windows下用效，它们将被传递给底层的CreateProcess()函数，用 于设置子进程的一些属性，如：主窗口的外观，进程的优先级等等。</p>
+<p>subprocess.PIPE 在创建Popen对象时，subprocess.PIPE可以初始化stdin, stdout或stderr参数，表示与子进程通信的标准流。</p>
+<p>subprocess.STDOUT 创建Popen对象时，用于初始化stderr参数，表示将错误通过标准输出流输出。</p>
+<p>Popen的方法：</p>
+<p>Popen.poll()  用于检查子进程是否已经结束。设置并返回returncode属性。</p>
+<p>Popen.wait()  等待子进程结束。设置并返回returncode属性。</p>
+<p>Popen.communicate(input&#x3D;None) 与子进程进行交互。向stdin发送数据，或从stdout和stderr中读取数据。可选参数input指定发送到子进程的参数。 Communicate()返回一个元组：(stdoutdata, stderrdata)。注意：如果希望通过进程的stdin向其发送数据，在创建Popen对象的时候，参数stdin必须被设置为PIPE。同样，如 果希望从stdout和stderr获取数据，必须将stdout和stderr设置为PIPE。</p>
+<p>Popen.send_signal(signal)  向子进程发送信号。</p>
+<p>Popen.terminate() 停止(stop)子进程。在windows平台下，该方法将调用Windows API TerminateProcess()来结束子进程。</p>
+<p>Popen.kill() 杀死子进程。</p>
+<p>Popen.stdin  如果在创建Popen对象是，参数stdin被设置为PIPE，Popen.stdin将返回一个文件对象用于策子进程发送指令。否则返回None。</p>
+<p>Popen.stdout  如果在创建Popen对象是，参数stdout被设置为PIPE，Popen.stdout将返回一个文件对象用于策子进程发送指令。否则返回 None。</p>
+<p>Popen.stderr  如果在创建Popen对象是，参数stdout被设置为PIPE，Popen.stdout将返回一个文件对象用于策子进程发送指令。否则返回 None。</p>
+<p>Popen.pid  获取子进程的进程ID。</p>
+<p>Popen.returncode  获取进程的返回值。如果进程还没有结束，返回None。</p>
+<p>例如：</p>
+<p>[python]</p>
+<p>p &#x3D; Popen(“cp -rf a&#x2F;* b&#x2F;“, shell&#x3D;True, stdout&#x3D;PIPE, stderr&#x3D;PIPE)</p>
+<p>p.wait()</p>
+<p>if p.returncode !&#x3D; 0:</p>
+<p>print “Error.”</p>
+<p>return -1<br>————————————————<br>版权声明：本文为CSDN博主「Sahadhammika」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_28419039/article/details/112825756">https://blog.csdn.net/weixin_28419039/article/details/112825756</a></p>
+<h2 id="3-使用commands-getstatusoutput-‘cmd’-方法"><a href="#3-使用commands-getstatusoutput-‘cmd’-方法" class="headerlink" title="3.使用commands.getstatusoutput(‘cmd’)方法"></a>3.使用commands.getstatusoutput(‘cmd’)方法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">status ,output = commands.getstatusoutput(&#x27;cmd&#x27;)</span><br><span class="line">status = commands.getstatus(&#x27;cmd&#x27;)</span><br><span class="line">output = commands.getoutput(&#x27;cmd&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>顾名思义，status，output分别是执行的状态和输出结果，但是这种方法在windows中不能用。这个方法也不会打印出cmd在linux上执行的信息。这个方法唯一的优点是，它不是一个阻塞的方法。即没有Popen函数阻塞的问题。使用前需要import commands。</p>
+<p>例如：</p>
+<p>[python]</p>
+<p>status, output &#x3D; commands.getstatusoutput(“ls”)</p>
+<p>还有只获得output和status的方法：</p>
+<p>[python]</p>
+<p>commands.getoutput(“ls”)</p>
+<p>commands.getstatus(“ls”)<br>————————————————<br>版权声明：本文为CSDN博主「Sahadhammika」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_28419039/article/details/112825756">https://blog.csdn.net/weixin_28419039/article/details/112825756</a></p>
+<p>第一种方法：代码教程</p>
 
       
 
