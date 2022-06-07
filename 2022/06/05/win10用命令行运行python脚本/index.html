@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220606172525688.png">
 <meta property="og:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220606172538824.png">
 <meta property="article:published_time" content="2022-06-05T03:10:12.000Z">
-<meta property="article:modified_time" content="2022-06-06T14:39:44.177Z">
+<meta property="article:modified_time" content="2022-06-07T01:44:25.019Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220605201300369.png">
@@ -208,13 +208,14 @@
 <p>-（1）**os.system()**是无法获取返回值的。当运行结束后接着往下面执行程序。</p>
 <p><code>import os</code></p>
 <p><code>os.system(&quot;ipconfig&quot;)</code></p>
-<p><u>报错并显示：<img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220606173038304.png" alt="image-20220606173038304"></u></p>
+<p><u>报错并显示：</u></p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220606173038304.png" alt="image-20220606173038304"></p>
 <p><u>这个显示的是cmd下的结果，解决方案：</u></p>
 <p><u>配置默认终端为powershell</u></p>
 <p><u>打开终端→选择默认配置文件→选择powershell→运行程序即可</u></p>
 <p><u>ps：之后再将默认终端换为cmd时发现不再报错。。。</u></p>
-<p><u><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220606172525688.png" alt="image-20220606172525688"></u></p>
-<p><u><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220606172538824.png" alt="image-20220606172538824"></u></p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220606172525688.png" alt="image-20220606172525688"></p>
+<p><img src="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/image-20220606172538824.png" alt="image-20220606172538824"></p>
 <p>-（2）os.popen()带返回值的，如何获取返回值。如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">cmd=&#x27;python&#x27;</span><br><span class="line">p = os.popen(cmd)</span><br><span class="line">Output_str = p.read()</span><br><span class="line">print (Output_str)</span><br></pre></td></tr></table></figure>
 
