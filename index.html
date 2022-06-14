@@ -152,6 +152,154 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数据库mysql学习指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/14/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">数据库mysql学习指南</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/14/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" class="archive-article-date">
+  	<time datetime="2022-06-14T14:52:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/14/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2022年6月9日学习primevue和连接数据库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/06/09/2022%E5%B9%B46%E6%9C%889%E6%97%A5%E5%AD%A6%E4%B9%A0primevue%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">2022年6月9日学习primevue和连接数据库</a>
+    </h1>
+  
+
+        
+        <a href="/2022/06/09/2022%E5%B9%B46%E6%9C%889%E6%97%A5%E5%AD%A6%E4%B9%A0primevue%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/" class="archive-article-date">
+  	<time datetime="2022-06-09T13:19:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h1 id="primevue"><a href="#primevue" class="headerlink" title="primevue"></a>primevue</h1><p>primevue 类似于elementui，可以通过引用相关的模块设置页面。</p>
+<p>今天的需求是设计数据界面，根据datatable设计出页面的基本格式，之后通过插入iuputnumber模块将某些部分设计为可输入数据，这样的话就可以设计出自己想要的页面</p>
+<p>感悟：首先要理解例子中模块是怎么设计的，然后按照需求修改。</p>
+<h1 id="连接MYSQLdb"><a href="#连接MYSQLdb" class="headerlink" title="连接MYSQLdb"></a>连接MYSQLdb</h1><p>资料来自于实验室的同学，写一个博客开始自己写</p>
+<p>设计一个数据表</p>
+<p>字段就对应前端项目里 那个表格里的列</p>
+<p>数据的各个类型</p>
+<p>参考 plf_log 那个表的设计 </p>
+<p>一般这几种类型就够用了</p>
+<p>在 navicat 里 ctrl +D 是设计表的快捷键</p>
+<p><img src="/2022/06/09/2022%E5%B9%B46%E6%9C%889%E6%97%A5%E5%AD%A6%E4%B9%A0primevue%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/image-20220609213058256-16547814595431.png" alt="image-20220609213058256"></p>
+<hr>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from select import select</span><br><span class="line">conn = MySQLdb.connect(host = self.host, port=self.port, user = self.user, passwd = self.password, db = self.dbname, charset=&#x27;utf8&#x27;, autocommit=True) #连接</span><br><span class="line">cursor = conn.cursor()  # 使用游标</span><br><span class="line">cursor.execute(f&quot;ALTER TABLE &#123;self.tablename&#125; ADD  edge_pred real&quot;)</span><br><span class="line">cursor.execute(f&quot;ALTER TABLE &#123;self.tablename&#125; ADD  cloud_pred real&quot;)</span><br><span class="line">cursor.execute(f&quot;ALTER TABLE &#123;self.tablename&#125; ADD  y_interpolation real&quot;)</span><br><span class="line">select</span><br><span class="line">updata</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">cursor = conn.cursor()  # 使用游标</span><br><span class="line"></span><br><span class="line">//创建train_data数据库</span><br><span class="line"></span><br><span class="line">//创建train_data数据库</span><br><span class="line"></span><br><span class="line">drop = &quot;drop table if exists train_data&quot;</span><br><span class="line">sql_createTb = &quot;&quot;&quot;CREATE TABLE train_data (</span><br><span class="line">                 id INT PRIMARY KEY AUTO_INCREMENT,</span><br><span class="line">                 timestamp DATETIME,</span><br><span class="line">                 ak1 real,</span><br><span class="line">                 ak2 real,</span><br><span class="line">                 add_alkali_flow real,</span><br><span class="line">                 slurry_flow real,</span><br><span class="line">                 steam_pressure real,</span><br><span class="line">                 steam_flow real,</span><br><span class="line">                 y real,</span><br><span class="line">                 y_interpolation real)</span><br><span class="line">                 &quot;&quot;&quot;</span><br><span class="line">cursor.execute(drop)</span><br><span class="line"></span><br><span class="line">head1 = &quot;id, timestamp, ak1, ak2, add_alkali_flow, slurry_flow, steam_pressure, steam_flow, y&quot;</span><br><span class="line">cursor.execute(f&#x27;select %s from writedata order by `id` desc limit 0,&#123;timestep+ filter_step&#125;&#x27;%head1)  # 数据查询最新一个</span><br><span class="line">data = cursor.fetchall()</span><br><span class="line"></span><br><span class="line">y_true = y_old+ (y_now - y_old)/num * i  # 得到了最近相邻的阶跃值，进行插值处理</span><br><span class="line"></span><br><span class="line">//把y_interpolation写入</span><br><span class="line"></span><br><span class="line">cursor.execute(f&quot;update writedata set y_interpolation=&#x27;&#123;y_true&#125;&#x27; where id=&#x27;&#123;id_old+ i&#125;&#x27;&quot;) </span><br><span class="line">cursor.execute(f&quot;update train_data set y_interpolation=&#x27;&#123;y_true&#125;&#x27; where id=&#x27;&#123;id_old+ i&#125;&#x27;&quot;) # 插补值写入</span><br></pre></td></tr></table></figure>
+
+<p>我自己写的代码 增删改查</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line">import pymysql</span><br><span class="line">#1 连接数据库</span><br><span class="line">def get_conn():</span><br><span class="line">    conn = pymysql.connect(</span><br><span class="line">    host=&#x27;hub.neusncp.com&#x27;,</span><br><span class="line">    port=13306,</span><br><span class="line">    user=&#x27;root&#x27;,</span><br><span class="line">    password=&#x27;mk5rpuPqNw8JHAh2&#x27;,</span><br><span class="line">    db=&#x27;emis&#x27;,</span><br><span class="line">    charset=&#x27;utf8&#x27;,</span><br><span class="line"></span><br><span class="line">autocommit=True,    # 如果插入数据，， 是否自动提交? 和conn.commit()功能一致。</span><br><span class="line"></span><br><span class="line">​     )</span><br><span class="line">​    return  conn</span><br><span class="line">#增加 </span><br><span class="line">def sql_insert_many(sql,args):</span><br><span class="line">  conn = get_conn()</span><br><span class="line">  cur = conn.cursor() # 创建游标</span><br><span class="line">  result = cur.executemany(query=sql, args=args)  </span><br><span class="line">  print(result)</span><br><span class="line">  conn.commit()</span><br><span class="line">  cur.close()</span><br><span class="line">  conn.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#删除</span><br><span class="line">def sql_delete(sql,args):</span><br><span class="line">    conn = get_conn()</span><br><span class="line">    cur = conn.cursor()</span><br><span class="line">    result = cur.execute(sql,args)</span><br><span class="line">    print(result)</span><br><span class="line">    conn.commit()</span><br><span class="line">    cur.close()</span><br><span class="line">    conn.close()</span><br><span class="line">#更新</span><br><span class="line">def sql_update(sql,args):</span><br><span class="line">    conn = get_conn()</span><br><span class="line">    cur = conn.cursor()</span><br><span class="line">    result = cur.execute(sql,args)</span><br><span class="line">    print(result)</span><br><span class="line">    conn.commit()</span><br><span class="line">    cur.close()</span><br><span class="line">    conn.close()</span><br><span class="line">#查询</span><br><span class="line">def sql_query(sql,args):</span><br><span class="line">    conn = get_conn()</span><br><span class="line">    cur = conn.cursor()</span><br><span class="line">    cur.execute(sql,args)</span><br><span class="line">    results = cur.fetchall()</span><br><span class="line">    #print(type(results))  # 返回&lt;class &#x27;tuple&#x27;&gt; tuple元组类型</span><br><span class="line">​   for row in results:</span><br><span class="line">​        print(row)</span><br><span class="line">​        id = row[0]</span><br><span class="line">​        area_id = row[1]</span><br><span class="line">​        name = row[2]</span><br><span class="line">​        type = row[3]</span><br><span class="line">​        time = row[4]</span><br><span class="line">​        value = row[5]</span><br><span class="line">​        unit = row[6]</span><br><span class="line">​        print(&#x27; id: &#x27; + str(id) + &#x27; area_id: &#x27; + str(area_id) + &#x27; name: &#x27; + str(name) +  &#x27; type: &#x27; + str(type) +&#x27; time: &#x27; + time +&#x27; value: &#x27; + str(value) + &#x27;unit&#x27;+str(unit) )</span><br><span class="line">​        pass</span><br><span class="line"></span><br><span class="line">​    conn.commit()</span><br><span class="line">​    cur.close()</span><br><span class="line">​    conn.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def sql_search():</span><br><span class="line">  conn = get_conn();</span><br><span class="line">  cur = conn.cursor()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  sqli = &quot;select * from plf_data_fuel&quot;</span><br><span class="line">  result = cur.execute(sqli)  </span><br><span class="line">  print(result)</span><br><span class="line">  conn.commit()</span><br><span class="line">  cur.close()</span><br><span class="line">  conn.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__==&#x27;__main__&#x27;:</span><br><span class="line">    #sql = &#x27;INSERT INTO plf_data_fuel VALUES(%s,%s,%s,%s,%s,%s,%s);&#x27;</span><br><span class="line">    #args = [(0, &#x27;公司&#x27;,&#x27;选矿&#x27;,&#x27;指标&#x27;,&#x27;2022.6.11&#x27;,&#x27;150&#x27;,&#x27;升/千吨&#x27;), (1, &#x27;公司&#x27;,&#x27;采矿&#x27;,&#x27;消耗&#x27;,&#x27;2022.6.11&#x27;,&#x27;200&#x27;,&#x27;升&#x27;)]增加</span><br><span class="line"></span><br><span class="line"># sql = &#x27;DELETE FROM plf_data_fuel WHERE id = %s;&#x27;</span><br><span class="line">#args = (0,) # 单个元素的tuple写法</span><br><span class="line">sql_delete(sql,args)</span><br><span class="line"></span><br><span class="line">sql = &#x27;UPDATE plf_data_fuel SET value=%s WHERE id = %s;&#x27;</span><br><span class="line">args = (&#x27;150&#x27;, 0)</span><br><span class="line">sql_update(sql, args)</span><br><span class="line"></span><br><span class="line">sql = &#x27;SELECT  * FROM plf_data_fuel;&#x27;</span><br><span class="line">sql_query(sql,None)         CHA</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/06/09/2022%E5%B9%B46%E6%9C%889%E6%97%A5%E5%AD%A6%E4%B9%A0primevue%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-win10用命令行运行python脚本" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -211,9 +359,11 @@
 <p>这两个都是用当前进程来调用，它们都是阻塞式的。</p>
 <p>（1）首先理解括号里面的程序</p>
 <p>cd &#x2F;××&#x2F;××  进入文件夹</p>
+<p>svn update<br>注：后面也可以指定目录<br>如果命令后无目录，则将当前目录及其子目录下的所有文件都更新到最新版本。 </p>
 <p>python manage.py db migrate</p>
 <p>python manage.py db upgrade</p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e4fc86fa21e8">flask-migrate动态迁移数据库 - 简书 (jianshu.com)</a></p>
+<p>实际开发中使用flask-migrate来动态的迁移数据库，使用flask-migrate必须借助flask-script</p>
+<p>Pid 文件是包含进程标识号 (pid) 的文件，该文件存储在文件系统的明确定义位置，因此允许其他程序找出正在运行的脚本的 pid。</p>
 <p>下面两种方法仅是记录。</p>
 <h2 id="2-管道subprocess模块（使用Popen模块产生新的process）"><a href="#2-管道subprocess模块（使用Popen模块产生新的process）" class="headerlink" title="2.管道subprocess模块（使用Popen模块产生新的process）"></a>2.管道subprocess模块（使用Popen模块产生新的process）</h2><p><del>运行原理会在当前进程下面产生子进程。</del></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sub=subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE)</span><br><span class="line">sub.wait()</span><br><span class="line">print sub.read()</span><br></pre></td></tr></table></figure>
@@ -263,7 +413,6 @@
 <p><del>[python]</del></p>
 <p><del>commands.getoutput(“ls”)</del></p>
 <p><del>commands.getstatus(“ls”)</del><br>————————————————<br><del>版权声明：本文为CSDN博主「Sahadhammika」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。</del><br><del>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_28419039/article/details/112825756">https://blog.csdn.net/weixin_28419039/article/details/112825756</a></del></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30950887/article/details/96036149?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-96036149-blog-106139899.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-96036149-blog-106139899.pc_relevant_paycolumn_v3&utm_relevant_index=1">(25条消息) 第二章 Flask——Flask中的request_weixin_30950887的博客-CSDN博客</a></p>
 
       
 
