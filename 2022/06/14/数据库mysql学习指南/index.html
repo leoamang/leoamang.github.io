@@ -8,15 +8,20 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>数据库mysql学习指南 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="flask开发有两种模式，一种是 写 model.py 生成数据库表，另一种是在navicat 里建表，反向工程生成 model.py，这个model.py就是把数据表和Python内存中的对象做一个映射，也就是sqlalchemy框架的作用。这样，你操作python内存中的对象就可以实现对数据库的增删改查了   –h老师  简单介绍SQLAlchemy 是 Python 著名的 ORM 工具包">
+<meta property="og:type" content="article">
 <meta property="og:title" content="数据库mysql学习指南">
 <meta property="og:url" content="http://example.com/2022/06/14/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="flask开发有两种模式，一种是 写 model.py 生成数据库表，另一种是在navicat 里建表，反向工程生成 model.py，这个model.py就是把数据表和Python内存中的对象做一个映射，也就是sqlalchemy框架的作用。这样，你操作python内存中的对象就可以实现对数据库的增删改查了   –h老师  简单介绍SQLAlchemy 是 Python 著名的 ORM 工具包">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/06/14/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/image-20220615190822228-16552913036621.png">
+<meta property="og:image" content="http://example.com/2022/06/14/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/image-20220615191554658.png">
 <meta property="article:published_time" content="2022-06-14T14:52:22.000Z">
-<meta property="article:modified_time" content="2022-06-14T14:52:22.444Z">
+<meta property="article:modified_time" content="2022-06-15T11:16:25.086Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/06/14/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/image-20220615190822228-16552913036621.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -172,7 +177,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <blockquote>
+<p>flask开发有两种模式，一种是 写 model.py 生成数据库表，另一种是在navicat 里建表，反向工程生成 model.py，这个model.py就是把数据表和Python内存中的对象做一个映射，也就是sqlalchemy框架的作用。这样，你操作python内存中的对象就可以实现对数据库的增删改查了   –h老师</p>
+</blockquote>
+<h1 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h1><p>SQLAlchemy 是 Python 著名的 <strong>ORM 工具包</strong>。通过 ORM，开发者可以用<strong>面向对象的方式来操作数据库</strong>，不再需要编写 SQL 语句。SQLAlchemy 支持多种数据库，除 <strong>sqlite</strong> 外，其它数据库需要安装第三方驱动。本篇以 sqlite 数据库为例进行说明。</p>
+<p>SQLAlchemy是Python编程语言下的一款开源软件。提供了<strong>SQL工具包</strong>及<strong>对象关系映射（ORM，Object Relational Mapping）</strong>工具，ORM也就是采用对象关系映射的模式，使用这种模式可以将数据库中各种数据表之间的关系映射到程序中的对象。这种模式可以屏蔽底层的数据库的细节，不需要我们与复杂的 SQL 语句打交道，直接采用操作对象的形式操作就可以。。</p>
+<p>SQLAlchemy 取得成功的一个证明就是围绕它已建立了丰富的社区。针对 SQLAlchemy 的扩展和插件包括：<strong>declarative、</strong>Migrate、Elixir、SQLSoup、django-sqlalchemy、DBSprockets、FormAlchemy 和 z3c.sqlalchemy。</p>
+<h1 id="建立与数据库的连接"><a href="#建立与数据库的连接" class="headerlink" title="建立与数据库的连接"></a>建立与数据库的连接</h1><p>Engine对象是使用SQLAIchemy的起点，根据Engine的构架示意图，Engine包括数据库连接池（Pool）和方言（Dialect，指不同数据库的sql语句等的语法差距），两者把一起对数据库的操作，以符合<a target="_blank" rel="noopener" href="https://gitee.com/freakchicken/db-api">DBAPI</a>（快速生成数据库的http接口服务，零代码开发，只需编写sql，就可以生成http api服务。是数据库的上层应用，方便数据库数据对外发布http服务）规范的方式与数据库交互。                                                                                                    </p>
+<p><img src="/2022/06/14/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/image-20220615190822228-16552913036621.png" alt="image-20220615190822228"></p>
+<p><img src="/2022/06/14/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/image-20220615191554658.png" alt="image-20220615191554658"></p>
+
       
 
       
@@ -264,6 +278,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          os模块上传镜像
+        
+      </div>
+    </a>
   
   
     <a href="/2022/06/09/2022%E5%B9%B46%E6%9C%889%E6%97%A5%E5%AD%A6%E4%B9%A0primevue%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/" id="article-nav-older" class="article-nav-link-wrap">
