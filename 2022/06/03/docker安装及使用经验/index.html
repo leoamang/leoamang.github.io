@@ -141,14 +141,14 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.1.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">docker安装及使用经验</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-06-03T00:31:14.000Z" title="Created 2022-06-03 08:31:14">2022-06-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-04T15:18:41.058Z" title="Updated 2022-06-04 23:18:41">2022-06-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="docker安装及使用经验"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><p>[TOC]</p>
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">docker安装及使用经验</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-06-03T00:31:14.000Z" title="Created 2022-06-03 08:31:14">2022-06-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-04T15:18:41.058Z" title="Updated 2022-06-04 23:18:41">2022-06-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="docker安装及使用经验"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><p>[TOC]</p>
 <p>前提是在vscode上面使用docker命令时发现命令无法识别，在vscode中下载扩展docker后也依旧不行，后推断原因是本机并没有下载过docker,因此下面探究如何在<strong>windows系统下</strong>下载并使用docker。整个思路：首先下载docker desktop并配置好，之后在vscode中下载扩展，最后在程序中使用docker命令进行操作。</p>
 <p><strong>本机以前装过虚拟机，在很多教程中都需要下载hype，但是有解释说hyper下载后其他的虚拟机不能使用，所以本教程是在未下载hyper的情况下使用docker</strong></p>
 <h5 id="关键词：docker-wsl-2，-docker-vscode，远程连接已有的docker镜像并上传内容"><a href="#关键词：docker-wsl-2，-docker-vscode，远程连接已有的docker镜像并上传内容" class="headerlink" title="关键词：docker+wsl 2， docker+vscode，远程连接已有的docker镜像并上传内容"></a>关键词：docker+wsl 2， docker+vscode，远程连接已有的docker镜像并上传内容</h5><h2 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h2><ol>
 <li>搜索docker官网，下载适合于windows版本的docker desktop，下载成功后可以通过命令行cmd输入</li>
 </ol>
 <p><code>docker --version</code></p>
-<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604205534083.png" alt="image-20220604205534083"></p>
+<p><img src="/.com//image-20220604205534083.png" alt="image-20220604205534083"></p>
 <p>查看是否下载docker成功。</p>
 <ol start="2">
 <li>运行docker run hello-world时发现报错，打开docker desktop 同样发现报错，提示未下载WL2，网上教程和windows官方教程开始下载 WL2.</li>
@@ -158,7 +158,7 @@
 </ol>
 <p><code>*wsl --install*</code></p>
 <p>若运行之后返回帮助文档，即下列情况：</p>
-<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604210057562.png" alt="image-20220604210057562">那么这个时候需要按顺序输入：</p>
+<p><img src="/.com//image-20220604210057562.png" alt="image-20220604210057562">那么这个时候需要按顺序输入：</p>
 <p>*<code>wsl --list --online</code>*→查看可用发行版本</p>
 <p>运行*<code>wsl --install -d &lt;DistroName&gt;</code>*→我选的ubuntu，把-d后面的替换掉即可&#x3D;&#x3D;<em>wsl –install -d ubuntu</em></p>
 <p>之后会要求设置账号和密码，设置linux用户名和密码，在下载时系统会提醒设置username和password，此用户名和密码特定于安装的每个单独的linux分发版，与windows用户名无关；能够运行sudo（super user do）管理命令。</p>
@@ -175,10 +175,10 @@
 <p>以管理员身份运行powershell</p>
 <p><code>dism.exe /online /enable-feature /featurename:Microsoft-Windodiws-Subsystem-Linux /all /norestart</code></p>
 <p>结果会出现：</p>
-<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603084232285.png" alt="image-20220603084232285"></p>
+<p><img src="/.com//image-20220603084232285.png" alt="image-20220603084232285"></p>
 <p>-（2）检查自己电脑是否满足wl2的运行要求</p>
 <p>以本机为例：X64，内部版本号19043，次要版本号1706，均高于所需的。查看自己电脑的版本。win+r输入winver，可以查看到</p>
-<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603083827521.png" alt="image-20220603083827521"></p>
+<p><img src="/.com//image-20220603083827521.png" alt="image-20220603083827521"></p>
 <p>-（3）启用虚拟机功能</p>
 <p>安装 WSL 2 之前，必须启用“虚拟机平台”可选功能。 计算机需要<em>虚拟化功能</em>才能使用此功能。</p>
 <p>在powershell下面运行：</p>
@@ -187,14 +187,14 @@
 <p><a target="_blank" rel="noopener" href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">下载适用于x64计算的WSL2 linux 内核更新包</a></p>
 <p>下载完后打开docker desktop会发现不报错了，不会再提醒WSL2没下载成功！！！</p>
 <p>查看wsl，会发现</p>
-<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604223751498.png" alt="image-20220604223751498"></p>
+<p><img src="/.com//image-20220604223751498.png" alt="image-20220604223751498"></p>
 <p>此时代表docker  desktop可以打开了！</p>
 <h2 id="配置docker"><a href="#配置docker" class="headerlink" title="配置docker"></a>配置docker</h2><p>首先知道报错的类型：</p>
 <ol>
-<li><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604212919357.png" alt="image-20220604212919357"></li>
+<li><img src="/.com//image-20220604212919357.png" alt="image-20220604212919357"></li>
 </ol>
 <p> 代表docker没有打开，这个时候可以看 docker desktop打开后是否表明正在运行</p>
-<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604213046801.png" alt="image-20220604213046801"></p>
+<p><img src="/.com//image-20220604213046801.png" alt="image-20220604213046801"></p>
 <p>↑ 这里是绿色，表示正在运行！！  如果是别的颜色，表示没有运行。</p>
 <p>上述报错可以从以下考虑：</p>
 <p>-（1）wsl2没配置好–可以从docker  desktop上提示看到</p>
@@ -202,17 +202,17 @@
 <ol start="2">
 <li>​      https和http问题</li>
 </ol>
-<p>docker没有配置信任路径：<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604215001126.png" alt="image-20220604215001126"></p>
+<p>docker没有配置信任路径：<img src="/.com//image-20220604215001126.png" alt="image-20220604215001126"></p>
 <p>上述是原始代码，需要加入</p>
 <p> “insecure-registries”: [<br>    “信任路径”]</p>
-<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604220636148.png" alt="image-20220604220636148"></p>
+<p><img src="/.com//image-20220604220636148.png" alt="image-20220604220636148"></p>
 <p>然后登录，可以发现ok了。</p>
 <h2 id="在vscode中使用docker"><a href="#在vscode中使用docker" class="headerlink" title="在vscode中使用docker"></a>在vscode中使用docker</h2><ol>
 <li><p>下载扩展</p>
-<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604221121829.png" alt="image-20220604221121829"></p>
+<p><img src="/.com//image-20220604221121829.png" alt="image-20220604221121829"></p>
 </li>
 </ol>
-<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604221141831.png" alt="image-20220604221141831"></p>
+<p><img src="/.com//image-20220604221141831.png" alt="image-20220604221141831"></p>
 <p>之后就可以在vscode中使用docker了。</p>
 <p>如何在连接docker的问题：通过登录docker</p>
 <p>docker login dorker镜像网址</p>
@@ -220,16 +220,16 @@
 <p>docker build -t 路径latest  .  ← 有一个点，代表一层</p>
 <p>docker push hub.路径:latest</p>
 <p>2.出错类型及解决：</p>
-<p>（1）build时报错<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604222145276.png" alt="image-20220604222145276"></p>
-<p>push时报错<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604222259184.png" alt="image-20220604222259184"></p>
+<p>（1）build时报错<img src="/.com//image-20220604222145276.png" alt="image-20220604222145276"></p>
+<p>push时报错<img src="/.com//image-20220604222259184.png" alt="image-20220604222259184"></p>
 <p>这个时候虽然镜像容器会create，但是实则不会push成功。</p>
-<p>使用时需要查看有没有<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/hexo/blog/source/_posts/image-20220604221851726-16543523994561.png" alt="image-20220604221851726">这个文件，同时根据需要修改<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604222515634.png" alt="image-20220604222515634">后面的路径</p>
-<p>（2）当（1）中的问题解决以后，会出现<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604222658069.png" alt="image-20220604222658069"></p>
+<p>使用时需要查看有没有<img src="/.com//hexo/blog/source/_posts/image-20220604221851726-16543523994561.png" alt="image-20220604221851726">这个文件，同时根据需要修改<img src="/.com//image-20220604222515634.png" alt="image-20220604222515634">后面的路径</p>
+<p>（2）当（1）中的问题解决以后，会出现<img src="/.com//image-20220604222658069.png" alt="image-20220604222658069"></p>
 <p>X509错误，这个时候build之前最好pull一下之前的文件，之后build，push，会发现成功了。</p>
 <p>总结：</p>
 <p>（1）docker最好用在虚拟环境下，但通过本教程可以在windows下面使用docker.</p>
 <p>（2）doker下载完之后需要配置WSL2，如果没有的话需要自行配置，不管是wsl 1 还是wsl 2 ，可以在控制面板→程序→启用或关闭windows功能，查看</p>
-<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604223117272.png" alt="image-20220604223117272"></p>
+<p><img src="/.com//image-20220604223117272.png" alt="image-20220604223117272"></p>
 <p>这个是否勾选。</p>
 <p>（3）下载过程中发现了一个很好用的软件：windows teminals。</p>
 <ul>
@@ -247,17 +247,17 @@
 </ul>
 <p>在刚才下载的windows终端输入</p>
 <p> <code>code .</code></p>
-<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220603094337756.png" alt="image-20220603094337756"></p>
+<p><img src="/.com//image-20220603094337756.png" alt="image-20220603094337756"></p>
 <ul>
 <li>c 从vscode中下载</li>
 </ul>
 <p>还可以通过使用 VS Code 中的快捷方式 <code>CTRL+SHIFT+P</code> 调出命令面板，以访问更多 VS Code 远程选项。 如果随后键入 <code>Remote-WSL</code>，将看到可用的 VS Code 远程选项列表，使你可以在远程会话中重新打开文件夹，指定要在哪个发行版中打开，等等。</p>
 <ul>
 <li><p>（5）用第一种安装方式安装WSL时选择ubuntu ，通过windows teminals可以发现建立了一个ubuntu虚拟机，</p>
-<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604223939423.png" alt="image-20220604223939423"></p>
+<p><img src="/.com//image-20220604223939423.png" alt="image-20220604223939423"></p>
 </li>
 </ul>
-<p>而且对应的wsl是 1，可以在windows powershell 管理员模式下输入wsl –set-version <distro name> 2，<distro name> 就是更新的linux发行版的名称，比如我最开始使用的是ubuntu，这里直接替换为<code>wsl --set-version ubuntu 2</code>，通过命令<code>wsl --list --verbose</code>可以看到版本变了：<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604224415870.png" alt="image-20220604224415870"></distro></distro></p>
+<p>而且对应的wsl是 1，可以在windows powershell 管理员模式下输入wsl –set-version <distro name> 2，<distro name> 就是更新的linux发行版的名称，比如我最开始使用的是ubuntu，这里直接替换为<code>wsl --set-version ubuntu 2</code>，通过命令<code>wsl --list --verbose</code>可以看到版本变了：<img src="/.com//image-20220604224415870.png" alt="image-20220604224415870"></distro></distro></p>
 <p>这里有个思考，其实docker desktop用的其实是手动安装的wsl安装包下载的wsl2.</p>
 <ul>
 <li><p>（6）一些wsl 2代码</p>
@@ -268,13 +268,13 @@
 <ul>
 <li><p>（7）关于图片加载不成功的问题</p>
 <p>绝对路径和相对路径</p>
-<p><img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604231613693.png" alt="image-20220604231613693"></p>
+<p><img src="/.com//image-20220604231613693.png" alt="image-20220604231613693"></p>
 </li>
 </ul>
 </li>
 </ul>
 <p>偏好设置中勾选优先使用相对路径，这个上传到github上才能看到 。</p>
 <p>绝对：前面有磁盘等要素</p>
-<p>相对<img src="/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/image-20220604231816548.png" alt="image-20220604231816548"></p>
+<p>相对<img src="/.com//image-20220604231816548.png" alt="image-20220604231816548"></p>
 <p>   2022.06.04完成</p>
 </article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/">http://example.com/2022/06/03/docker%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E7%BB%8F%E9%AA%8C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">win10用命令行运行python脚本</div></div></a></div><div class="next-post pull-right"><a href="/2022/04/14/%E8%BF%91%E6%9C%9F%E5%AD%A6%E4%B9%A0%E6%89%80%E6%80%9D%E6%89%80%E6%83%B3%E6%9A%82%E4%B8%94%E5%AD%98%E6%94%BE%E4%B9%8B%E5%A4%84/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">近期学习所思所想暂且存放之处</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker"><span class="toc-number">1.</span> <span class="toc-text">docker</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%AF%8D%EF%BC%9Adocker-wsl-2%EF%BC%8C-docker-vscode%EF%BC%8C%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E5%B7%B2%E6%9C%89%E7%9A%84docker%E9%95%9C%E5%83%8F%E5%B9%B6%E4%B8%8A%E4%BC%A0%E5%86%85%E5%AE%B9"><span class="toc-number">1.0.0.0.1.</span> <span class="toc-text">关键词：docker+wsl 2， docker+vscode，远程连接已有的docker镜像并上传内容</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85docker"><span class="toc-number">1.1.</span> <span class="toc-text">安装docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDWL2"><span class="toc-number">1.2.</span> <span class="toc-text">下载WL2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEdocker"><span class="toc-number">1.3.</span> <span class="toc-text">配置docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8vscode%E4%B8%AD%E4%BD%BF%E7%94%A8docker"><span class="toc-number">1.4.</span> <span class="toc-text">在vscode中使用docker</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/16/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E4%B8%80/" title="数据库mysql学习指南一"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据库mysql学习指南一"/></a><div class="content"><a class="title" href="/2022/06/16/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E4%B8%80/" title="数据库mysql学习指南一">数据库mysql学习指南一</a><time datetime="2022-06-16T07:28:19.000Z" title="Created 2022-06-16 15:28:19">2022-06-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/" title="os模块上传镜像"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="os模块上传镜像"/></a><div class="content"><a class="title" href="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/" title="os模块上传镜像">os模块上传镜像</a><time datetime="2022-06-15T13:00:00.000Z" title="Created 2022-06-15 21:00:00">2022-06-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/14/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" title="数据库mysql学习指南"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据库mysql学习指南"/></a><div class="content"><a class="title" href="/2022/06/14/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" title="数据库mysql学习指南">数据库mysql学习指南</a><time datetime="2022-06-14T14:52:22.000Z" title="Created 2022-06-14 22:52:22">2022-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/09/2022%E5%B9%B46%E6%9C%889%E6%97%A5%E5%AD%A6%E4%B9%A0primevue%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/" title="2022年6月9日学习primevue和连接数据库"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2022年6月9日学习primevue和连接数据库"/></a><div class="content"><a class="title" href="/2022/06/09/2022%E5%B9%B46%E6%9C%889%E6%97%A5%E5%AD%A6%E4%B9%A0primevue%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/" title="2022年6月9日学习primevue和连接数据库">2022年6月9日学习primevue和连接数据库</a><time datetime="2022-06-09T13:19:19.000Z" title="Created 2022-06-09 21:19:19">2022-06-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/" title="win10用命令行运行python脚本"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="win10用命令行运行python脚本"/></a><div class="content"><a class="title" href="/2022/06/05/win10%E7%94%A8%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E8%84%9A%E6%9C%AC/" title="win10用命令行运行python脚本">win10用命令行运行python脚本</a><time datetime="2022-06-05T03:10:12.000Z" title="Created 2022-06-05 11:10:12">2022-06-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
