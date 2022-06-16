@@ -152,7 +152,7 @@
 <p>参考 plf_log 那个表的设计 </p>
 <p>一般这几种类型就够用了</p>
 <p>在 navicat 里 ctrl +D 是设计表的快捷键</p>
-<p><img src="/.com//image-20220609213058256-16547814595431.png" alt="image-20220609213058256"></p>
+<p><img src="/2022/06/09/2022%E5%B9%B46%E6%9C%889%E6%97%A5%E5%AD%A6%E4%B9%A0primevue%E5%92%8C%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/image-20220609213058256-16547814595431.png" alt="image-20220609213058256"></p>
 <hr>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from select import select</span><br><span class="line">conn = MySQLdb.connect(host = self.host, port=self.port, user = self.user, passwd = self.password, db = self.dbname, charset=&#x27;utf8&#x27;, autocommit=True) #连接</span><br><span class="line">cursor = conn.cursor()  # 使用游标</span><br><span class="line">cursor.execute(f&quot;ALTER TABLE &#123;self.tablename&#125; ADD  edge_pred real&quot;)</span><br><span class="line">cursor.execute(f&quot;ALTER TABLE &#123;self.tablename&#125; ADD  cloud_pred real&quot;)</span><br><span class="line">cursor.execute(f&quot;ALTER TABLE &#123;self.tablename&#125; ADD  y_interpolation real&quot;)</span><br><span class="line">select</span><br><span class="line">updata</span><br></pre></td></tr></table></figure>
 

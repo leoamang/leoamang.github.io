@@ -148,7 +148,7 @@
 <p>SQLAlchemy是Python编程语言下的一款开源软件。提供了<strong>SQL工具包</strong>及<strong>对象关系映射（ORM，Object Relational Mapping）</strong>工具，ORM也就是采用对象关系映射的模式，使用这种模式可以将数据库中各种数据表之间的关系映射到程序中的对象。这种模式可以屏蔽底层的数据库的细节，不需要我们与复杂的 SQL 语句打交道，直接采用操作对象的形式操作就可以。</p>
 <p>SQLAlchemy 取得成功的一个证明就是围绕它已建立了丰富的社区。针对 SQLAlchemy 的扩展和插件包括：<strong>declarative、</strong>Migrate、Elixir、SQLSoup、django-sqlalchemy、DBSprockets、FormAlchemy 和 z3c.sqlalchemy。</p>
 <h1 id="建立与数据库的连接"><a href="#建立与数据库的连接" class="headerlink" title="建立与数据库的连接"></a>建立与数据库的连接</h1><p>Engine对象是使用SQLAIchemy的起点，根据Engine的构架示意图，Engine包括数据库连接池（Pool）和方言（Dialect，指不同数据库的sql语句等的语法差距），两者把一起对数据库的操作，以符合<a target="_blank" rel="noopener" href="https://gitee.com/freakchicken/db-api">DBAPI</a>（快速生成数据库的http接口服务，零代码开发，只需编写sql，就可以生成http api服务。是数据库的上层应用，方便数据库数据对外发布http服务）规范的方式与数据库交互。                                                                                                    </p>
-<p><img src="/.com//image-20220615191554658.png" alt="image-20220615191554658"></p>
+<p><img src="/2022/06/16/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E4%B8%80/image-20220615191554658.png" alt="image-20220615191554658"></p>
 <h2 id="python导入mysql"><a href="#python导入mysql" class="headerlink" title="python导入mysql"></a>python导入mysql</h2><h4 id="下载库"><a href="#下载库" class="headerlink" title="下载库"></a>下载库</h4><p>安装sqlalchemy和pymysql库</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install sqlalchemy </span><br><span class="line"></span><br><span class="line">pip install pymysql</span><br></pre></td></tr></table></figure>
 

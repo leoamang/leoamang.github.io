@@ -149,16 +149,16 @@
 <p>本地 docker push 之后，GET请求进入服务器执行 docker pull ，然后 docker run -d -p …</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class UpdateServer(MethodView):</span><br><span class="line"></span><br><span class="line">    def updateServer(self):</span><br><span class="line">        os.system(&#x27;docker pull hub.neusncp.com:8888/lib/hk_flask:latest&#x27;)</span><br><span class="line">        os.system(&#x27;docker pull hub.neusncp.com:8888/lib/emis:latest&#x27;)</span><br><span class="line">          os.system(&#x27;cd /home/huangxy/emis/ &amp;&amp; docker-compose up -d&#x27;)</span><br><span class="line">        return &#123;&#x27;message&#x27;: &#x27;Update server successfully.&#x27;&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/.com//image-20220615210818127.png" alt="image-20220615210818127"></p>
-<p><img src="/.com//image-20220615210857420.png" alt="image-20220615210857420"></p>
+<p><img src="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615210818127.png" alt="image-20220615210818127"></p>
+<p><img src="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615210857420.png" alt="image-20220615210857420"></p>
 <p>这部分很重要，告诉前台，访问API的时候，如果是以 emis 开头的，那就把请求转发到 api.sapi.show 这里</p>
 <p>docker给不了域名，域名是我向网络运营商租用的，也就是给钱，告诉DNS厂商，这个域名指向某个服务器IP</p>
 <p>嗯嗯，docker是一个容器，可以放在自己的电脑上，也可以放在阿里云，腾讯云这种托管的服务器上，一次开发到处移植</p>
-<p><img src="/.com//image-20220615210926069.png" alt="image-20220615210926069"></p>
+<p><img src="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615210926069.png" alt="image-20220615210926069"></p>
 <p><a target="_blank" rel="noopener" href="https://neuhxy90.github.io/2022/06/07/%E9%A1%B9%E7%9B%AE/%E9%A1%B5%E9%9D%A2%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E5%9C%A8%E7%BA%BF%E5%8D%87%E7%BA%A7/">https://neuhxy90.github.io/2022/06/07/%E9%A1%B9%E7%9B%AE/%E9%A1%B5%E9%9D%A2%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E5%9C%A8%E7%BA%BF%E5%8D%87%E7%BA%A7/</a></p>
 <p><a target="_blank" rel="noopener" href="http://dell.sapi.show/docs">http://dell.sapi.show/docs</a></p>
-<p><img src="/.com//image-20220615210956857.png" alt="image-20220615210956857"></p>
-<p><img src="/.com//image-20220615211023482.png" alt="image-20220615211023482"></p>
+<p><img src="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615210956857.png" alt="image-20220615210956857"></p>
+<p><img src="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615211023482.png" alt="image-20220615211023482"></p>
 <p>docker build, push, pull 这种都是操作镜像，也就是相当于系统安装盘.iso</p>
 <p>docker run -d …这个操作相当于买了一个新电脑，并且用你build的系统安装盘给新装个系统*</p>
 <p>现在我们的操作，相当于升级了系统安装盘，但是我们是在一个笔记本里，自己更新自己</p>
