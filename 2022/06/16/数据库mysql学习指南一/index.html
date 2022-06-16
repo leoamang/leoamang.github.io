@@ -6,25 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>os模块上传镜像 | Hexo</title>
+  <title>数据库mysql学习指南一 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="待完成ji紧接着上次的docker pull和docker push来说的 因为服务器部署完成后，我们操作服务器很麻烦，要记住很多命令，有时候有防火墙不开放22端口就麻烦了 这时候，可以将命令写到 后台 controller里，然后在浏览器里访问指定的路径，就可以调用命令行执行相应的操作了 以前用SVN的时候，没有本地仓库，提交了之后服务器自动拉取，重启进程，就更新服务器端的程序了 是的，就是你的">
+  <meta name="description" content="flask开发有两种模式，一种是 写 model.py 生成数据库表，另一种是在navicat 里建表，反向工程生成 model.py，这个model.py就是把数据表和Python内存中的对象做一个映射，也就是sqlalchemy框架的作用。这样，你操作python内存中的对象就可以实现对数据库的增删改查了   –h老师  简单介绍SQLAlchemy 是 Python 著名的 ORM 工具包">
 <meta property="og:type" content="article">
-<meta property="og:title" content="os模块上传镜像">
-<meta property="og:url" content="http://example.com/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/index.html">
+<meta property="og:title" content="数据库mysql学习指南一">
+<meta property="og:url" content="http://example.com/2022/06/16/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E4%B8%80/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="待完成ji紧接着上次的docker pull和docker push来说的 因为服务器部署完成后，我们操作服务器很麻烦，要记住很多命令，有时候有防火墙不开放22端口就麻烦了 这时候，可以将命令写到 后台 controller里，然后在浏览器里访问指定的路径，就可以调用命令行执行相应的操作了 以前用SVN的时候，没有本地仓库，提交了之后服务器自动拉取，重启进程，就更新服务器端的程序了 是的，就是你的">
+<meta property="og:description" content="flask开发有两种模式，一种是 写 model.py 生成数据库表，另一种是在navicat 里建表，反向工程生成 model.py，这个model.py就是把数据表和Python内存中的对象做一个映射，也就是sqlalchemy框架的作用。这样，你操作python内存中的对象就可以实现对数据库的增删改查了   –h老师  简单介绍SQLAlchemy 是 Python 著名的 ORM 工具包">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615210818127.png">
-<meta property="og:image" content="http://example.com/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615210857420.png">
-<meta property="og:image" content="http://example.com/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615210926069.png">
-<meta property="og:image" content="http://example.com/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615210956857.png">
-<meta property="og:image" content="http://example.com/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615211023482.png">
-<meta property="article:published_time" content="2022-06-15T13:00:00.000Z">
-<meta property="article:modified_time" content="2022-06-15T13:11:28.294Z">
+<meta property="og:image" content="http://example.com/2022/06/16/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E4%B8%80/image-20220615191554658.png">
+<meta property="article:published_time" content="2022-06-16T07:28:19.000Z">
+<meta property="article:modified_time" content="2022-06-16T07:32:54.802Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615210818127.png">
+<meta name="twitter:image" content="http://example.com/2022/06/16/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E4%B8%80/image-20220615191554658.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -160,52 +156,57 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-os模块上传镜像" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-数据库mysql学习指南一" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      os模块上传镜像
+      数据库mysql学习指南一
     </h1>
   
 
         
-        <a href="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/" class="archive-article-date">
-  	<time datetime="2022-06-15T13:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-15</time>
+        <a href="/2022/06/16/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E4%B8%80/" class="archive-article-date">
+  	<time datetime="2022-06-16T07:28:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="待完成"><a href="#待完成" class="headerlink" title="待完成"></a>待完成</h1><p>ji紧接着上次的docker pull和docker push来说的</p>
-<p>因为服务器部署完成后，我们操作服务器很麻烦，要记住很多命令，有时候有防火墙不开放22端口就麻烦了</p>
-<p>这时候，可以将命令写到 后台 controller里，然后在浏览器里访问指定的路径，就可以调用命令行执行相应的操作了</p>
-<p>以前用SVN的时候，没有本地仓库，提交了之后服务器自动拉取，重启进程，就更新服务器端的程序了</p>
-<p>是的，就是你的笔记本里的浏览器就行，访问一个GET请求</p>
-<p>本地 docker push 之后，GET请求进入服务器执行 docker pull ，然后 docker run -d -p …</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class UpdateServer(MethodView):</span><br><span class="line"></span><br><span class="line">    def updateServer(self):</span><br><span class="line">        os.system(&#x27;docker pull hub.neusncp.com:8888/lib/hk_flask:latest&#x27;)</span><br><span class="line">        os.system(&#x27;docker pull hub.neusncp.com:8888/lib/emis:latest&#x27;)</span><br><span class="line">          os.system(&#x27;cd /home/huangxy/emis/ &amp;&amp; docker-compose up -d&#x27;)</span><br><span class="line">        return &#123;&#x27;message&#x27;: &#x27;Update server successfully.&#x27;&#125;</span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>flask开发有两种模式，一种是 写 model.py 生成数据库表，另一种是在navicat 里建表，反向工程生成 model.py，这个model.py就是把数据表和Python内存中的对象做一个映射，也就是sqlalchemy框架的作用。这样，你操作python内存中的对象就可以实现对数据库的增删改查了   –h老师</p>
+</blockquote>
+<h1 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h1><p>SQLAlchemy 是 Python 著名的 <strong>ORM 工具包</strong>。通过 ORM，开发者可以用<strong>面向对象的方式来操作数据库</strong>，不再需要编写 SQL 语句。SQLAlchemy 支持多种数据库，除 <strong>sqlite</strong> 外，其它数据库需要安装第三方驱动。</p>
+<p>SQLAlchemy是Python编程语言下的一款开源软件。提供了<strong>SQL工具包</strong>及<strong>对象关系映射（ORM，Object Relational Mapping）</strong>工具，ORM也就是采用对象关系映射的模式，使用这种模式可以将数据库中各种数据表之间的关系映射到程序中的对象。这种模式可以屏蔽底层的数据库的细节，不需要我们与复杂的 SQL 语句打交道，直接采用操作对象的形式操作就可以。</p>
+<p>SQLAlchemy 取得成功的一个证明就是围绕它已建立了丰富的社区。针对 SQLAlchemy 的扩展和插件包括：<strong>declarative、</strong>Migrate、Elixir、SQLSoup、django-sqlalchemy、DBSprockets、FormAlchemy 和 z3c.sqlalchemy。</p>
+<h1 id="建立与数据库的连接"><a href="#建立与数据库的连接" class="headerlink" title="建立与数据库的连接"></a>建立与数据库的连接</h1><p>Engine对象是使用SQLAIchemy的起点，根据Engine的构架示意图，Engine包括数据库连接池（Pool）和方言（Dialect，指不同数据库的sql语句等的语法差距），两者把一起对数据库的操作，以符合<a target="_blank" rel="noopener" href="https://gitee.com/freakchicken/db-api">DBAPI</a>（快速生成数据库的http接口服务，零代码开发，只需编写sql，就可以生成http api服务。是数据库的上层应用，方便数据库数据对外发布http服务）规范的方式与数据库交互。                                                                                                    </p>
+<p><img src="/2022/06/16/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E4%B8%80/image-20220615191554658.png" alt="image-20220615191554658"></p>
+<h2 id="python导入mysql"><a href="#python导入mysql" class="headerlink" title="python导入mysql"></a>python导入mysql</h2><h4 id="下载库"><a href="#下载库" class="headerlink" title="下载库"></a>下载库</h4><p>安装sqlalchemy和pymysql库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install sqlalchemy </span><br><span class="line"></span><br><span class="line">pip install pymysql</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615210818127.png" alt="image-20220615210818127"></p>
-<p><img src="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615210857420.png" alt="image-20220615210857420"></p>
-<p>这部分很重要，告诉前台，访问API的时候，如果是以 emis 开头的，那就把请求转发到 api.sapi.show 这里</p>
-<p>docker给不了域名，域名是我向网络运营商租用的，也就是给钱，告诉DNS厂商，这个域名指向某个服务器IP</p>
-<p>嗯嗯，docker是一个容器，可以放在自己的电脑上，也可以放在阿里云，腾讯云这种托管的服务器上，一次开发到处移植</p>
-<p><img src="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615210926069.png" alt="image-20220615210926069"></p>
-<p><a target="_blank" rel="noopener" href="https://neuhxy90.github.io/2022/06/07/%E9%A1%B9%E7%9B%AE/%E9%A1%B5%E9%9D%A2%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E5%9C%A8%E7%BA%BF%E5%8D%87%E7%BA%A7/">https://neuhxy90.github.io/2022/06/07/%E9%A1%B9%E7%9B%AE/%E9%A1%B5%E9%9D%A2%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E5%9C%A8%E7%BA%BF%E5%8D%87%E7%BA%A7/</a></p>
-<p><a target="_blank" rel="noopener" href="http://dell.sapi.show/docs">http://dell.sapi.show/docs</a></p>
-<p><img src="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615210956857.png" alt="image-20220615210956857"></p>
-<p><img src="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/image-20220615211023482.png" alt="image-20220615211023482"></p>
-<p>docker build, push, pull 这种都是操作镜像，也就是相当于系统安装盘.iso</p>
-<p>docker run -d …这个操作相当于买了一个新电脑，并且用你build的系统安装盘给新装个系统*</p>
-<p>现在我们的操作，相当于升级了系统安装盘，但是我们是在一个笔记本里，自己更新自己</p>
-<p>，如果我们把 hk_flask 安装在宿主机里就行了</p>
-<p>这样可以单独写一个服务，专门用来升级用</p>
-<p>在系统内通过http请求，自己更新自己，是可以的</p>
-<p>就是还得配置好</p>
-<p>通过博客记录的那个方法，能掌握怎么写新的接口了</p>
+<h4 id="导入必要的包"><a href="#导入必要的包" class="headerlink" title="导入必要的包"></a>导入必要的包</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from sqlalchemy import create_engine,Table,Column,Integer,String,MetaData,ForeignKey</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建一个连接引擎"><a href="#创建一个连接引擎" class="headerlink" title="创建一个连接引擎"></a>创建一个连接引擎</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">engine = create_engine(mysql+pymysql://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;dbname&gt;,echo=True)</span><br></pre></td></tr></table></figure>
+
+<p>create_engine(“数据库类型+数据库驱动:&#x2F;&#x2F;数据库用户名:数据库密码@IP地址:端口&#x2F;数据库”，其他参数) 上文当中echo&#x3D;True是开启调试，</p>
+<h4 id="创建元数据：描述数据的数据（标签名称，比如id、name等属性名称）"><a href="#创建元数据：描述数据的数据（标签名称，比如id、name等属性名称）" class="headerlink" title="创建元数据：描述数据的数据（标签名称，比如id、name等属性名称）"></a>创建元数据：描述数据的数据（标签名称，比如id、name等属性名称）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">metadata=Metadata(engine)</span><br></pre></td></tr></table></figure>
+
+<p>通过Metadata()方法创建了metadata实例，上述代码带上engine的目的是绑定要连接引擎，当对metadata实例进行操作的时候就会直接连接到数据库</p>
+<h4 id="添加表结构"><a href="#添加表结构" class="headerlink" title="添加表结构"></a>添加表结构</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">uesr= Table(&#x27;user&#x27;,metadata,</span><br><span class="line"></span><br><span class="line">​           Column(&#x27;id&#x27;,Integer,primary_key=True),</span><br><span class="line"></span><br><span class="line">​           Column(&#x27;name&#x27;,String(20)),</span><br><span class="line"></span><br><span class="line">​           Column(&#x27;fullname&#x27;,String(40)),</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">address_table = Table(&#x27;address&#x27;,metadata,</span><br><span class="line"></span><br><span class="line">​           Column(&#x27;id&#x27;,Integer,primary_key=True),</span><br><span class="line"></span><br><span class="line">​           Column(&#x27;user_id&#x27;,None,ForeignKey(&#x27;user.id&#x27;)),</span><br><span class="line"></span><br><span class="line">​           Column(&#x27;email&#x27;,String(128),nulllable = False),</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>其中，<strong>Table()<strong>方法用来创建表，第一个参数为</strong>表名</strong>，第二个是<strong>存入元数据</strong>，后面的参数使用**Column()**方法将数据库的每一个字段的数据参数设置好。</p>
+<h4 id="执行创建"><a href="#执行创建" class="headerlink" title="执行创建"></a>执行创建</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">metadata.create_all()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>几种常用插件的数据库url格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MySQL-Python</span><br><span class="line">    mysql+mysqldb://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;[:&lt;port&gt;]/&lt;dbname&gt;</span><br><span class="line"></span><br><span class="line">pymysql</span><br><span class="line">    mysql+pymysql://&lt;username&gt;:&lt;password&gt;@&lt;host&gt;/&lt;dbname&gt;[?&lt;options&gt;]</span><br><span class="line"></span><br><span class="line">MySQL-Connector</span><br><span class="line">    mysql+mysqlconnector://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;[:&lt;port&gt;]/&lt;dbname&gt;</span><br><span class="line"></span><br><span class="line">cx_Oracle</span><br><span class="line">    oracle+cx_oracle://user:pass@host:port/dbname[?key=value&amp;key=value...]</span><br></pre></td></tr></table></figure>
+
+
+
 
       
 
@@ -285,7 +286,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/06/16/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E4%B8%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -299,18 +300,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/06/16/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E4%B8%80/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          数据库mysql学习指南一
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/06/14/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">数据库mysql学习指南</div>
+    <a href="/2022/06/15/os%E6%A8%A1%E5%9D%97%E4%B8%8A%E4%BC%A0%E9%95%9C%E5%83%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">os模块上传镜像</div>
       <i class="icon-circle-right"></i>
     </a>
   
