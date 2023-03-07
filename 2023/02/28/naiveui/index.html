@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>naiveui | Happy</title><meta name="author" content="amang"><meta name="copyright" content="amang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="naiveui推荐按需导入在搭建vite+vue3+ts的过程中，发现大家使用naive-ui组件，也是尤雨溪推荐的，所以尝试不选择antdesignvue。 参考文章 Vue3+TS+Vite+NaiveUI搭建一个项目骨架 - 掘金 (juejin.cn) https:&#x2F;&#x2F;blog.csdn.net&#x2F;web22050702&#x2F;article&#x2F;details&#x2F;126439121 [TOC] 安装y">
+<meta property="og:type" content="article">
+<meta property="og:title" content="naiveui">
+<meta property="og:url" content="http://example.com/2023/02/28/naiveui/index.html">
+<meta property="og:site_name" content="Happy">
+<meta property="og:description" content="naiveui推荐按需导入在搭建vite+vue3+ts的过程中，发现大家使用naive-ui组件，也是尤雨溪推荐的，所以尝试不选择antdesignvue。 参考文章 Vue3+TS+Vite+NaiveUI搭建一个项目骨架 - 掘金 (juejin.cn) https:&#x2F;&#x2F;blog.csdn.net&#x2F;web22050702&#x2F;article&#x2F;details&#x2F;126439121 [TOC] 安装y">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/w2.jpg">
+<meta property="article:published_time" content="2023-02-28T03:14:44.000Z">
+<meta property="article:modified_time" content="2023-03-07T14:43:42.583Z">
+<meta property="article:author" content="amang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/w2.jpg"><link rel="shortcut icon" href="/img/xiangyang.jpg"><link rel="canonical" href="http://example.com/2023/02/28/naiveui/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'naiveui',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-07 22:43:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/xiangyang.jpg" onerror="onerror=null;src='/img/diang.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/w2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Happy</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">naiveui</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-28T03:14:44.000Z" title="发表于 2023-02-28 11:14:44">2023-02-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-07T14:43:42.583Z" title="更新于 2023-03-07 22:43:42">2023-03-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="naiveui"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="naiveui推荐按需导入"><a href="#naiveui推荐按需导入" class="headerlink" title="naiveui推荐按需导入"></a>naiveui推荐按需导入</h1><p>在搭建vite+vue3+ts的过程中，发现大家使用naive-ui组件，也是尤雨溪推荐的，所以尝试不选择antdesignvue。</p>
+<p>参考文章</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7111998263753965576">Vue3+TS+Vite+NaiveUI搭建一个项目骨架 - 掘金 (juejin.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/web22050702/article/details/126439121">https://blog.csdn.net/web22050702/article/details/126439121</a></p>
+<p>[TOC]</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yarn add naive-ui //2.34.3</span><br><span class="line">yarn add vfonts // 字体 0.0.3</span><br></pre></td></tr></table></figure>
+
+<p>配置naiveui自动导入功能（这里需要设置自动导入模块，如笔记开始的链接所示）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./vite.config.ts</span><br><span class="line">//从unplugin-vue-components/resolvers中引入NaiveUiResolver，并添加的在plugin中，示例代码如下：</span><br><span class="line">Components(&#123;</span><br><span class="line">  resolvers: [</span><br><span class="line">    // 需要自动导入的组件</span><br><span class="line">    NaiveUiResolver()</span><br><span class="line">  ],</span><br><span class="line">  dts: &#x27;src/type/components.d.ts&#x27;,</span><br><span class="line">&#125;),</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=antfu.iconify">Iconify IntelliSense</a> - Iconify 图标插件</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=voorjaar.windicss-intellisense">windicss IntelliSense</a> - windicss 提示插件</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally">I18n-ally</a> - i18n 插件</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=octref.vetur">Vetur</a> - vue 开发必备 （也可以选择 Volar）</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint</a> - 脚本代码检查</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier</a> - 代码格式化</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint">Stylelint</a> - css 格式化</li>
+<li><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv">DotENV</a> - .env 文件 高亮</li>
+</ul>
+<h3 id="引入及使用"><a href="#引入及使用" class="headerlink" title="引入及使用"></a>引入及使用</h3><p><a target="_blank" rel="noopener" href="https://yang-roc.blog.csdn.net/article/details/123473830?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-123473830-blog-125608234.pc_relevant_3mothn_strategy_and_data_recovery&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2-123473830-blog-125608234.pc_relevant_3mothn_strategy_and_data_recovery&amp;utm_relevant_index=5">https://yang-roc.blog.csdn.net/article/details/123473830?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2-123473830-blog-125608234.pc_relevant_3mothn_strategy_and_data_recovery&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-2-123473830-blog-125608234.pc_relevant_3mothn_strategy_and_data_recovery&amp;utm_relevant_index=5</a></p>
+<h4 id="局部引入"><a href="#局部引入" class="headerlink" title="局部引入"></a>局部引入</h4><p>区别就是一个有setup，一个没有，我个人推荐setup在外面的方式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;n-button&gt;naive-ui&lt;/n-button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">  import &#123; defineComponent &#125; from &#x27;vue&#x27;</span><br><span class="line">  import &#123; NButton &#125; from &#x27;naive-ui&#x27;</span><br><span class="line"> </span><br><span class="line">  export default defineComponent(&#123;</span><br><span class="line">    components: &#123;</span><br><span class="line">      NButton</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;n-button&gt;naive-ui&lt;/n-button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">  import &#123; NButton &#125; from &#x27;naive-ui&#x27;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="全局引入"><a href="#全局引入" class="headerlink" title="全局引入"></a>全局引入</h4><p>安装全部组件，打包会有冗余代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">import &#123; createApp &#125; from &#x27;vue&#x27;</span><br><span class="line">import naive from &#x27;naive-ui&#x27;</span><br><span class="line"> </span><br><span class="line">const app = createApp(App)</span><br><span class="line">app.use(naive)</span><br></pre></td></tr></table></figure>
+
+<h3 id="布局（layout）"><a href="#布局（layout）" class="headerlink" title="布局（layout）"></a>布局（layout）</h3><p>这里是想做一个固定的顶、侧边栏以及底部，然后router仅填充内容即可。</p>
+<p>这是整个后台骨架核心入口模板，就是登录之后的页面，通常会包含，左侧菜单导航，顶部，内容区域，如下：</p>
+<p><img src="/2023/02/28/naiveui/image-20230228205902224-16775891460631.png" alt="image-20230228205902224"></p>
+<p>这里直接用框架提供的，layout组件，自带了折叠，深色，固定定位，等功能，相对来说是非常方便，改动样式很少即可实现一个骨架。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/398885164">手摸手，带你尝鲜 naiveui 撸 admin 骨架（核心骨架篇） - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.naiveui.com/zh-CN/light/components/menu">菜单 Menu - Naive UI</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13Q4y167k6/?spm_id_from=333.337.search-card.all.click&amp;vd_source=e5c32794bf6b6e17ca459f7e3e208386">https://www.bilibili.com/video/BV13Q4y167k6/?spm_id_from=333.337.search-card.all.click&amp;vd_source=e5c32794bf6b6e17ca459f7e3e208386</a></p>
+<p><img src="/2023/02/28/naiveui/image-20230301110319162.png" alt="image-20230301110319162"></p>
+<p>双击，把需要的内容加载出来</p>
+<p><img src="/2023/02/28/naiveui/image-20230301111918271.png" alt="image-20230301111918271"></p>
+<p>栅格：</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7197722622822498364">NaiveUI学习笔记：布局 - 掘金 (juejin.cn)</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">amang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/02/28/naiveui/">http://example.com/2023/02/28/naiveui/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Happy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/w2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/07/svn/"><img class="prev-cover" src="/img/w2.jpg" onerror="onerror=null;src='/img/diang.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">svn</div></div></a></div><div class="next-post pull-right"><a href="/2023/02/28/pinia%E5%AD%A6%E4%B9%A0/"><img class="next-cover" src="/img/p1.jpg" onerror="onerror=null;src='/img/diang.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">pinia学习</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/xiangyang.jpg" onerror="this.onerror=null;this.src='/img/diang.gif'" alt="avatar"/></div><div class="author-info__name">amang</div><div class="author-info__description">成为一个可靠的人</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">14</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#naiveui%E6%8E%A8%E8%8D%90%E6%8C%89%E9%9C%80%E5%AF%BC%E5%85%A5"><span class="toc-number">1.</span> <span class="toc-text">naiveui推荐按需导入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.0.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E5%8F%8A%E4%BD%BF%E7%94%A8"><span class="toc-number">1.0.2.</span> <span class="toc-text">引入及使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%BC%95%E5%85%A5"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">局部引入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%BC%95%E5%85%A5"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">全局引入</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E5%B1%80%EF%BC%88layout%EF%BC%89"><span class="toc-number">1.0.3.</span> <span class="toc-text">布局（layout）</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/07/svn/" title="svn"><img src="/img/w2.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="svn"/></a><div class="content"><a class="title" href="/2023/03/07/svn/" title="svn">svn</a><time datetime="2023-03-07T14:24:37.000Z" title="发表于 2023-03-07 22:24:37">2023-03-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/28/naiveui/" title="naiveui"><img src="/img/w2.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="naiveui"/></a><div class="content"><a class="title" href="/2023/02/28/naiveui/" title="naiveui">naiveui</a><time datetime="2023-02-28T03:14:44.000Z" title="发表于 2023-02-28 11:14:44">2023-02-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/28/pinia%E5%AD%A6%E4%B9%A0/" title="pinia学习"><img src="/img/p1.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="pinia学习"/></a><div class="content"><a class="title" href="/2023/02/28/pinia%E5%AD%A6%E4%B9%A0/" title="pinia学习">pinia学习</a><time datetime="2023-02-28T00:35:30.000Z" title="发表于 2023-02-28 08:35:30">2023-02-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/27/vite-vue3-ts/" title="vite+vue3+ts"><img src="/img/p6.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="vite+vue3+ts"/></a><div class="content"><a class="title" href="/2023/02/27/vite-vue3-ts/" title="vite+vue3+ts">vite+vue3+ts</a><time datetime="2023-02-27T13:43:45.000Z" title="发表于 2023-02-27 21:43:45">2023-02-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/16/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E4%B8%80/" title="数据库mysql学习指南一"><img src="/img/p4.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="数据库mysql学习指南一"/></a><div class="content"><a class="title" href="/2022/06/16/%E6%95%B0%E6%8D%AE%E5%BA%93mysql%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8D%97%E4%B8%80/" title="数据库mysql学习指南一">数据库mysql学习指南一</a><time datetime="2022-06-16T07:28:19.000Z" title="发表于 2022-06-16 15:28:19">2022-06-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By amang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
