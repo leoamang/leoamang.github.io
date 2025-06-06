@@ -1,17 +1,17 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>influxdb学习笔记（一） | Happy</title><meta name="keywords" content="中文版"><meta name="author" content="amang"><meta name="copyright" content="amang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="成为一个可靠的人">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>influxdb学习笔记（一） | Happy</title><meta name="keywords" content="influxdbapi、telegraf、写入数据、influxdb可视化、仪表盘、变量、标签、注释"><meta name="author" content="amang"><meta name="copyright" content="amang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[TOC] 使用postman访问influxapi接口： 1.下载postman Download Postman | Get Started for Free 2.登录&#x2F;注册账号 3.新建工作区workplace 4.新建的工作区右边主要操作区中选择Authorization→auth type选择api key→key填写Authorization→Value填写自己的api令牌→">
 <meta property="og:type" content="article">
 <meta property="og:title" content="influxdb学习笔记（一）">
 <meta property="og:url" content="http://example.com/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="Happy">
-<meta property="og:description" content="成为一个可靠的人">
+<meta property="og:description" content="[TOC] 使用postman访问influxapi接口： 1.下载postman Download Postman | Get Started for Free 2.登录&#x2F;注册账号 3.新建工作区workplace 4.新建的工作区右边主要操作区中选择Authorization→auth type选择api key→key填写Authorization→Value填写自己的api令牌→">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/w2.jpg">
+<meta property="og:image" content="http://example.com/img/p4.jpg">
 <meta property="article:published_time" content="2025-06-04T03:41:01.000Z">
-<meta property="article:modified_time" content="2025-06-04T03:47:35.480Z">
+<meta property="article:modified_time" content="2025-06-06T08:35:54.373Z">
 <meta property="article:author" content="amang">
-<meta property="article:tag" content="中文版">
+<meta property="article:tag" content="influxdbapi、telegraf、写入数据、influxdb可视化、仪表盘、变量、标签、注释">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/w2.jpg"><link rel="shortcut icon" href="/img/xiangyang.jpg"><link rel="canonical" href="http://example.com/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+<meta name="twitter:image" content="http://example.com/img/p4.jpg"><link rel="shortcut icon" href="/img/xiangyang.jpg"><link rel="canonical" href="http://example.com/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -52,8 +52,8 @@
   isPost: true,
   isHome: false,
   isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2025-06-04 11:47:35'
+  isToc: true,
+  postUpdate: '2025-06-06 16:35:54'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -142,4 +142,386 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/xiangyang.jpg" onerror="onerror=null;src='/img/diang.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/w2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Happy</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">influxdb学习笔记（一）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-04T03:41:01.000Z" title="发表于 2025-06-04 11:41:01">2025-06-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-04T03:47:35.480Z" title="更新于 2025-06-04 11:47:35">2025-06-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="influxdb学习笔记（一）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">amang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">http://example.com/2025/06/04/influxdb学习笔记（一）/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Happy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%B8%AD%E6%96%87%E7%89%88/">中文版</a></div><div class="post_share"><div class="social-share" data-image="/img/w2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/06/02/influxdb%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><img class="next-cover" src="/img/p4.jpg" onerror="onerror=null;src='/img/diang.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">“influxdb数据库学习笔记”</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/xiangyang.jpg" onerror="this.onerror=null;this.src='/img/diang.gif'" alt="avatar"/></div><div class="author-info__name">amang</div><div class="author-info__description">成为一个可靠的人</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" title="influxdb学习笔记（一）"><img src="/img/w2.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="influxdb学习笔记（一）"/></a><div class="content"><a class="title" href="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" title="influxdb学习笔记（一）">influxdb学习笔记（一）</a><time datetime="2025-06-04T03:41:01.000Z" title="发表于 2025-06-04 11:41:01">2025-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/02/influxdb%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="“influxdb数据库学习笔记”"><img src="/img/p4.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="“influxdb数据库学习笔记”"/></a><div class="content"><a class="title" href="/2025/06/02/influxdb%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="“influxdb数据库学习笔记”">“influxdb数据库学习笔记”</a><time datetime="2025-06-02T12:10:17.000Z" title="发表于 2025-06-02 20:10:17">2025-06-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/28/%E5%86%99%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5/" title="写代码自动打开网页"><img src="/img/xiatupian.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="写代码自动打开网页"/></a><div class="content"><a class="title" href="/2025/05/28/%E5%86%99%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5/" title="写代码自动打开网页">写代码自动打开网页</a><time datetime="2025-05-28T14:18:01.000Z" title="发表于 2025-05-28 22:18:01">2025-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/15/npm%E5%92%8Cyarn%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" title="npm和yarn相关命令"><img src="/img/xiatupian.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="npm和yarn相关命令"/></a><div class="content"><a class="title" href="/2025/01/15/npm%E5%92%8Cyarn%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" title="npm和yarn相关命令">npm和yarn相关命令</a><time datetime="2025-01-15T14:45:17.000Z" title="发表于 2025-01-15 22:45:17">2025-01-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/17/git%E7%9B%B8%E5%85%B3%E4%BD%BF%E7%94%A8%E6%8B%89%E5%8F%96%E5%91%BD%E4%BB%A4/" title="git相关使用拉取命令"><img src="/img/p1.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="git相关使用拉取命令"/></a><div class="content"><a class="title" href="/2024/12/17/git%E7%9B%B8%E5%85%B3%E4%BD%BF%E7%94%A8%E6%8B%89%E5%8F%96%E5%91%BD%E4%BB%A4/" title="git相关使用拉取命令">git相关使用拉取命令</a><time datetime="2024-12-17T02:09:50.000Z" title="发表于 2024-12-17 10:09:50">2024-12-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By amang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/xiangyang.jpg" onerror="onerror=null;src='/img/diang.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/p4.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Happy</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">influxdb学习笔记（一）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-04T03:41:01.000Z" title="发表于 2025-06-04 11:41:01">2025-06-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-06T08:35:54.373Z" title="更新于 2025-06-06 16:35:54">2025-06-06</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="influxdb学习笔记（一）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>[TOC]</p>
+<p>使用postman访问influxapi接口：</p>
+<p>1.下载postman</p>
+<p><a target="_blank" rel="noopener" href="https://www.postman.com/downloads/">Download Postman | Get Started for Free</a></p>
+<p>2.登录&#x2F;注册账号</p>
+<p>3.新建工作区workplace</p>
+<p>4.新建的工作区右边主要操作区中选择Authorization→auth type选择api key→key填写Authorization→Value填写自己的api令牌→add to选择header。</p>
+<p>5.新建&#x2F;使用已经创建的get接口，将地址修改为：<a target="_blank" rel="noopener" href="http://localhost:8086/api/v2%EF%BC%8C%E7%82%B9%E5%87%BBsend%E5%8F%91%E9%80%81%E8%AF%B7%E6%B1%82%EF%BC%8C%E5%88%99%E4%BC%9A%E6%94%B6%E5%88%B0%E5%9B%9E%E5%A4%8D%E3%80%82">http://localhost:8086/api/v2，点击send发送请求，则会收到回复。</a> </p>
+<p><img src="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/image-20250605101544222.png" alt="image-20250605101544222"></p>
+<h1 id="使用python对influxdb进行操作"><a href="#使用python对influxdb进行操作" class="headerlink" title="使用python对influxdb进行操作"></a>使用python对influxdb进行操作</h1><h2 id="IoT-Starter-简介"><a href="#IoT-Starter-简介" class="headerlink" title="IoT Starter 简介"></a><a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/api-guide/tutorials/python/#introducing-iot-starter">IoT Starter 简介</a></h2><p>应用程序体系结构有四个层：</p>
+<ul>
+<li><strong>InfluxDB API</strong>：InfluxDB v2 API。</li>
+<li><strong>IoT 设备</strong>：虚拟或物理设备将 IoT 数据写入 InfluxDB API。</li>
+<li><strong>UI：</strong>向服务器发送请求并在浏览器中呈现视图。</li>
+<li><strong>API</strong>：接收来自 UI 的请求，向 InfluxDB 发送请求， 并处理来自 InfluxDB 的响应。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flask run -h localhost -p 3001</span><br></pre></td></tr></table></figure>
+
+<p>api接口开发</p>
+<p>两个库，ui没成功下载，api那个没用成。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/influxdata/iot-api-ui.git</span><br><span class="line">git clone https://github.com/influxdata/iot-api-python</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h1><p>在 InfluxDB 用户界面 （UI） 中加载来自以下来源的数据：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/write-data/no-code/load-data/#load-csv-or-line-protocol-in-ui">CSV 或线路协议文件</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/write-data/no-code/load-data/#load-data-using-line-protocol">Line 协议</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/write-data/no-code/load-data/#load-data-from-a-client-library-in-the-ui">客户端库</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/write-data/no-code/load-data/#load-data-from-a-telegraf-plugin-in-the-ui">Telegraf 插件</a></li>
+</ul>
+<h2 id="用telegraf-plugins写入"><a href="#用telegraf-plugins写入" class="headerlink" title="用telegraf plugins写入"></a>用telegraf plugins写入</h2><p><a target="_blank" rel="noopener" href="https://www.influxdata.com/time-series-platform/telegraf/">Telegraf</a> 是 InfluxData 的 用于收集和报告指标的数据收集代理。 其庞大的输入插件库和“即插即用”架构可让您快速 并轻松地从许多不同的来源收集指标。 本文介绍了如何使用 Telegraf 在 InfluxDB 2.7 中收集和存储数据。</p>
+<p>1.下载并连接</p>
+<p>每一个telegraf连接都有一个id，需要对应起来，需要保证两件事，下载完windows版本的之后需要把conf文件中的[outputs.influxdb_v2]中的这些打开</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[[outputs.influxdb_v2]]</span><br><span class="line">  ## The URLs of the InfluxDB cluster nodes.</span><br><span class="line">  ##</span><br><span class="line">  ## Multiple URLs can be specified for a single cluster, only ONE of the</span><br><span class="line">  ## urls will be written to each interval.</span><br><span class="line">  ##   ex: urls = [&quot;https://us-west-2-1.aws.cloud2.influxdata.com&quot;]</span><br><span class="line">  urls = [&quot;http://localhost:8086&quot;]</span><br><span class="line"></span><br><span class="line">  ## Token for authentication.</span><br><span class="line">  token = &quot;$INFLUX_TOKEN&quot;</span><br><span class="line"></span><br><span class="line">  ## Organization is the name of the organization you wish to write to; must exist.</span><br><span class="line">  organization = &quot;Baosteel&quot;</span><br><span class="line"></span><br><span class="line">  ## Destination bucket to write into.</span><br><span class="line">  bucket = &quot;iot_center&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在windows下面powershell中执行下面的代码设置权限：</span><br><span class="line">$env:INFLUX_TOKEN = &quot;p1qGpr0xP_3AAH490gV0eAqgA_ojeROrbh7825kaJVfuPIP-GkGUS-Rf1yIntd0FAxpBB4qfY7TDKSPCz4H6Lg==&quot;</span><br><span class="line"></span><br><span class="line">$env:INFLUX_TOKEN = &quot;ppphxM6sLjkUEjQ5pV3RUB4nNIaul73d3uQHZ8nHtGD7qde-mQZse1Aasd6RhMLXUGekjs1uGd6xc8y3WSGtlA==&quot;</span><br></pre></td></tr></table></figure>
+
+<p>之后执行对应id的开始语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">telegraf --config http://localhost:8086/api/v2/telegrafs/0efbc5e3e9d9f000</span><br></pre></td></tr></table></figure>
+
+
+
+<p>tips：</p>
+<p>1.目前理解telegraf的使用：telegraf的下载完成后配置.conf文件即可实现inputs来自于那里，outputs来自于那里，现在配置的inputs来自于http，outputs给influxdbv2</p>
+<p>2.telegraf的下载</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.\telegraf.exe --service install `</span><br><span class="line">&gt;&gt; --config &quot;F:\LMY\influxdb\soucefile\influxData\telegraf\telegraf.conf&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/image-20250605152022662.png" alt="image-20250605152022662"></p>
+<h1 id="写入示例数据并待查询"><a href="#写入示例数据并待查询" class="headerlink" title="写入示例数据并待查询"></a>写入示例数据并待查询</h1><p>使用社区模板添加示例数据</p>
+<ul>
+<li><strong>空气传感器示例数据</strong>：探索、可视化和监测空气中的湿度、温度和一氧化碳水平。</li>
+<li><strong>鸟类迁徙样本数据</strong>：探索、可视化和监控鸟类迁徙模式的纬度和经度。</li>
+<li><strong>NOAA NDBC 样本数据</strong>：从浮标探索、可视化和监控 NDBC 的观测结果。这些数据从特定位置观察空气温度、风速等。</li>
+<li><strong>NOAA 水样数据</strong>：从特定位置探索、可视化和监测温度、水位、pH 值和水质。</li>
+<li><strong>USGS 地震数据</strong>：浏览、可视化和监控地震监测数据。这些数据包括警报、cdi、采石场爆炸、磁硝化物等。</li>
+</ul>
+<h3 id="从社区模板添加示例数据："><a href="#从社区模板添加示例数据：" class="headerlink" title="从社区模板添加示例数据："></a>从社区模板添加示例数据：</h3><p>设置（settings）→模板（template）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/influxdata/community-templates/blob/master/sample-data/sample-data.yml</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/image-20250605164701013.png" alt="image-20250605164701013"></p>
+<h3 id="制作仪表盘"><a href="#制作仪表盘" class="headerlink" title="制作仪表盘"></a>制作仪表盘</h3><p><img src="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/image-20250605170454963.png" alt="image-20250605170454963"></p>
+<h1 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h1><pre><code> 目前学习的是使用Flux查询语句，如上一篇笔记中所叙述的。
+</code></pre>
+<h1 id="可视化数据"><a href="#可视化数据" class="headerlink" title="可视化数据"></a>可视化数据</h1><p>​	介绍使用influxDB UI建立仪表盘的方式可视化数据。</p>
+<h2 id="1-管理influxdb控制面板"><a href="#1-管理influxdb控制面板" class="headerlink" title="1.管理influxdb控制面板"></a>1.管理influxdb控制面板</h2><p>​	在 InfluxDB 用户界面 （UI） 中创建、编辑和管理自定义控制面板。</p>
+<h3 id="1-1-创建控制面板"><a href="#1-1-创建控制面板" class="headerlink" title="1.1 创建控制面板"></a>1.1 <a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/dashboards/create-dashboard/">创建控制面板</a></h3><p>​	在 InfluxDB 用户界面 （UI） 中创建新控制面板或导入现有控制面板。</p>
+<h4 id="创建新的控制面板"><a href="#创建新的控制面板" class="headerlink" title="创建新的控制面板"></a>创建新的控制面板</h4><ol>
+<li>在influxDB UI界面左侧的导航菜单中，选择 <strong>Boards</strong> （<strong>Dashboards</strong>）。</li>
+<li>单击右上角的 <strong>Create Dashboard</strong> 菜单，然后选择 <strong>New Dashboard</strong>。</li>
+<li>在左上角的 <strong>Name this dashboard （命名此控制面板</strong>） 字段中输入控制面板的名称。</li>
+</ol>
+<h4 id="导入现有控制面板"><a href="#导入现有控制面板" class="headerlink" title="导入现有控制面板"></a>导入现有控制面板</h4><ol>
+<li><p>在左侧的导航菜单中，选择 <strong>Boards</strong> （<strong>Dashboards</strong>）。</p>
+</li>
+<li><p>单击右上角的 <strong>Create Dashboard</strong> 菜单，然后选择 <strong>Import Dashboard</strong>。</p>
+</li>
+<li><p>在显示的窗口中：</p>
+<ul>
+<li>选择 <strong>上传文件</strong> 以拖放或选择一个文件。</li>
+<li>选择 <strong>Paste JSON （粘贴 JSON</strong>） 以粘贴 JSON。</li>
+</ul>
+</li>
+<li><p>单击 <strong>Import JSON as Dashboard（将 JSON 导入为控制面板</strong>）。</p>
+</li>
+</ol>
+<h4 id="克隆控制面板"><a href="#克隆控制面板" class="headerlink" title="克隆控制面板"></a>克隆控制面板</h4><ol>
+<li><p>在左侧的导航菜单中，选择 <strong>Boards</strong> （<strong>Dashboards</strong>）。</p>
+</li>
+<li><p>点击仪表盘右上角的设置按钮，单击<strong>clone</strong></p>
+</li>
+</ol>
+<h3 id="1-2-控制仪表板"><a href="#1-2-控制仪表板" class="headerlink" title="1.2 控制仪表板"></a>1.2 <a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/dashboards/control-dashboard/">控制仪表板</a></h3><p><img src="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/image-20250606152449271.png" alt="image-20250606152449271"></p>
+<h4 id="·添加单元格（参考上一篇笔记的第5节）"><a href="#·添加单元格（参考上一篇笔记的第5节）" class="headerlink" title="·添加单元格（参考上一篇笔记的第5节）"></a>·添加单元格（参考上一篇笔记的第5节）</h4><ol>
+<li>在左侧的导航菜单中，选择 <strong>Boards</strong> （<strong>Dashboards</strong>）。</li>
+<li>单击对应的<strong>仪表盘名称</strong>，进入仪表盘界面</li>
+<li>在控制面板中，单击 <strong>Add Cell （添加单元格</strong>），在左上角输入单元格的名称。</li>
+<li>按照 <a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/explore-metrics">Explore metrics</a> 中的说明在 Data Explorer 中创建查询。可以通过可视化选择或者脚本的方式创建<strong>query</strong></li>
+<li>单击复选标记图标 √将单元格保存到控制面板。</li>
+</ol>
+<h4 id="·向仪表盘添加注释"><a href="#·向仪表盘添加注释" class="headerlink" title="·向仪表盘添加注释"></a>·向仪表盘添加注释</h4><ol>
+<li>在控制面板中，单击<strong>左上角的 Add Note （添加注释</strong>）。</li>
+<li>在出现的窗口中输入注释。可以使用 Markdown 语法来格式化您的笔记。</li>
+<li>要预览 Markdown 格式，请单击 <strong>Preview （预览</strong>） 选项。</li>
+<li>单击 <strong>Save （保存</strong>）。</li>
+</ol>
+<p><img src="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/image-20250606151652904.png" alt="image-20250606151652904"></p>
+<h4 id="·可视化批注，与4相关联"><a href="#·可视化批注，与4相关联" class="headerlink" title="·可视化批注，与4相关联"></a>·可视化批注，与4相关联</h4><h4 id="·添加变量"><a href="#·添加变量" class="headerlink" title="·添加变量"></a>·添加变量</h4><p>单击 <strong>Variables</strong> 以显示可用于控制面板的变量。</p>
+<h4 id="·演示模式-切换深色模式和浅色模式"><a href="#·演示模式-切换深色模式和浅色模式" class="headerlink" title="·演示模式+切换深色模式和浅色模式"></a>·演示模式+切换深色模式和浅色模式</h4><p><img src="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/image-20250606152614026.png" alt="image-20250606152614026"></p>
+<h4 id="·手动刷新控制面板"><a href="#·手动刷新控制面板" class="headerlink" title="·手动刷新控制面板"></a>·手动刷新控制面板</h4><p>单击刷新按钮 （） 以手动刷新控制面板的数据。</p>
+<h4 id="·设置自动刷新时间"><a href="#·设置自动刷新时间" class="headerlink" title="·设置自动刷新时间"></a>·设置自动刷新时间</h4><p><img src="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/image-20250606152724473.png" alt="image-20250606152724473"></p>
+<h4 id="·选择时区"><a href="#·选择时区" class="headerlink" title="·选择时区"></a>·选择时区</h4><p>在控制面板中，单击timezone下拉列表选择用于控制版面的时区。</p>
+<p><img src="http://cdn.neuiai.com/minio-img/image-20250606152023109.png" alt="image-20250606152023109"></p>
+<h4 id="·选择时间范围"><a href="#·选择时间范围" class="headerlink" title="·选择时间范围"></a>·选择时间范围</h4><ol>
+<li>从下拉菜单中的时间范围选项中进行选择</li>
+<li>选择 <strong>Custom Time Range （自定义时间范围</strong>） 以输入精确到纳秒的自定义时间范围。 默认时间范围为 5 分钟。</li>
+</ol>
+<h3 id="1-3导出仪表板"><a href="#1-3导出仪表板" class="headerlink" title="1.3导出仪表板"></a>1.3<a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/dashboards/export-dashboard/">导出仪表板</a></h3><ol>
+<li><p>在左侧的导航菜单中，选择 <strong>Boards</strong> （<strong>Dashboards</strong>）。</p>
+</li>
+<li><p>将鼠标悬停在控制面板上，然后单击齿轮图标 ， ，然后选择 <strong>Download Template</strong>。</p>
+<p>默认下载json格式</p>
+</li>
+</ol>
+<h3 id="1-4删除控制面板"><a href="#1-4删除控制面板" class="headerlink" title="1.4删除控制面板"></a>1.4<a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/dashboards/delete-dashboard/">删除控制面板</a></h3><ol>
+<li>在左侧的导航菜单中，选择 <strong>Boards</strong> （<strong>Dashboards</strong>）</li>
+<li>将鼠标悬停在控制面板列表中的控制面板上，然后单击 。</li>
+<li>单击 <strong>Delete （删除</strong>）。</li>
+</ol>
+<h2 id="2-使用和管理变量"><a href="#2-使用和管理变量" class="headerlink" title="2.使用和管理变量"></a>2.使用和管理变量</h2><ol>
+<li>使用仪表盘变量</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">v v.variableName</span><br></pre></td></tr></table></figure>
+
+<p>为仪表板单元格构建 Flux 查询时，查看可用的仪表板变量 在 Functions 选项卡旁边的 <strong>Variables</strong> 选项卡中</p>
+<p><img src="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/image-20250606153620661.png" alt="image-20250606153620661"></p>
+<ol start="2">
+<li>链接到URL中定义变量的仪表盘</li>
+</ol>
+<p>​	将变量应用于控制面板时，该变量会附加到 URL，与包含的变量共享链接。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&amp;vars[variable_name]=value</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>预定义的仪表盘变量</li>
+</ol>
+<p>​	指定查询时间范围的开始时间。 此变量通常用于定义<a target="_blank" rel="noopener" href="https://docs.influxdata.com/flux/v0/stdlib/universe/range#start"><code>start</code>参数</a>函数。<code>range()</code>,<strong>Time Range</strong> 选择器定义此变量的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">v.timeRangeStart  </span><br></pre></td></tr></table></figure>
+
+<p>​	指定查询时间范围的结束时间。 此变量通常用于定义<a target="_blank" rel="noopener" href="https://docs.influxdata.com/flux/v0/stdlib/universe/range#stop"><code>stop</code>参数</a>函数。<code>range()</code>,<strong>Time Range</strong> 选择器定义此变量的值。 它默认为 .<code>now</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">v.timeRangeStop</span><br></pre></td></tr></table></figure>
+
+<p>​	指定窗口化数据的时间段。 此变量通常用于定义<code>every``period</code><a target="_blank" rel="noopener" href="https://docs.influxdata.com/flux/v0/stdlib/universe/window"><code>window()</code>功能</a>在数据聚合作中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">v.windowPeriod</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>自定义控制面板变量选择用2.1-2.7中的步骤</li>
+</ol>
+<p>​	在 InfluxDB 用户界面 （UI） 中创建、管理和使用自定义控制面板变量。</p>
+<h3 id="2-1创建变量"><a href="#2-1创建变量" class="headerlink" title="2.1创建变量"></a>2.1<a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/create-variable/">创建变量</a></h3><p>​	在 Data Explorer 中、从 Organization 页面创建控制面板变量，或导入变量。</p>
+<p>​	在 Data Explorer 中，从 Settings 部分创建控制面板变量，或导入变量。<strong>变量名称必须唯一</strong></p>
+<blockquote>
+<h5 id="变量名称限制"><a href="#变量名称限制" class="headerlink" title="变量名称限制"></a><a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/create-variable/#variable-name-restrictions">变量名称限制</a></h5><p>变量名称必须以字母或下划线<code>_</code>开头。</p>
+<p>以下名称不能用作功能板变量，因为它们是 Flux 中的保留关键字：、、 和 。<code>and``import``not``return``option``test``empty``in``or``package``builtin</code></p>
+</blockquote>
+<h4 id="1-在-Data-Explorer-中创建变量"><a href="#1-在-Data-Explorer-中创建变量" class="headerlink" title="1. 在 Data Explorer 中创建变量"></a>1. <a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/create-variable/#create-a-variable-in-the-data-explorer">在 Data Explorer 中创建变量</a></h4><ol>
+<li>单击侧边栏中的 <strong>Data Explorer</strong> 图标</li>
+<li>使用 <strong>Query Builder</strong> 或 <strong>Script Editor</strong> 构建查询。</li>
+<li>使用 <a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/visualization-types/table/">Table visualization type</a> 或启用 <strong>View Raw Data</strong> 选项来查看可读的查询结果。</li>
+<li>单击右上角的 <strong>Save As</strong> 。</li>
+<li>在显示的窗口中，选择 <strong>Variable （变量</strong>）。</li>
+<li>在 <strong>Name （名称</strong>） 字段中输入变量的名称。</li>
+<li>单击 <strong>Create</strong>。</li>
+</ol>
+<h4 id="2-在-Settings-部分创建变量"><a href="#2-在-Settings-部分创建变量" class="headerlink" title="2. 在 Settings 部分创建变量"></a>2. <a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/create-variable/#create-a-variable-in-the-settings-section">在 Settings 部分创建变量</a></h4><ol>
+<li>单击导航栏中的 <strong>Settings</strong> 图标。</li>
+<li>选择 <strong>Variables</strong> 选项卡。</li>
+<li>输入变量的名称。</li>
+<li>选择变量类型。</li>
+<li>输入相应的变量信息。</li>
+<li>单击 <strong>Create</strong>。</li>
+</ol>
+<h4 id="3-导入变量"><a href="#3-导入变量" class="headerlink" title="3.导入变量"></a>3.<a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/create-variable/#import-a-variable">导入变量</a></h4><ol>
+<li>单击导航栏中的 <strong>Settings</strong> 图标。</li>
+<li>选择 <strong>Variables</strong> 选项卡。</li>
+<li>单击 <strong>Create Variable</strong> 下拉菜单，然后选择 <strong>Import Variable</strong>。</li>
+<li>在显示的窗口中：</li>
+</ol>
+<ul>
+<li>选择 <strong>上传文件</strong> 以拖放或选择一个文件。</li>
+<li>选择 <strong>Paste JSON （粘贴 JSON</strong>） 以粘贴 JSON。</li>
+</ul>
+<ol start="5">
+<li>单击 <strong>Import JSON as Variable</strong>。</li>
+</ol>
+<h3 id="2-2更新变量"><a href="#2-2更新变量" class="headerlink" title="2.2更新变量"></a>2.2<a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/update-variable/">更新变量</a></h3><p>更新 InfluxDB 用户界面中的控制面板变量。</p>
+<ol>
+<li>单击导航栏中的 <strong>Settings</strong> 图标。</li>
+<li>选择 <strong>Variables</strong> 选项卡，更改变量的名称（变量选项卡中右边的单击设置按钮之后下下拉栏rename）。</li>
+<li>从列表中单击变量的名称。</li>
+<li>更新变量类型和相关信息。</li>
+<li>单击 <strong>Submit</strong>。</li>
+</ol>
+<h3 id="2-3查看变量"><a href="#2-3查看变量" class="headerlink" title="2.3查看变量"></a>2.3<a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/view-variables/">查看变量</a></h3><p>在 InfluxDB 用户界面中查看控制面板变量。</p>
+<h4 id="1-查看组织中的变量"><a href="#1-查看组织中的变量" class="headerlink" title="1.查看组织中的变量"></a>1.查看组织中的变量</h4><p>​	单击导航栏中的 <strong>Settings</strong> 图标。</p>
+<h4 id="2-在Data-Explorer中查看变量"><a href="#2-在Data-Explorer中查看变量" class="headerlink" title="2.在Data Explorer中查看变量"></a>2.在Data Explorer中查看变量</h4><ol>
+<li>单击导航栏中的 <strong>Data Explorer</strong> 图标。</li>
+<li>切换到 <strong>Script Editor</strong>。</li>
+<li>单击脚本编辑器右侧的 <strong>Variables</strong> 选项卡。</li>
+</ol>
+<h3 id="2-4导出变量"><a href="#2-4导出变量" class="headerlink" title="2.4导出变量"></a>2.4<a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/export-variable/">导出变量</a></h3><p>在 InfluxDB 用户界面中导出控制面板变量。</p>
+<ol>
+<li>单击导航栏中的 <strong>Settings</strong> 图标。</li>
+<li>选择 <strong>Variables</strong> 选项卡。</li>
+<li>将鼠标悬停在列表中的变量上，然后单击齿轮图标 （） ，然后选择 <strong>Export</strong>。</li>
+<li>在出现的窗口中查看 JSON。</li>
+</ol>
+<h3 id="2-5删除变量"><a href="#2-5删除变量" class="headerlink" title="2.5删除变量"></a>2.5<a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/delete-variable/">删除变量</a></h3><p>在 InfluxDB 用户界面中删除控制面板变量。</p>
+<ol>
+<li>单击导航栏中的 <strong>Settings</strong> 图标。</li>
+<li>选择 <strong>Variables</strong> 选项卡。</li>
+<li>将鼠标悬停在变量上，单击图标，然后单击 <strong>Delete</strong>。</li>
+</ol>
+<h3 id="2-6变量类型"><a href="#2-6变量类型" class="headerlink" title="2.6变量类型"></a>2.6<a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/variable-types/">变量类型</a></h3><p>InfluxDB 中可用的控制面板变量类型概述，变量类型确定如何填充变量的可能值列表。可以使用以下变量类型：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/variable-types/#map">Map</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/variable-types/#query">Query</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/variable-types/#csv">CSV</a></li>
+</ul>
+<h4 id="1-Map"><a href="#1-Map" class="headerlink" title="1.Map"></a>1.Map</h4><p>​	map映射变量使用 CSV 格式的键值对列表将键映射到特定值。 键填充 InfluxDB 用户界面 UI 中变量的值列表，但值在实际处理查询时使用。映射变量最常见的用例是别名简单的、人类可读的键到复杂值。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Juanito</span> <span class="title class_">MacNeil</span>,<span class="string">&quot;5TKl6l8i4idg15Fxxe4P&quot;</span></span><br><span class="line"><span class="title class_">Astrophel</span> <span class="title class_">Chaudhary</span>,<span class="string">&quot;bDhZbuVj5RV94NcFXZPm&quot;</span></span><br><span class="line"><span class="title class_">Ochieng</span> <span class="title class_">Benes</span>,<span class="string">&quot;YIhg6SoMKRUH8FMlHs3V&quot;</span></span><br><span class="line"><span class="title class_">Mila</span> <span class="title class_">Emile</span>,<span class="string">&quot;o61AhpOGr5aO3cYVArC0&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Query："><a href="#2-Query：" class="headerlink" title="2.Query："></a>2.Query：</h4><p>查询变量值使用 Flux 查询的列填充。<code>_value</code></p>
+<p>示例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">buckets</span>()</span><br><span class="line">    |&gt; <span class="title function_">rename</span>(<span class="attr">columns</span>: &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;_value&quot;</span>&#125;)</span><br><span class="line">    |&gt; <span class="title function_">keep</span>(<span class="attr">columns</span>: [<span class="string">&quot;_value&quot;</span>])</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<h4 id="有关变量查询的重要注意事项"><a href="#有关变量查询的重要注意事项" class="headerlink" title="有关变量查询的重要注意事项"></a><a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/variable-types/#important-things-to-note-about-variable-queries">有关变量查询的重要注意事项</a></h4><ul>
+<li>该变量将仅使用列中的值。 如果要查找的数据位于 以外的列中，请使用<code>_value``_value</code><a target="_blank" rel="noopener" href="https://docs.influxdata.com/flux/v0/stdlib/universe/rename/"><code>rename()</code></a>或<a target="_blank" rel="noopener" href="https://docs.influxdata.com/flux/v0/stdlib/universe/map/"><code>map()</code></a>功能 将该列的名称更改为 .<code>_value</code></li>
+<li>该变量将仅使用输出流中的第一个表。 使用<a target="_blank" rel="noopener" href="https://docs.influxdata.com/flux/v0/stdlib/universe/group"><code>group()</code>功能</a>将所有内容分组到一个表中。</li>
+<li>不要在变量查询中使用任何<a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/#predefined-dashboard-variables">预定义的控制面板变量</a>。</li>
+</ul>
+</blockquote>
+<h4 id="3-CSV格式"><a href="#3-CSV格式" class="headerlink" title="3.CSV格式"></a>3.CSV格式</h4><p>​	CSV 变量使用 CSV 格式的列表来填充变量值。 一个常见的用例是当潜在值列表是静态的并且不能 从 InfluxDB 查询。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">value1, value2, value3, value4</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">value1</span><br><span class="line">value2</span><br><span class="line">value3</span><br><span class="line">value4</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-使用自定义控制面板变量"><a href="#4-使用自定义控制面板变量" class="headerlink" title="4.使用自定义控制面板变量"></a>4.使用自定义控制面板变量</h4><p>​	使用 Flux 记录和点或括号表示法访问自定义控制面板变量。例如，要使用查询中命名的自定义控制面板变量， 用 ：<strong>exampleVar、v.exampleVar</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">from</span>(<span class="attr">bucket</span>: <span class="string">&quot;telegraf&quot;</span>)</span><br><span class="line">    |&gt; <span class="title function_">range</span>(<span class="attr">start</span>: v.<span class="property">timeRangeStart</span>, <span class="attr">stop</span>: v.<span class="property">timeRangeStop</span>)</span><br><span class="line">    |&gt; <span class="title function_">filter</span>(<span class="attr">fn</span>: <span class="function">(<span class="params">r</span>) =&gt;</span> r.<span class="property">_measurement</span> == <span class="string">&quot;cpu&quot;</span> )</span><br><span class="line">    |&gt; <span class="title function_">filter</span>(<span class="attr">fn</span>: <span class="function">(<span class="params">r</span>) =&gt;</span> r.<span class="property">_field</span> == <span class="string">&quot;usage_user&quot;</span> )</span><br><span class="line">    |&gt; <span class="title function_">filter</span>(<span class="attr">fn</span>: <span class="function">(<span class="params">r</span>) =&gt;</span> r.<span class="property">cpu</span> == v.<span class="property">exampleVar</span>)  </span><br></pre></td></tr></table></figure>
+
+<p><strong>要选择变量值：</strong></p>
+<ul>
+<li><strong>在仪表板中：</strong>使用控制面板顶部的控制面板变量下拉菜单。</li>
+<li><strong>在 Script Editor 中：</strong>单击 Script Editor 右侧的 <strong>Variables</strong> 选项卡，单击变量的名称，然后从下拉菜单中选择变量值。</li>
+</ul>
+<h3 id="2-7常见变量查询"><a href="#2-7常见变量查询" class="headerlink" title="2.7常见变量查询"></a>2.7<a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/common-variables/">常见变量查询</a></h3><p>用于在常见控制面板变量使用案例中填充值的有用查询。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/variables/common-variables/">常见变量查询 |InfluxDB OSS v2 文档</a></p>
+<h4 id="1-列出存储桶"><a href="#1-列出存储桶" class="headerlink" title="1.列出存储桶"></a>1.列出存储桶</h4><p>列出当前组织中的所有存储桶。</p>
+<p><strong>Flux 函数：buckets（）、rename（）、keep（）</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">buckets</span>()</span><br><span class="line">    |&gt; <span class="title function_">rename</span>(<span class="attr">columns</span>: &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;_value&quot;</span>&#125;)</span><br><span class="line">    |&gt; <span class="title function_">keep</span>(<span class="attr">columns</span>: [<span class="string">&quot;_value&quot;</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-列出测量结果"><a href="#2-列出测量结果" class="headerlink" title="2.列出测量结果"></a>2.列出测量结果</h4><p>​	列出指定存储桶中的所有测量值。</p>
+<p><strong>Flux 包：InfluxDB 架构			Flux 函数：schema.measurements（）</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;influxdata/influxdb/schema&quot;</span></span><br><span class="line"></span><br><span class="line">schema.<span class="title function_">measurements</span>(<span class="attr">bucket</span>: <span class="string">&quot;bucket-name&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-列出度量中的字段"><a href="#3-列出度量中的字段" class="headerlink" title="3.列出度量中的字段"></a>3.列出度量中的字段</h4><p>​	列出指定存储桶和度量中的所有字段。</p>
+<p><strong>Flux 包：InfluxDB 架构		Flux 函数：schema.measurementTagValues（）</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;influxdata/influxdb/schema&quot;</span></span><br><span class="line"></span><br><span class="line">schema.<span class="title function_">measurementTagValues</span>(</span><br><span class="line">    <span class="attr">bucket</span>: <span class="string">&quot;bucket-name&quot;</span>,</span><br><span class="line">    <span class="attr">measurement</span>: <span class="string">&quot;measurement-name&quot;</span>,</span><br><span class="line">    <span class="attr">tag</span>: <span class="string">&quot;_field&quot;</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-列出唯一标签值"><a href="#4-列出唯一标签值" class="headerlink" title="4.列出唯一标签值"></a>4.列出唯一标签值</h4><p>​	列出指定存储桶中特定标签的所有唯一标签值。 以下示例列出了标签的所有唯一值。<code>host</code></p>
+<p>Flux 包：InfluxDB 架构		Flux 函数：schema.tagValues（）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;influxdata/influxdb/schema&quot;</span></span><br><span class="line"></span><br><span class="line">schema.<span class="title function_">tagValues</span>(<span class="attr">bucket</span>: <span class="string">&quot;bucket-name&quot;</span>, <span class="attr">tag</span>: <span class="string">&quot;host&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-列出-Docker-容器"><a href="#5-列出-Docker-容器" class="headerlink" title="5.列出 Docker 容器"></a>5.列出 Docker 容器</h4><p>使用 Docker Telegraf 插件时列出所有 Docker 容器。</p>
+<p>Telegraf 插件：Docker		Flux 包：InfluxDB 架构		Flux 函数：schema.tagValues（）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;influxdata/influxdb/schema&quot;</span></span><br><span class="line"></span><br><span class="line">schema.<span class="title function_">tagValues</span>(<span class="attr">bucket</span>: <span class="string">&quot;bucket-name&quot;</span>, <span class="attr">tag</span>: <span class="string">&quot;container_name&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-列出-Kubernetes-Pod（？？）"><a href="#6-列出-Kubernetes-Pod（？？）" class="headerlink" title="6.列出 Kubernetes Pod（？？）"></a>6.列出 Kubernetes Pod（？？）</h4><p>使用 Kubernetes Telegraf 插件时列出所有 Kubernetes Pod</p>
+<p>Telegraf 插件：Kubernetes		Flux 包：InfluxDB 架构		Flux 函数：schema.measurementTagValues（）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;influxdata/influxdb/schema&quot;</span></span><br><span class="line"></span><br><span class="line">schema.<span class="title function_">measurementTagValues</span>(</span><br><span class="line">    <span class="attr">bucket</span>: <span class="string">&quot;bucket-name&quot;</span>,</span><br><span class="line">    <span class="attr">measurement</span>: <span class="string">&quot;kubernetes_pod_container&quot;</span>,</span><br><span class="line">    <span class="attr">tag</span>: <span class="string">&quot;pod_name&quot;</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-列出-Kubernetes-节点（？？）"><a href="#7-列出-Kubernetes-节点（？？）" class="headerlink" title="7.列出 Kubernetes 节点（？？）"></a>7.列出 Kubernetes 节点（？？）</h4><p>使用 Kubernetes Telegraf 插件时列出所有 Kubernetes 节点。</p>
+<p>Telegraf 插件：Kubernetes<br>Flux 包：InfluxDB 架构<br>Flux 函数：schema.measurementTagValues（）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;influxdata/influxdb/schema&quot;</span></span><br><span class="line"></span><br><span class="line">schema.<span class="title function_">measurementTagValues</span>(</span><br><span class="line">    <span class="attr">bucket</span>: <span class="string">&quot;bucket-name&quot;</span>,</span><br><span class="line">    <span class="attr">measurement</span>: <span class="string">&quot;kubernetes_node&quot;</span>,</span><br><span class="line">    <span class="attr">tag</span>: <span class="string">&quot;node_name&quot;</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3-在influxDB-UI中管理标签"><a href="#3-在influxDB-UI中管理标签" class="headerlink" title="3.在influxDB UI中管理标签"></a>3.在influxDB UI中管理标签</h2><p>标签是一种将可视化元数据添加到 InfluxDB UI 中的控制面板、任务和其他项目的方法。 <strong>就是给控制面板、桶等加个标记，</strong></p>
+<p><img src="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/image-20250606161756015.png" alt="image-20250606161756015"></p>
+<p>在左侧的导航菜单中，选择 <strong>Settings</strong> &gt; <strong>Labels</strong>。</p>
+<h3 id="3-1创建标签"><a href="#3-1创建标签" class="headerlink" title="3.1创建标签"></a>3.1创建标签</h3><ol>
+<li>单击 <strong>Create Label （创建标签</strong>）。</li>
+<li>输入标签的 <strong>Name （名称</strong>）。</li>
+<li>输入标签的描述 <em>（Optional）。</em></li>
+<li>为标签选择 <strong>Color （颜色</strong>）。</li>
+<li>单击 <strong>Create Label （创建标签</strong>）。</li>
+</ol>
+<h3 id="3-2编辑标签"><a href="#3-2编辑标签" class="headerlink" title="3.2编辑标签"></a>3.2编辑标签</h3><ol>
+<li>在标签列表视图中，单击要编辑的标签的名称。 此时将显示 <strong>Edit Label</strong> 。</li>
+<li>对标签进行所需的更改。</li>
+<li>单击 <strong>Save Changes</strong>。</li>
+</ol>
+<h3 id="3-3删除标签"><a href="#3-3删除标签" class="headerlink" title="3.3删除标签"></a>3.3删除标签</h3><ol>
+<li>在标签列表视图中，将鼠标悬停在要删除的标签上，然后单击 。</li>
+<li>单击 <strong>Delete （删除</strong>）。</li>
+</ol>
+<h3 id="3-4-添加标签"><a href="#3-4-添加标签" class="headerlink" title="3.4 添加标签"></a>3.4 添加标签</h3><ol>
+<li>在功能板、任务或其他资产的列表视图中，将鼠标悬停在要添加标签的项目上。</li>
+<li>单击＋图标。 此时将显示 <strong>Add Labels</strong>。</li>
+<li>键入要添加的标签的名称，以筛选可用标签的列表。 点击您要添加的标签。</li>
+</ol>
+<h2 id="4-在仪表盘中使用注释"><a href="#4-在仪表盘中使用注释" class="headerlink" title="4.在仪表盘中使用注释"></a>4.在仪表盘中使用注释</h2><h3 id="4-1创建批注"><a href="#4-1创建批注" class="headerlink" title="4.1创建批注"></a>4.1创建批注</h3><ol>
+<li>在左侧的导航菜单中，选择 <strong>Boards</strong> （<strong>Dashboards</strong>）。</li>
+<li>选择要向其添加注释的现有仪表板，或<a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/cloud/visualize-data/dashboards/create-dashboard/">创建一个新仪表板</a>，然后单击 <strong>Add note （注释）</strong> 按钮。</li>
+<li>在仪表板单元格中，执行以下作之一：<ul>
+<li>按住 <strong>Shift</strong> 键并单击要注释的时间的图形。</li>
+<li>要向时间范围添加注释，请按 <strong>Shift 键</strong>，单击<strong>开始时间</strong>，然后将光标拖动到结束时间。</li>
+</ul>
+</li>
+</ol>
+<p><img src="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/image-20250606162556882.png" alt="image-20250606162556882"></p>
+<ol start="4">
+<li>在 <strong>Add Annotation （添加注释</strong>） 页面上：</li>
+</ol>
+<p>​	- 验证时间或时间范围，并根据需要进行更新。</p>
+<p>​	- 输入要与所选时间或时间范围关联的消息（最多 255 个字符）。</p>
+<p>​	- 单击 <strong>Save Annotation （保存注释</strong>）。批注将显示在单元格中（虚线表示所选时间或时间范围）。</p>
+<h3 id="4-2编辑批注"><a href="#4-2编辑批注" class="headerlink" title="4.2编辑批注"></a>4.2编辑批注</h3><ol>
+<li>在左侧的导航菜单中，选择 <strong>Boards</strong> （<strong>Dashboards</strong>）。</li>
+<li>打开包含要编辑的注释的仪表板，然后单击注释将其打开。</li>
+<li>更新文本（最多 255 个字符）或时间戳，然后单击 <strong>Save Annotation</strong>。</li>
+</ol>
+<h3 id="4-3查看或隐藏批注"><a href="#4-3查看或隐藏批注" class="headerlink" title="4.3查看或隐藏批注"></a>4.3查看或隐藏批注</h3><ol>
+<li>在左侧的导航菜单中，选择 <strong>Boards</strong> （<strong>Dashboards</strong>）。</li>
+<li>打开带有注释的仪表板：<ul>
+<li>要隐藏注释，请单击<strong>Enable Annotations</strong> 复选框。当注释被隐藏时，复选框未被选中。</li>
+<li>要显示注释，请单击 <strong>Enable Annotations</strong> 按钮。当注释可见时，复选框被选中。</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-4删除批注"><a href="#4-4删除批注" class="headerlink" title="4.4删除批注"></a>4.4删除批注</h3><ol>
+<li>在左侧的导航菜单中，选择 <strong>Boards</strong> （<strong>Dashboards</strong>）。</li>
+<li>打开包含要删除的注释的仪表板，单击虚线注释线，然后单击 <strong>Delete Annotation</strong>。</li>
+</ol>
+<p><img src="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/image-20250606163033086.png" alt="image-20250606163033086"></p>
+<h2 id="5-可视化类型"><a href="#5-可视化类型" class="headerlink" title="5.可视化类型"></a>5.可视化类型</h2><p>InfluxDB UI 提供了多种可视化类型来可视化数据。</p>
+<p><a target="_blank" rel="noopener" href="https://docs.influxdata.com/influxdb/v2/visualize-data/visualization-types/">Visualization types | InfluxDB OSS v2 Documentation</a></p>
+<ul>
+<li>Band</li>
+<li>Gauge仪表</li>
+<li>Graph折线图</li>
+<li>Graph + Single Stat 图形+单个数据</li>
+<li>Heatmap热力图</li>
+<li>Histogram  直方图</li>
+<li>Mosaic马赛克</li>
+<li>Scatter散射点</li>
+<li>Single Stat单个统计</li>
+<li>Table表格</li>
+</ul>
+<p><strong>tips1：</strong></p>
+<p>1.amang本地:</p>
+<p>4G6kn4GxNYsbtpnl_f8AC-slA2t7xUo9tpgbNeOvSyuzityL9wgx6_koBDyx2GVwhRdsDQlOM-zZUhPycrId2w&#x3D;&#x3D;</p>
+<p>admin：</p>
+<p>p1qGpr0xP_3AAH490gV0eAqgA_ojeROrbh7825kaJVfuPIP-GkGUS-Rf1yIntd0FAxpBB4qfY7TDKSPCz4H6Lg&#x3D;&#x3D;</p>
+<p>orgid：</p>
+<p> e756a7b3d8bfd2bds</p>
+<p><strong>tips2：</strong></p>
+<ol>
+<li><p>2025.6.4暂时还没找到influxdb和chronograf的汉化版本，但是查到grafana支持汉化版本，所以可视化influxdb的软件使用grafana。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/influxdata/influxdb-client-python">GitHub - influxdata&#x2F;influxdb-client-python: InfluxDB 2.0 python client</a></p>
+</li>
+</ol>
+<p>此存储库包含用于 InfluxDB 2.x 和 Flux 的 Python 客户端库。</p>
+<ol start="3">
+<li><p>老师给的grafana的例子</p>
+<p><a target="_blank" rel="noopener" href="https://wlh2.neuai.cn/public-dashboards/4405a184d86647269fb02355ed59ce1e">https://wlh2.neuai.cn/public-dashboards/4405a184d86647269fb02355ed59ce1e</a></p>
+</li>
+</ol>
+<p>​		<a target="_blank" rel="noopener" href="https://wlh2.neuai.cn/public-dashboards/7717336c89b94f0c8af202716462645c">https://wlh2.neuai.cn/public-dashboards/7717336c89b94f0c8af202716462645c</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">amang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">http://example.com/2025/06/04/influxdb学习笔记（一）/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Happy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/influxdbapi%E3%80%81telegraf%E3%80%81%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE%E3%80%81influxdb%E5%8F%AF%E8%A7%86%E5%8C%96%E3%80%81%E4%BB%AA%E8%A1%A8%E7%9B%98%E3%80%81%E5%8F%98%E9%87%8F%E3%80%81%E6%A0%87%E7%AD%BE%E3%80%81%E6%B3%A8%E9%87%8A/">influxdbapi、telegraf、写入数据、influxdb可视化、仪表盘、变量、标签、注释</a></div><div class="post_share"><div class="social-share" data-image="/img/p4.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/06/06/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"><img class="prev-cover" src="/img/p4.jpg" onerror="onerror=null;src='/img/diang.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">influxdb学习笔记（二）</div></div></a></div><div class="next-post pull-right"><a href="/2025/06/02/influxdb%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><img class="next-cover" src="/img/xiatupian.jpg" onerror="onerror=null;src='/img/diang.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">“influxdb数据库学习笔记”</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/xiangyang.jpg" onerror="this.onerror=null;this.src='/img/diang.gif'" alt="avatar"/></div><div class="author-info__name">amang</div><div class="author-info__description">成为一个可靠的人</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8python%E5%AF%B9influxdb%E8%BF%9B%E8%A1%8C%E6%93%8D%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">使用python对influxdb进行操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IoT-Starter-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">IoT Starter 简介</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">2.</span> <span class="toc-text">写入数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8telegraf-plugins%E5%86%99%E5%85%A5"><span class="toc-number">2.1.</span> <span class="toc-text">用telegraf plugins写入</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E7%A4%BA%E4%BE%8B%E6%95%B0%E6%8D%AE%E5%B9%B6%E5%BE%85%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.</span> <span class="toc-text">写入示例数据并待查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E7%A4%BE%E5%8C%BA%E6%A8%A1%E6%9D%BF%E6%B7%BB%E5%8A%A0%E7%A4%BA%E4%BE%8B%E6%95%B0%E6%8D%AE%EF%BC%9A"><span class="toc-number">3.0.1.</span> <span class="toc-text">从社区模板添加示例数据：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E4%BB%AA%E8%A1%A8%E7%9B%98"><span class="toc-number">3.0.2.</span> <span class="toc-text">制作仪表盘</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE"><span class="toc-number">4.</span> <span class="toc-text">查询数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E6%95%B0%E6%8D%AE"><span class="toc-number">5.</span> <span class="toc-text">可视化数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%AE%A1%E7%90%86influxdb%E6%8E%A7%E5%88%B6%E9%9D%A2%E6%9D%BF"><span class="toc-number">5.1.</span> <span class="toc-text">1.管理influxdb控制面板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%88%9B%E5%BB%BA%E6%8E%A7%E5%88%B6%E9%9D%A2%E6%9D%BF"><span class="toc-number">5.1.1.</span> <span class="toc-text">1.1 创建控制面板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E6%8E%A7%E5%88%B6%E9%9D%A2%E6%9D%BF"><span class="toc-number">5.1.1.1.</span> <span class="toc-text">创建新的控制面板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E7%8E%B0%E6%9C%89%E6%8E%A7%E5%88%B6%E9%9D%A2%E6%9D%BF"><span class="toc-number">5.1.1.2.</span> <span class="toc-text">导入现有控制面板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%8B%E9%9A%86%E6%8E%A7%E5%88%B6%E9%9D%A2%E6%9D%BF"><span class="toc-number">5.1.1.3.</span> <span class="toc-text">克隆控制面板</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%8E%A7%E5%88%B6%E4%BB%AA%E8%A1%A8%E6%9D%BF"><span class="toc-number">5.1.2.</span> <span class="toc-text">1.2 控制仪表板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%C2%B7%E6%B7%BB%E5%8A%A0%E5%8D%95%E5%85%83%E6%A0%BC%EF%BC%88%E5%8F%82%E8%80%83%E4%B8%8A%E4%B8%80%E7%AF%87%E7%AC%94%E8%AE%B0%E7%9A%84%E7%AC%AC5%E8%8A%82%EF%BC%89"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">·添加单元格（参考上一篇笔记的第5节）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%C2%B7%E5%90%91%E4%BB%AA%E8%A1%A8%E7%9B%98%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A"><span class="toc-number">5.1.2.2.</span> <span class="toc-text">·向仪表盘添加注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%C2%B7%E5%8F%AF%E8%A7%86%E5%8C%96%E6%89%B9%E6%B3%A8%EF%BC%8C%E4%B8%8E4%E7%9B%B8%E5%85%B3%E8%81%94"><span class="toc-number">5.1.2.3.</span> <span class="toc-text">·可视化批注，与4相关联</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%C2%B7%E6%B7%BB%E5%8A%A0%E5%8F%98%E9%87%8F"><span class="toc-number">5.1.2.4.</span> <span class="toc-text">·添加变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%C2%B7%E6%BC%94%E7%A4%BA%E6%A8%A1%E5%BC%8F-%E5%88%87%E6%8D%A2%E6%B7%B1%E8%89%B2%E6%A8%A1%E5%BC%8F%E5%92%8C%E6%B5%85%E8%89%B2%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.1.2.5.</span> <span class="toc-text">·演示模式+切换深色模式和浅色模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%C2%B7%E6%89%8B%E5%8A%A8%E5%88%B7%E6%96%B0%E6%8E%A7%E5%88%B6%E9%9D%A2%E6%9D%BF"><span class="toc-number">5.1.2.6.</span> <span class="toc-text">·手动刷新控制面板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%C2%B7%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%8A%A8%E5%88%B7%E6%96%B0%E6%97%B6%E9%97%B4"><span class="toc-number">5.1.2.7.</span> <span class="toc-text">·设置自动刷新时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%C2%B7%E9%80%89%E6%8B%A9%E6%97%B6%E5%8C%BA"><span class="toc-number">5.1.2.8.</span> <span class="toc-text">·选择时区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%C2%B7%E9%80%89%E6%8B%A9%E6%97%B6%E9%97%B4%E8%8C%83%E5%9B%B4"><span class="toc-number">5.1.2.9.</span> <span class="toc-text">·选择时间范围</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3%E5%AF%BC%E5%87%BA%E4%BB%AA%E8%A1%A8%E6%9D%BF"><span class="toc-number">5.1.3.</span> <span class="toc-text">1.3导出仪表板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4%E5%88%A0%E9%99%A4%E6%8E%A7%E5%88%B6%E9%9D%A2%E6%9D%BF"><span class="toc-number">5.1.4.</span> <span class="toc-text">1.4删除控制面板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E5%92%8C%E7%AE%A1%E7%90%86%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.</span> <span class="toc-text">2.使用和管理变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1%E5%88%9B%E5%BB%BA%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.1.</span> <span class="toc-text">2.1创建变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%90%8D%E7%A7%B0%E9%99%90%E5%88%B6"><span class="toc-number">5.2.1.0.1.</span> <span class="toc-text">变量名称限制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9C%A8-Data-Explorer-%E4%B8%AD%E5%88%9B%E5%BB%BA%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.1.1.</span> <span class="toc-text">1. 在 Data Explorer 中创建变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9C%A8-Settings-%E9%83%A8%E5%88%86%E5%88%9B%E5%BB%BA%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.1.2.</span> <span class="toc-text">2. 在 Settings 部分创建变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%AF%BC%E5%85%A5%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.1.3.</span> <span class="toc-text">3.导入变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2%E6%9B%B4%E6%96%B0%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.2.</span> <span class="toc-text">2.2更新变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3%E6%9F%A5%E7%9C%8B%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.3.</span> <span class="toc-text">2.3查看变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E7%BB%84%E7%BB%87%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.3.1.</span> <span class="toc-text">1.查看组织中的变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9C%A8Data-Explorer%E4%B8%AD%E6%9F%A5%E7%9C%8B%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.3.2.</span> <span class="toc-text">2.在Data Explorer中查看变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4%E5%AF%BC%E5%87%BA%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.4.</span> <span class="toc-text">2.4导出变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5%E5%88%A0%E9%99%A4%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.5.</span> <span class="toc-text">2.5删除变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="toc-number">5.2.6.</span> <span class="toc-text">2.6变量类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Map"><span class="toc-number">5.2.6.1.</span> <span class="toc-text">1.Map</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Query%EF%BC%9A"><span class="toc-number">5.2.6.2.</span> <span class="toc-text">2.Query：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E5%8F%98%E9%87%8F%E6%9F%A5%E8%AF%A2%E7%9A%84%E9%87%8D%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">5.2.6.3.</span> <span class="toc-text">有关变量查询的重要注意事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-CSV%E6%A0%BC%E5%BC%8F"><span class="toc-number">5.2.6.4.</span> <span class="toc-text">3.CSV格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E5%88%B6%E9%9D%A2%E6%9D%BF%E5%8F%98%E9%87%8F"><span class="toc-number">5.2.6.5.</span> <span class="toc-text">4.使用自定义控制面板变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7%E5%B8%B8%E8%A7%81%E5%8F%98%E9%87%8F%E6%9F%A5%E8%AF%A2"><span class="toc-number">5.2.7.</span> <span class="toc-text">2.7常见变量查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%97%E5%87%BA%E5%AD%98%E5%82%A8%E6%A1%B6"><span class="toc-number">5.2.7.1.</span> <span class="toc-text">1.列出存储桶</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%88%97%E5%87%BA%E6%B5%8B%E9%87%8F%E7%BB%93%E6%9E%9C"><span class="toc-number">5.2.7.2.</span> <span class="toc-text">2.列出测量结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%97%E5%87%BA%E5%BA%A6%E9%87%8F%E4%B8%AD%E7%9A%84%E5%AD%97%E6%AE%B5"><span class="toc-number">5.2.7.3.</span> <span class="toc-text">3.列出度量中的字段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%88%97%E5%87%BA%E5%94%AF%E4%B8%80%E6%A0%87%E7%AD%BE%E5%80%BC"><span class="toc-number">5.2.7.4.</span> <span class="toc-text">4.列出唯一标签值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%88%97%E5%87%BA-Docker-%E5%AE%B9%E5%99%A8"><span class="toc-number">5.2.7.5.</span> <span class="toc-text">5.列出 Docker 容器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%88%97%E5%87%BA-Kubernetes-Pod%EF%BC%88%EF%BC%9F%EF%BC%9F%EF%BC%89"><span class="toc-number">5.2.7.6.</span> <span class="toc-text">6.列出 Kubernetes Pod（？？）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%88%97%E5%87%BA-Kubernetes-%E8%8A%82%E7%82%B9%EF%BC%88%EF%BC%9F%EF%BC%9F%EF%BC%89"><span class="toc-number">5.2.7.7.</span> <span class="toc-text">7.列出 Kubernetes 节点（？？）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%9C%A8influxDB-UI%E4%B8%AD%E7%AE%A1%E7%90%86%E6%A0%87%E7%AD%BE"><span class="toc-number">5.3.</span> <span class="toc-text">3.在influxDB UI中管理标签</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1%E5%88%9B%E5%BB%BA%E6%A0%87%E7%AD%BE"><span class="toc-number">5.3.1.</span> <span class="toc-text">3.1创建标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2%E7%BC%96%E8%BE%91%E6%A0%87%E7%AD%BE"><span class="toc-number">5.3.2.</span> <span class="toc-text">3.2编辑标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3%E5%88%A0%E9%99%A4%E6%A0%87%E7%AD%BE"><span class="toc-number">5.3.3.</span> <span class="toc-text">3.3删除标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E6%B7%BB%E5%8A%A0%E6%A0%87%E7%AD%BE"><span class="toc-number">5.3.4.</span> <span class="toc-text">3.4 添加标签</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%9C%A8%E4%BB%AA%E8%A1%A8%E7%9B%98%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%B3%A8%E9%87%8A"><span class="toc-number">5.4.</span> <span class="toc-text">4.在仪表盘中使用注释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1%E5%88%9B%E5%BB%BA%E6%89%B9%E6%B3%A8"><span class="toc-number">5.4.1.</span> <span class="toc-text">4.1创建批注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2%E7%BC%96%E8%BE%91%E6%89%B9%E6%B3%A8"><span class="toc-number">5.4.2.</span> <span class="toc-text">4.2编辑批注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3%E6%9F%A5%E7%9C%8B%E6%88%96%E9%9A%90%E8%97%8F%E6%89%B9%E6%B3%A8"><span class="toc-number">5.4.3.</span> <span class="toc-text">4.3查看或隐藏批注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4%E5%88%A0%E9%99%A4%E6%89%B9%E6%B3%A8"><span class="toc-number">5.4.4.</span> <span class="toc-text">4.4删除批注</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B1%BB%E5%9E%8B"><span class="toc-number">5.5.</span> <span class="toc-text">5.可视化类型</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/06/06/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="influxdb学习笔记（二）"><img src="/img/p4.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="influxdb学习笔记（二）"/></a><div class="content"><a class="title" href="/2025/06/06/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" title="influxdb学习笔记（二）">influxdb学习笔记（二）</a><time datetime="2025-06-06T08:37:28.000Z" title="发表于 2025-06-06 16:37:28">2025-06-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" title="influxdb学习笔记（一）"><img src="/img/p4.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="influxdb学习笔记（一）"/></a><div class="content"><a class="title" href="/2025/06/04/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" title="influxdb学习笔记（一）">influxdb学习笔记（一）</a><time datetime="2025-06-04T03:41:01.000Z" title="发表于 2025-06-04 11:41:01">2025-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/02/influxdb%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="“influxdb数据库学习笔记”"><img src="/img/xiatupian.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="“influxdb数据库学习笔记”"/></a><div class="content"><a class="title" href="/2025/06/02/influxdb%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="“influxdb数据库学习笔记”">“influxdb数据库学习笔记”</a><time datetime="2025-06-02T12:10:17.000Z" title="发表于 2025-06-02 20:10:17">2025-06-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/28/%E5%86%99%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5/" title="写代码自动打开网页"><img src="/img/xiatupian.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="写代码自动打开网页"/></a><div class="content"><a class="title" href="/2025/05/28/%E5%86%99%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80%E7%BD%91%E9%A1%B5/" title="写代码自动打开网页">写代码自动打开网页</a><time datetime="2025-05-28T14:18:01.000Z" title="发表于 2025-05-28 22:18:01">2025-05-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/15/npm%E5%92%8Cyarn%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" title="npm和yarn相关命令"><img src="/img/xiatupian.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="npm和yarn相关命令"/></a><div class="content"><a class="title" href="/2025/01/15/npm%E5%92%8Cyarn%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" title="npm和yarn相关命令">npm和yarn相关命令</a><time datetime="2025-01-15T14:45:17.000Z" title="发表于 2025-01-15 22:45:17">2025-01-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By amang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
