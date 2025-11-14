@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>sanic开发框架api接口说明手册 | Happy</title><meta name="keywords" content="sanic,python,post,api"><meta name="author" content="amang"><meta name="copyright" content="amang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[TOC] 通过sanic框架搭建了一套后端交互接口，针对大语言模型的开发，具体包括： 数据采集模块所有的手动都不推荐 1.区域电量采集文件.\langchain-anomaly-detection\src\getdata\region_service.py  选矿区域电量、选矿时段总电量、选矿时段电量×4，选矿工序电量×5 采矿区域电量、采矿时段总电量、采矿时段电量×4，采矿工序电量×8 综合办">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sanic开发框架api接口说明手册">
+<meta property="og:url" content="http://example.com/2025/10/25/sanic%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E6%89%8B%E5%86%8C/index.html">
+<meta property="og:site_name" content="Happy">
+<meta property="og:description" content="[TOC] 通过sanic框架搭建了一套后端交互接口，针对大语言模型的开发，具体包括： 数据采集模块所有的手动都不推荐 1.区域电量采集文件.\langchain-anomaly-detection\src\getdata\region_service.py  选矿区域电量、选矿时段总电量、选矿时段电量×4，选矿工序电量×5 采矿区域电量、采矿时段总电量、采矿时段电量×4，采矿工序电量×8 综合办">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/p5.jpg">
+<meta property="article:published_time" content="2025-10-24T22:38:52.000Z">
+<meta property="article:modified_time" content="2025-10-25T02:14:46.089Z">
+<meta property="article:author" content="amang">
+<meta property="article:tag" content="sanic,python,post,api">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/p5.jpg"><link rel="shortcut icon" href="/img/xiangyang.jpg"><link rel="canonical" href="http://example.com/2025/10/25/sanic%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E6%89%8B%E5%86%8C/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'sanic开发框架api接口说明手册',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-10-25 10:14:46'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/xiangyang.jpg" onerror="onerror=null;src='/img/diang.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/p5.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Happy</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">sanic开发框架api接口说明手册</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-24T22:38:52.000Z" title="发表于 2025-10-25 06:38:52">2025-10-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-25T02:14:46.089Z" title="更新于 2025-10-25 10:14:46">2025-10-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="sanic开发框架api接口说明手册"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>[TOC]</p>
+<p>通过sanic框架搭建了一套后端交互接口，针对大语言模型的开发，具体包括：</p>
+<h2 id="数据采集模块"><a href="#数据采集模块" class="headerlink" title="数据采集模块"></a>数据采集模块</h2><p>所有的手动都不推荐</p>
+<h3 id="1-区域电量采集"><a href="#1-区域电量采集" class="headerlink" title="1.区域电量采集"></a>1.区域电量采集</h3><h4 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.\langchain-anomaly-detection\src\getdata\region_service.py</span><br></pre></td></tr></table></figure>
+
+<p>选矿区域电量、选矿时段总电量、选矿时段电量×4，选矿工序电量×5</p>
+<p>采矿区域电量、采矿时段总电量、采矿时段电量×4，采矿工序电量×8</p>
+<p>综合办区域电量、综合办时段总电量、综合办时段电量×4，综合办工序电量×2</p>
+<h4 id="对应的接口"><a href="#对应的接口" class="headerlink" title="对应的接口"></a>对应的接口</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@app.post(&quot;/region/pipeline&quot;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="请求示例"><a href="#请求示例" class="headerlink" title="请求示例"></a>请求示例</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1）自动：每个区域的最后一个时间戳的下一天到昨日</span><br><span class="line">&#123;</span><br><span class="line">    &quot;region&quot;: &quot;ck|xk|zhb|采矿|选矿|综合办&quot;,</span><br><span class="line">    &quot;auto&quot;: true,</span><br><span class="line">    &quot;table_name&quot;: &quot;region_analysis_ck&quot;,</span><br><span class="line">    &quot;delay_sec&quot;: 0.1,</span><br><span class="line">    &quot;repeat_inserts&quot;: 1</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  2) 指定日期模式：</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;region&quot;: &quot;ck|xk|zhb&quot;,</span><br><span class="line">    &quot;auto&quot;: false,</span><br><span class="line">    &quot;start_date&quot;: &quot;YYYY-MM-DD&quot;,</span><br><span class="line">    &quot;end_date&quot;: &quot;YYYY-MM-DD&quot;,</span><br><span class="line">    &quot;delay_sec&quot;: 0.1,</span><br><span class="line">    &quot;table_name&quot;: &quot;region_analysis_ck&quot;,  #和region对应</span><br><span class="line">    &quot;repeat_inserts&quot;: 1</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-电表数据接口"><a href="#2-电表数据接口" class="headerlink" title="2.电表数据接口"></a>2.电表数据接口</h3><h4 id="文件-1"><a href="#文件-1" class="headerlink" title="文件"></a>文件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.\langchain-anomaly-detection\src\getdata\meter_service.py</span><br></pre></td></tr></table></figure>
+
+<h4 id="对应的接口-1"><a href="#对应的接口-1" class="headerlink" title="对应的接口"></a>对应的接口</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@app.post(&quot;/meter/pipeline&quot;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="请求示例-1"><a href="#请求示例-1" class="headerlink" title="请求示例"></a>请求示例</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1）自动模式（默认）：每块电表的最后一个时间戳的下一时刻到今天早上凌晨</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;auto&quot;: true, #手动自动</span><br><span class="line">     &quot;table_prefix&quot;: &quot;mater&quot;,  #表的前缀</span><br><span class="line">     &quot;per_code_table&quot;: true,  #每个电表分开</span><br><span class="line">     &quot;index_codes&quot;: [20201000005, 20201000010]  #区间，以5为步长，包含后面的，前闭后闭</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line"> 2）手动模式：</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;auto&quot;: false,</span><br><span class="line">     &quot;start_time&quot;: &quot;2025-01-01 00:00:00&quot;,  #修改</span><br><span class="line">     &quot;end_time&quot;: &quot;2025-01-02 00:00:00&quot;,   #修改</span><br><span class="line">     &quot;table_prefix&quot;: &quot;mater&quot;, </span><br><span class="line">     &quot;per_code_table&quot;: true,</span><br><span class="line">     &quot;index_codes&quot;: [20201000005, 20201000010] #区间，以5为步长，包含后面的，前闭后闭</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   单表模式：  #暂时不用</span><br><span class="line">   &#123;</span><br><span class="line">     &quot;auto&quot;: true,</span><br><span class="line">     &quot;per_code_table&quot;: false,</span><br><span class="line">     &quot;table_name&quot;: &quot;meter_hour_data&quot;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>不重复的原因是设置了判断，如果发现开始数据不大于目前最后一条时间戳，则不新增                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </p>
+<h3 id="3-产量数据接口"><a href="#3-产量数据接口" class="headerlink" title="3.产量数据接口"></a>3.产量数据接口</h3><h4 id="文件-2"><a href="#文件-2" class="headerlink" title="文件"></a>文件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.\langchain-anomaly-detection\src\getdata\chan_service.py</span><br></pre></td></tr></table></figure>
+
+<h4 id="对应的接口-2"><a href="#对应的接口-2" class="headerlink" title="对应的接口"></a>对应的接口</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@app.post(&quot;/chan/pipeline&quot;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="请求示例-2"><a href="#请求示例-2" class="headerlink" title="请求示例"></a>请求示例</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1） 自动模式（默认）：  每个区域的最后一个时间戳的下一天到昨日</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;auto&quot;: true,</span><br><span class="line">      &quot;table_name&quot;: &quot;production_daily_report&quot;   #存入的数据表</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">2）手动模式：</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;auto&quot;: false,</span><br><span class="line">      &quot;start_date&quot;: &quot;2025-01-01&quot;,  #开始时间</span><br><span class="line">      &quot;end_date&quot;: &quot;2025-01-31&quot;,   #结束时间</span><br><span class="line">      &quot;table_name&quot;: &quot;production_daily_report&quot;  #存入的数据表</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-区域时段数据"><a href="#4-区域时段数据" class="headerlink" title="4.区域时段数据"></a>4.区域时段数据</h3><h4 id="文件-3"><a href="#文件-3" class="headerlink" title="文件"></a>文件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.\langchain-anomaly-detection\src\getdata\time_period_service.py</span><br></pre></td></tr></table></figure>
+
+<h4 id="对应的接口-3"><a href="#对应的接口-3" class="headerlink" title="对应的接口"></a>对应的接口</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@app.post(&quot;/time_period/pipeline&quot;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="请求示例-3"><a href="#请求示例-3" class="headerlink" title="请求示例"></a>请求示例</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"> &quot;region&quot;: &quot;ck&quot;,  // 区域：ck/xk/zhb</span><br><span class="line"></span><br><span class="line"> &quot;query_date&quot;: &quot;2025-10-10&quot;,  // 查询日期</span><br><span class="line"></span><br><span class="line"> &quot;table_name&quot;: &quot;time_period_data&quot;  // 可选，表名</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-时段和整点数据"><a href="#5-时段和整点数据" class="headerlink" title="5.时段和整点数据"></a>5.时段和整点数据</h3><p>例如：[‘2025-10-23 00:00’, ‘2025-10-23 01:00’, ‘2025-10-23 02:00’, ‘2025-10-23 03:00’, ‘2025-10-23 04:00’, ‘2025-10-23 05:00’, ‘2025-10-23 06:00’, ‘2025-10-23 07:00’, ‘2025-10-23 07:30’, ‘2025-10-23 08:00’, ‘2025-10-23 08:30’, ‘2025-10-23 09:00’, ‘2025-10-23 10:00’, ‘2025-10-23 10:30’, ‘2025-10-23 11:00’, ‘2025-10-23 11:30’, ‘2025-10-23 12:00’, ‘2025-10-23 12:30’, ‘2025-10-23 13:00’, ‘2025-10-23 14:00’, ‘2025-10-23 15:00’, ‘2025-10-23 16:00’, ‘2025-10-23 17:00’, ‘2025-10-23 18:00’, ‘2025-10-23 19:00’, ‘2025-10-23 20:00’, ‘2025-10-23 21:00’, ‘2025-10-23 22:00’, ‘2025-10-23 23:00’, ‘2025-10-24 00:00’]</p>
+<h4 id="文件-4"><a href="#文件-4" class="headerlink" title="文件"></a>文件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.\langchain-anomaly-detection\src\getdata\time_period_service.py</span><br></pre></td></tr></table></figure>
+
+<h4 id="对应的接口-4"><a href="#对应的接口-4" class="headerlink" title="对应的接口"></a>对应的接口</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@app.post(&quot;/time_period/detailed&quot;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="请求示例-4"><a href="#请求示例-4" class="headerlink" title="请求示例"></a>请求示例</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;region&quot;: &quot;ck&quot;,  // 区域：ck/xk/zhb</span><br><span class="line">  &quot;query_date&quot;: &quot;2025-10-10&quot;,  // 查询日期</span><br><span class="line">  &quot;table_name&quot;: &quot;time_period_detailed&quot;  // 可选，表名 现在后台是固定了，每个表分开了</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="调用大语言模型分析模块"><a href="#调用大语言模型分析模块" class="headerlink" title="调用大语言模型分析模块"></a>调用大语言模型分析模块</h2><p>1.前端vue调用大语言模型分析数据</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@app.post(&quot;/analyze&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>参数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">时间，包含年月日</span><br></pre></td></tr></table></figure>
+
+<p>结论</p>
+<ul>
+<li><p>最稳妥的“防重复”是双保险：数据库唯一约束 + 插入语句的去重策略（更新或忽略），再辅以采集侧的“时间窗口不重叠”。</p>
+</li>
+<li><p>唯一约束是底线，插入策略决定重复数据的处理方式：</p>
+<ul>
+<li>需要“重复则更新”用 ON DUPLICATE KEY UPDATE</li>
+<li>需要“重复则忽略”用 INSERT IGNORE</li>
+</ul>
+</li>
+<li><p>同批数据再加一层 DataFrame 侧的 drop_duplicates 能减轻数据库压力。<br>各模块现状</p>
+</li>
+<li><p>region_service.py</p>
+<ul>
+<li>建表时设置唯一索引： UNIQUE KEY uniq_reportday (reportday) 。</li>
+<li>插入使用： INSERT … ON DUPLICATE KEY UPDATE … （已有实现）。</li>
+<li>采集侧： get_auto_date_range 基于最后 reportday 推导不重叠日期窗口。</li>
+</ul>
+</li>
+<li><p>chan_service.py （产量）</p>
+<ul>
+<li>建表时设置唯一索引： UNIQUE KEY uniq_report_date (report_date) 。</li>
+<li>插入使用： INSERT … ON DUPLICATE KEY UPDATE … （已有实现）。</li>
+<li>采集侧同样有自动日期窗口防重叠。</li>
+</ul>
+</li>
+<li><p>time_period_service.py （时段电量）</p>
+<ul>
+<li>建表唯一索引： UNIQUE KEY uniq_region_date (region, query_date) ；实时电表表还有 UNIQUE KEY uniq_meter_time (meter_code, time_point) 和 UNIQUE KEY uniq_time_point (time_point) 。</li>
+<li>插入使用： INSERT … ON DUPLICATE KEY UPDATE … （已有实现）。</li>
+</ul>
+</li>
+<li><p>meter_service.py （电表小时数据）</p>
+<ul>
+<li>目前只有“时间窗口不重叠”的策略（ get_auto_date_range 与手动模式的冲突检查），没有唯一索引也没有 ON DUPLICATE KEY UPDATE&#x2F;INSERT IGNORE 。</li>
+<li>结论：重复窗口或远端返回重复记录时，仍可能插入重复行。建议与其他模块对齐。<br>推荐策略</li>
+</ul>
+</li>
+<li><p>数据库层面</p>
+<ul>
+<li>为电表小时表添加唯一索引： UNIQUE KEY uniq_code_time (indexCode, samplingTime) 。</li>
+</ul>
+</li>
+<li><p>插入语句选择</p>
+<ul>
+<li>想保留最新值：用 ON DUPLICATE KEY UPDATE indexName&#x3D;VALUES(indexName), timeSpan&#x3D;VALUES(timeSpan), samplingValue&#x3D;VALUES(samplingValue) 。</li>
+<li>想忽略重复：用 INSERT IGNORE 。</li>
+</ul>
+</li>
+<li><p>采集层面</p>
+<ul>
+<li>保留现有的自动&#x2F;手动时间窗口防重叠逻辑。</li>
+<li>在批量插入前对 DataFrame 做 drop_duplicates(subset&#x3D;[“indexCode”,”samplingTime”]) 。<br>验证与运维建议</li>
+</ul>
+</li>
+<li><p>检查是否有重复数据： SELECT indexCode, samplingTime, COUNT(<em>) FROM &lt;表名&gt; GROUP BY indexCode, samplingTime HAVING COUNT(</em>) &gt; 1;</p>
+</li>
+<li><p>对比两种插入策略的影响：</p>
+<ul>
+<li>ON DUPLICATE KEY UPDATE ：重复行会更新字段， affected_rows 体现插入+更新受影响条数。</li>
+<li>INSERT IGNORE ：重复行被忽略不报错， affected_rows 仅统计新插入数。</li>
+</ul>
+</li>
+<li><p>统一化目标：将 meter_service.py 的去重策略与其他模块一致（唯一约束 + upsert&#x2F;ignore + 批内去重），保证全局行为一致。需要的话我可以直接给出对应的代码补丁。as</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">amang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/10/25/sanic%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E6%89%8B%E5%86%8C/">http://example.com/2025/10/25/sanic开发框架api接口说明手册/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Happy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/sanic-python-post-api/">sanic,python,post,api</a></div><div class="post_share"><div class="social-share" data-image="/img/p5.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/10/24/%E4%BD%BF%E7%94%A8dolphinscheduler%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/"><img class="next-cover" src="/img/p4.jpg" onerror="onerror=null;src='/img/diang.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">使用dolphinscheduler设置定时任务</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/xiangyang.jpg" onerror="this.onerror=null;this.src='/img/diang.gif'" alt="avatar"/></div><div class="author-info__name">amang</div><div class="author-info__description">成为一个可靠的人</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E6%A8%A1%E5%9D%97"><span class="toc-number">1.</span> <span class="toc-text">数据采集模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8C%BA%E5%9F%9F%E7%94%B5%E9%87%8F%E9%87%87%E9%9B%86"><span class="toc-number">1.1.</span> <span class="toc-text">1.区域电量采集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text">文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%BA%94%E7%9A%84%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.1.2.</span> <span class="toc-text">对应的接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.1.3.</span> <span class="toc-text">请求示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%94%B5%E8%A1%A8%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.2.</span> <span class="toc-text">2.电表数据接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%BA%94%E7%9A%84%E6%8E%A5%E5%8F%A3-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">对应的接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E7%A4%BA%E4%BE%8B-1"><span class="toc-number">1.2.3.</span> <span class="toc-text">请求示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BA%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.</span> <span class="toc-text">3.产量数据接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%BA%94%E7%9A%84%E6%8E%A5%E5%8F%A3-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">对应的接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E7%A4%BA%E4%BE%8B-2"><span class="toc-number">1.3.3.</span> <span class="toc-text">请求示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%8C%BA%E5%9F%9F%E6%97%B6%E6%AE%B5%E6%95%B0%E6%8D%AE"><span class="toc-number">1.4.</span> <span class="toc-text">4.区域时段数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6-3"><span class="toc-number">1.4.1.</span> <span class="toc-text">文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%BA%94%E7%9A%84%E6%8E%A5%E5%8F%A3-3"><span class="toc-number">1.4.2.</span> <span class="toc-text">对应的接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E7%A4%BA%E4%BE%8B-3"><span class="toc-number">1.4.3.</span> <span class="toc-text">请求示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%97%B6%E6%AE%B5%E5%92%8C%E6%95%B4%E7%82%B9%E6%95%B0%E6%8D%AE"><span class="toc-number">1.5.</span> <span class="toc-text">5.时段和整点数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6-4"><span class="toc-number">1.5.1.</span> <span class="toc-text">文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%BA%94%E7%9A%84%E6%8E%A5%E5%8F%A3-4"><span class="toc-number">1.5.2.</span> <span class="toc-text">对应的接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E7%A4%BA%E4%BE%8B-4"><span class="toc-number">1.5.3.</span> <span class="toc-text">请求示例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%88%86%E6%9E%90%E6%A8%A1%E5%9D%97"><span class="toc-number">2.</span> <span class="toc-text">调用大语言模型分析模块</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/10/25/sanic%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E6%89%8B%E5%86%8C/" title="sanic开发框架api接口说明手册"><img src="/img/p5.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="sanic开发框架api接口说明手册"/></a><div class="content"><a class="title" href="/2025/10/25/sanic%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E6%89%8B%E5%86%8C/" title="sanic开发框架api接口说明手册">sanic开发框架api接口说明手册</a><time datetime="2025-10-24T22:38:52.000Z" title="发表于 2025-10-25 06:38:52">2025-10-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/24/%E4%BD%BF%E7%94%A8dolphinscheduler%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" title="使用dolphinscheduler设置定时任务"><img src="/img/p4.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="使用dolphinscheduler设置定时任务"/></a><div class="content"><a class="title" href="/2025/10/24/%E4%BD%BF%E7%94%A8dolphinscheduler%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" title="使用dolphinscheduler设置定时任务">使用dolphinscheduler设置定时任务</a><time datetime="2025-10-24T11:01:48.000Z" title="发表于 2025-10-24 19:01:48">2025-10-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/27/%E8%B7%9F%E7%9D%80%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0langchain/" title="跟着吴恩达学习langchain"><img src="/img/p6.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="跟着吴恩达学习langchain"/></a><div class="content"><a class="title" href="/2025/08/27/%E8%B7%9F%E7%9D%80%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0langchain/" title="跟着吴恩达学习langchain">跟着吴恩达学习langchain</a><time datetime="2025-08-27T14:34:20.000Z" title="发表于 2025-08-27 22:34:20">2025-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/10/7.chatwoot+vue+n8n/" title="chatwoot"><img src="/img/p5.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="chatwoot"/></a><div class="content"><a class="title" href="/2025/07/10/7.chatwoot+vue+n8n/" title="chatwoot">chatwoot</a><time datetime="2025-07-10T13:06:15.000Z" title="发表于 2025-07-10 21:06:15">2025-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/10/chatwoot/" title="chatwoot"><img src="/img/p5.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="chatwoot"/></a><div class="content"><a class="title" href="/2025/07/10/chatwoot/" title="chatwoot">chatwoot</a><time datetime="2025-07-10T13:06:15.000Z" title="发表于 2025-07-10 21:06:15">2025-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By amang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

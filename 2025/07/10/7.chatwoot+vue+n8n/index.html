@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>chatwoot | Happy</title><meta name="keywords" content="chatwoot+n8n实现前后端"><meta name="author" content="amang"><meta name="copyright" content="amang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[TOC] ​																																		—lmy，20250710 一、安装chatwoot1.下载环境文件模板wget -O .env https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;chatwoot&#x2F;chatwoot&#x2F;develop&#x2F;.env.example  2.下载docker compose模板wget -O docker-c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="chatwoot">
+<meta property="og:url" content="http://example.com/2025/07/10/7.chatwoot+vue+n8n/index.html">
+<meta property="og:site_name" content="Happy">
+<meta property="og:description" content="[TOC] ​																																		—lmy，20250710 一、安装chatwoot1.下载环境文件模板wget -O .env https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;chatwoot&#x2F;chatwoot&#x2F;develop&#x2F;.env.example  2.下载docker compose模板wget -O docker-c">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/p5.jpg">
+<meta property="article:published_time" content="2025-07-10T13:06:15.000Z">
+<meta property="article:modified_time" content="2025-08-03T02:32:07.661Z">
+<meta property="article:author" content="amang">
+<meta property="article:tag" content="chatwoot+n8n实现前后端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/p5.jpg"><link rel="shortcut icon" href="/img/xiangyang.jpg"><link rel="canonical" href="http://example.com/2025/07/10/7.chatwoot+vue+n8n/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'chatwoot',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-08-03 10:32:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/xiangyang.jpg" onerror="onerror=null;src='/img/diang.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/p5.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Happy</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">chatwoot</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-07-10T13:06:15.000Z" title="发表于 2025-07-10 21:06:15">2025-07-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-03T02:32:07.661Z" title="更新于 2025-08-03 10:32:07">2025-08-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="chatwoot"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>[TOC]</p>
+<p>​																																		—lmy，20250710</p>
+<h1 id="一、安装chatwoot"><a href="#一、安装chatwoot" class="headerlink" title="一、安装chatwoot"></a>一、安装chatwoot</h1><h2 id="1-下载环境文件模板"><a href="#1-下载环境文件模板" class="headerlink" title="1.下载环境文件模板"></a>1.下载环境文件模板</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O .env https://raw.githubusercontent.com/chatwoot/chatwoot/develop/.env.example</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-下载docker-compose模板"><a href="#2-下载docker-compose模板" class="headerlink" title="2.下载docker compose模板"></a>2.下载docker compose模板</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O docker-compose.yaml https://raw.githubusercontent.com/chatwoot/chatwoot/develop/docker-compose.production.yaml</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710213208500.png" alt="image-20250710213208500"></p>
+<p>修改了postgres的密码，新增token</p>
+<h2 id="3-创建chatwoot相关数据库"><a href="#3-创建chatwoot相关数据库" class="headerlink" title="3.创建chatwoot相关数据库"></a>3.创建chatwoot相关数据库</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker compose run --rm rails bundle exec rails db:chatwoot_prepare</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-启动所有chatwoot服务"><a href="#4-启动所有chatwoot服务" class="headerlink" title="4.启动所有chatwoot服务"></a>4.启动所有chatwoot服务</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除数据库容器</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker compose down</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>进入rails镜像并执行代码</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker compose run --rm rails bundle exec rails c</span><br></pre></td></tr></table></figure>
+
+
+
+<p>其他使用的代码：不适合上述的版本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行 Chatwoot 数据库迁移和初始化命令：</span><br><span class="line">docker compose run --rm rails bundle exec rails db:chatwoot_reset</span><br><span class="line">运行 Rails 数据库迁移命令这一步是创建 Chatwoot 所需的表格结构。</span><br><span class="line">docker compose run --rm rails bundle exec rails db:migrate</span><br><span class="line">运行 Rails 数据库种子数据（可选但推荐）：</span><br><span class="line">docker compose run --rm rails bundle exec rails db:seed</span><br><span class="line"></span><br><span class="line">db:drop: 删除现有数据库（因为我们之前已经清空了数据卷，所以这一步可能不会做太多事情，但安全起见）。</span><br><span class="line">db:create: 创建数据库（如果不存在）。</span><br><span class="line">db:migrate: 运行所有的数据库迁移文件，创建 Chatwoot 所需的所有表格（包括 installation_configs）。</span><br><span class="line">db:seed: 填充一些初始数据，例如默认管理员账户。</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="二、基于n8n后台，实现前端图标的对话"><a href="#二、基于n8n后台，实现前端图标的对话" class="headerlink" title="二、基于n8n后台，实现前端图标的对话"></a>二、基于n8n后台，实现前端图标的对话</h1><p>n8n链接chatwoot的youtube教程：</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=XRYkAwvo6Yo">https://www.youtube.com/watch?v=XRYkAwvo6Yo</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/shorts/KYLKI2S-Whw">https://www.youtube.com/shorts/KYLKI2S-Whw</a></p>
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710214610311.png" alt="image-20250710214610311"></p>
+<h2 id="1-chatwoot端"><a href="#1-chatwoot端" class="headerlink" title="1.chatwoot端"></a>1.chatwoot端</h2><h3 id="（1）新建chatwoot的集成方式-webhook"><a href="#（1）新建chatwoot的集成方式-webhook" class="headerlink" title="（1）新建chatwoot的集成方式-webhook"></a>（1）新建chatwoot的集成方式-<strong>webhook</strong></h3><p>新增一个webhook集成方式，其中wenhook网址设置为n8n的webhook节点发布的网址，若在同一电脑上，可以直接内网连接，若在不同电脑上，则需要更改ip。</p>
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710211708293.png" alt="image-20250710211708293"></p>
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710211740676.png" alt="image-20250710211740676"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 测试地址</span><br><span class="line">https://n8n-dev.neuiai.com/webhook-test/fe978f96-2ab1-4c71-ad02-d7abf8b29464</span><br><span class="line"># 生产地址</span><br><span class="line">https://n8n-dev.neuiai.com/webhook/fe978f96-2ab1-4c71-ad02-d7abf8b29464</span><br></pre></td></tr></table></figure>
+
+<h3 id="（2）新建收件箱-website方式"><a href="#（2）新建收件箱-website方式" class="headerlink" title="（2）新建收件箱-website方式"></a>（2）新建收件箱-website方式</h3><p>和<strong>前端页面</strong>对接，首先在chatwoot中配置相关页面的ip地址，在<strong>配置</strong>分页下可以找到html格式的代码并粘贴到前端代码的index.html中。</p>
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710212900451.png" alt="image-20250710212900451"></p>
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710213008405.png" alt="image-20250710213008405"></p>
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710213019036.png" alt="image-20250710213019036"></p>
+<h2 id="2-前端页面端（html代码）"><a href="#2-前端页面端（html代码）" class="headerlink" title="2.前端页面端（html代码）"></a>2.前端页面端（html代码）</h2><p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710213328304.png" alt="image-20250710213328304"></p>
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710220540512.png" alt="image-20250710220540512"></p>
+<h2 id="3-n8n端"><a href="#3-n8n端" class="headerlink" title="3.n8n端"></a>3.n8n端</h2><p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710211605788.png" alt="image-20250710211605788"></p>
+<p>n8n的整体架构连接如图所示，主要通过<strong>webhook节点</strong>和<strong>https request节点</strong>实现。</p>
+<h3 id="（1）webhook节点"><a href="#（1）webhook节点" class="headerlink" title="（1）webhook节点"></a>（1）webhook节点</h3><p>主要将URL对应的IP地址更改为n8n服务所在的地址</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">测试URL</span><br><span class="line">http://localhost:5678/webhook-test/fe978f96-2ab1-4c71-ad02-d7abf8b29464</span><br><span class="line">生产URL</span><br><span class="line">http://localhost:5678/webhook/fe978f96-2ab1-4c71-ad02-d7abf8b29464</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710213522921.png" alt="image-20250710213522921"></p>
+<h3 id="（2）http-request节点"><a href="#（2）http-request节点" class="headerlink" title="（2）http request节点"></a>（2）http request节点</h3><p>需要设置：</p>
+<p><strong>方法</strong>：post</p>
+<p><strong>网址</strong>：chatwoot所在的ip+固定格式</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://124d21dc9e71.ngrok-free.app/api/v1/accounts/&#123;&#123; $json.account_id &#125;&#125;/conversations/&#123;&#123; $json.conversation_id &#125;&#125;/messages</span><br></pre></td></tr></table></figure>
+
+<p><strong>标头：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">api_access_token</span><br><span class="line">SZs.....（来自于chatwoot个人账户中的token头像→个人资料设置→最下面的访问令牌）</span><br><span class="line"></span><br><span class="line">Content-Type</span><br><span class="line">application/json</span><br></pre></td></tr></table></figure>
+
+<p><strong>正文内容：</strong></p>
+<p>返回一般是标准的json格式，可以返回的内容列有，如右边所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;content&quot;:&quot;&#123;&#123; $json.reply &#125;&#125;&quot;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710214529220.png" alt="image-20250710214529220"></p>
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710214522175.png" alt="image-20250710214522175"></p>
+<h4 id="https节点配置截图"><a href="#https节点配置截图" class="headerlink" title="https节点配置截图"></a>https节点配置截图</h4><p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710213906896.png" alt="image-20250710213906896"></p>
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710213940981.png" alt="image-20250710213940981"></p>
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710214003540.png" alt="image-20250710214003540"></p>
+<h1 id="三、chatwoot支持的数据返回格式"><a href="#三、chatwoot支持的数据返回格式" class="headerlink" title="三、chatwoot支持的数据返回格式"></a>三、chatwoot支持的数据返回格式</h1><p>目前知道的是正常的文本和markdown，html格式暂时没找到。</p>
+<p><img src="/2025/07/10/7.chatwoot+vue+n8n/image-20250710215602084.png" alt="image-20250710215602084"></p>
+<h2 id="1-mardown"><a href="#1-mardown" class="headerlink" title="1.mardown"></a>1.mardown</h2><h3 id="1-1-不同的文件格式"><a href="#1-1-不同的文件格式" class="headerlink" title="1.1 不同的文件格式"></a>1.1 不同的文件格式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 图片：![Demo Image](./imgs/demo-image.png)</span><br><span class="line">1.图片：</span><br><span class="line">![image-1](https://cdn.neuiai.com/baosteel/faultfile/images/20250602_112024_IMG_20230306_150740.jpg)</span><br><span class="line"></span><br><span class="line"># 不同形式的文件：[Markdown指南](https://markdown-guide.irust.net)</span><br><span class="line">2.PDF:</span><br><span class="line">[多模态.pdf](https://cdn.neuiai.com/baosteel/faultfile/wordpdf/20250601_231528_多模态.pdf)</span><br><span class="line"></span><br><span class="line">3.视频：</span><br><span class="line">[双喷嘴.mp4](https://cdn.neuiai.com/baosteel/faultfile/images/双喷嘴.mp4)</span><br><span class="line"></span><br><span class="line">4.pptx：</span><br><span class="line">[中厚板氧化皮评估与控制技术研究.pptx](https://cdn.neuiai.com/baosteel/faultfile/images/中厚板氧化皮评估与控制技术研究（正式）20250428.pptx)</span><br><span class="line"></span><br><span class="line">5.图纸：</span><br><span class="line">[40143470001_20512654E01.tif](https://cdn.neuiai.com/baosteel/faultfile/drawings/540143470001_20512654E01.tif)</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-标题"><a href="#1-2-标题" class="headerlink" title="1.2 标题"></a>1.2 标题</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-字体"><a href="#1-3-字体" class="headerlink" title="1.3 字体"></a>1.3 字体</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">*这行文本是斜体*</span><br><span class="line">_这行文本是斜体_</span><br><span class="line">**这行文本是粗体**</span><br><span class="line">__这行文本是粗体__</span><br><span class="line">_这行文本是 **粗体** + 斜体_</span><br><span class="line">~~_这行文本是 **粗体** + 斜体_ + 删除线~~</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-引用"><a href="#1-4-引用" class="headerlink" title="1.4 引用"></a>1.4 引用</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">引用</span><br><span class="line">&gt; 一级文本引用</span><br><span class="line">&gt;&gt; 二级文本引用</span><br><span class="line">引用中嵌套无序列表</span><br><span class="line">&gt;&gt; * 这是第一项</span><br><span class="line">&gt;&gt; * 这是第二项</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-代码"><a href="#1-5-代码" class="headerlink" title="1.5 代码"></a>1.5 代码</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">代码</span><br><span class="line">行内式代码：`import os, sys`</span><br><span class="line"></span><br><span class="line">代码块（无需缩进）：</span><br><span class="line">    ``` Python</span><br><span class="line">    import os, sys</span><br><span class="line">    sys.path</span><br><span class="line">    print(os)</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-6-无序列表"><a href="#1-6-无序列表" class="headerlink" title="1.6 无序列表"></a>1.6 无序列表</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- 第一节</span><br><span class="line">- 第二节</span><br><span class="line">  - 第一条（缩进空格2个）</span><br><span class="line">  - 第二条</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-7-表格"><a href="#1-7-表格" class="headerlink" title="1.7 表格"></a>1.7 表格</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">表头一 | 表头二 | 表头三</span><br><span class="line">------- | ------ | ------</span><br><span class="line">一行单元格一 | 一行单元格二 | 一行单元格三</span><br><span class="line">二行内容一 | 二行内容二 | 二行内容三</span><br><span class="line">三行描述部分一 | 三行描述部分二 | 三行描述部分三</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">amang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/07/10/7.chatwoot+vue+n8n/">http://example.com/2025/07/10/7.chatwoot+vue+n8n/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Happy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/chatwoot-n8n%E5%AE%9E%E7%8E%B0%E5%89%8D%E5%90%8E%E7%AB%AF/">chatwoot+n8n实现前后端</a></div><div class="post_share"><div class="social-share" data-image="/img/p5.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/08/27/%E8%B7%9F%E7%9D%80%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0langchain/"><img class="prev-cover" src="/img/p6.jpg" onerror="onerror=null;src='/img/diang.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">跟着吴恩达学习langchain</div></div></a></div><div class="next-post pull-right"><a href="/2025/07/10/chatwoot/"><img class="next-cover" src="/img/p5.jpg" onerror="onerror=null;src='/img/diang.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">chatwoot</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/07/10/chatwoot/" title="chatwoot"><img class="cover" src="/img/p5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-10</div><div class="title">chatwoot</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/xiangyang.jpg" onerror="this.onerror=null;this.src='/img/diang.gif'" alt="avatar"/></div><div class="author-info__name">amang</div><div class="author-info__description">成为一个可靠的人</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85chatwoot"><span class="toc-number">1.</span> <span class="toc-text">一、安装chatwoot</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD%E7%8E%AF%E5%A2%83%E6%96%87%E4%BB%B6%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.1.</span> <span class="toc-text">1.下载环境文件模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%8B%E8%BD%BDdocker-compose%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.2.</span> <span class="toc-text">2.下载docker compose模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BAchatwoot%E7%9B%B8%E5%85%B3%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.3.</span> <span class="toc-text">3.创建chatwoot相关数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%90%AF%E5%8A%A8%E6%89%80%E6%9C%89chatwoot%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.4.</span> <span class="toc-text">4.启动所有chatwoot服务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E4%BA%8En8n%E5%90%8E%E5%8F%B0%EF%BC%8C%E5%AE%9E%E7%8E%B0%E5%89%8D%E7%AB%AF%E5%9B%BE%E6%A0%87%E7%9A%84%E5%AF%B9%E8%AF%9D"><span class="toc-number">2.</span> <span class="toc-text">二、基于n8n后台，实现前端图标的对话</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-chatwoot%E7%AB%AF"><span class="toc-number">2.1.</span> <span class="toc-text">1.chatwoot端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E6%96%B0%E5%BB%BAchatwoot%E7%9A%84%E9%9B%86%E6%88%90%E6%96%B9%E5%BC%8F-webhook"><span class="toc-number">2.1.1.</span> <span class="toc-text">（1）新建chatwoot的集成方式-webhook</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E6%96%B0%E5%BB%BA%E6%94%B6%E4%BB%B6%E7%AE%B1-website%E6%96%B9%E5%BC%8F"><span class="toc-number">2.1.2.</span> <span class="toc-text">（2）新建收件箱-website方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E7%AB%AF%EF%BC%88html%E4%BB%A3%E7%A0%81%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">2.前端页面端（html代码）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-n8n%E7%AB%AF"><span class="toc-number">2.3.</span> <span class="toc-text">3.n8n端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%881%EF%BC%89webhook%E8%8A%82%E7%82%B9"><span class="toc-number">2.3.1.</span> <span class="toc-text">（1）webhook节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%882%EF%BC%89http-request%E8%8A%82%E7%82%B9"><span class="toc-number">2.3.2.</span> <span class="toc-text">（2）http request节点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#https%E8%8A%82%E7%82%B9%E9%85%8D%E7%BD%AE%E6%88%AA%E5%9B%BE"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">https节点配置截图</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81chatwoot%E6%94%AF%E6%8C%81%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BF%94%E5%9B%9E%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">三、chatwoot支持的数据返回格式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-mardown"><span class="toc-number">3.1.</span> <span class="toc-text">1.mardown</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%B8%8D%E5%90%8C%E7%9A%84%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.1.1.</span> <span class="toc-text">1.1 不同的文件格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%A0%87%E9%A2%98"><span class="toc-number">3.1.2.</span> <span class="toc-text">1.2 标题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%AD%97%E4%BD%93"><span class="toc-number">3.1.3.</span> <span class="toc-text">1.3 字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E5%BC%95%E7%94%A8"><span class="toc-number">3.1.4.</span> <span class="toc-text">1.4 引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E4%BB%A3%E7%A0%81"><span class="toc-number">3.1.5.</span> <span class="toc-text">1.5 代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">3.1.6.</span> <span class="toc-text">1.6 无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E8%A1%A8%E6%A0%BC"><span class="toc-number">3.1.7.</span> <span class="toc-text">1.7 表格</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/10/25/sanic%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E6%89%8B%E5%86%8C/" title="sanic开发框架api接口说明手册"><img src="/img/p5.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="sanic开发框架api接口说明手册"/></a><div class="content"><a class="title" href="/2025/10/25/sanic%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E6%89%8B%E5%86%8C/" title="sanic开发框架api接口说明手册">sanic开发框架api接口说明手册</a><time datetime="2025-10-24T22:38:52.000Z" title="发表于 2025-10-25 06:38:52">2025-10-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/24/%E4%BD%BF%E7%94%A8dolphinscheduler%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" title="使用dolphinscheduler设置定时任务"><img src="/img/p4.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="使用dolphinscheduler设置定时任务"/></a><div class="content"><a class="title" href="/2025/10/24/%E4%BD%BF%E7%94%A8dolphinscheduler%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" title="使用dolphinscheduler设置定时任务">使用dolphinscheduler设置定时任务</a><time datetime="2025-10-24T11:01:48.000Z" title="发表于 2025-10-24 19:01:48">2025-10-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/27/%E8%B7%9F%E7%9D%80%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0langchain/" title="跟着吴恩达学习langchain"><img src="/img/p6.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="跟着吴恩达学习langchain"/></a><div class="content"><a class="title" href="/2025/08/27/%E8%B7%9F%E7%9D%80%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0langchain/" title="跟着吴恩达学习langchain">跟着吴恩达学习langchain</a><time datetime="2025-08-27T14:34:20.000Z" title="发表于 2025-08-27 22:34:20">2025-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/10/7.chatwoot+vue+n8n/" title="chatwoot"><img src="/img/p5.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="chatwoot"/></a><div class="content"><a class="title" href="/2025/07/10/7.chatwoot+vue+n8n/" title="chatwoot">chatwoot</a><time datetime="2025-07-10T13:06:15.000Z" title="发表于 2025-07-10 21:06:15">2025-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/10/chatwoot/" title="chatwoot"><img src="/img/p5.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="chatwoot"/></a><div class="content"><a class="title" href="/2025/07/10/chatwoot/" title="chatwoot">chatwoot</a><time datetime="2025-07-10T13:06:15.000Z" title="发表于 2025-07-10 21:06:15">2025-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By amang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

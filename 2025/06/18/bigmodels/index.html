@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>bigmodels | Happy</title><meta name="keywords" content="Ollama+OpenWebUI+其他模型本地部署"><meta name="author" content="amang"><meta name="copyright" content="amang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[TOC] 一、安装及配置Ollama1.下载ollamaOllama 下载完成后本地cmd输入ollama -v，有版本回复代表下载成功 2.配置Ollamaa模型路径配置环境变量OLLAMA_MODELS，设置为指定的路径，因为我下载完成后环境变量中没有这一项，所以我是新增了环境变量，如下图：  3.下载ollama模型Ollama Search 在上述网址中寻找想要部署到本地的大模型，点击大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bigmodels">
+<meta property="og:url" content="http://example.com/2025/06/18/bigmodels/index.html">
+<meta property="og:site_name" content="Happy">
+<meta property="og:description" content="[TOC] 一、安装及配置Ollama1.下载ollamaOllama 下载完成后本地cmd输入ollama -v，有版本回复代表下载成功 2.配置Ollamaa模型路径配置环境变量OLLAMA_MODELS，设置为指定的路径，因为我下载完成后环境变量中没有这一项，所以我是新增了环境变量，如下图：  3.下载ollama模型Ollama Search 在上述网址中寻找想要部署到本地的大模型，点击大">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/p3.jpg">
+<meta property="article:published_time" content="2025-06-18T15:05:01.000Z">
+<meta property="article:modified_time" content="2025-06-18T16:58:42.223Z">
+<meta property="article:author" content="amang">
+<meta property="article:tag" content="Ollama+OpenWebUI+其他模型本地部署">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/p3.jpg"><link rel="shortcut icon" href="/img/xiangyang.jpg"><link rel="canonical" href="http://example.com/2025/06/18/bigmodels/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'bigmodels',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-19 00:58:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/xiangyang.jpg" onerror="onerror=null;src='/img/diang.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/p3.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Happy</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">bigmodels</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-18T15:05:01.000Z" title="发表于 2025-06-18 23:05:01">2025-06-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-18T16:58:42.223Z" title="更新于 2025-06-19 00:58:42">2025-06-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="bigmodels"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>[TOC]</p>
+<h1 id="一、安装及配置Ollama"><a href="#一、安装及配置Ollama" class="headerlink" title="一、安装及配置Ollama"></a>一、安装及配置Ollama</h1><h2 id="1-下载ollama"><a href="#1-下载ollama" class="headerlink" title="1.下载ollama"></a>1.下载ollama</h2><p><a target="_blank" rel="noopener" href="https://ollama.com/">Ollama</a></p>
+<p>下载完成后本地cmd输入<code>ollama -v</code>，有版本回复代表下载成功</p>
+<h2 id="2-配置Ollamaa模型路径"><a href="#2-配置Ollamaa模型路径" class="headerlink" title="2.配置Ollamaa模型路径"></a>2.配置Ollamaa模型路径</h2><p>配置环境变量OLLAMA_MODELS，设置为指定的路径，因为我下载完成后环境变量中没有这一项，所以我是新增了环境变量，如下图：</p>
+<p><img src="/2025/06/18/bigmodels/image-20250618231551491.png" alt="image-20250618231551491"></p>
+<h2 id="3-下载ollama模型"><a href="#3-下载ollama模型" class="headerlink" title="3.下载ollama模型"></a>3.下载ollama模型</h2><p><a target="_blank" rel="noopener" href="https://ollama.com/search">Ollama Search</a></p>
+<p>在上述网址中寻找想要部署到本地的大模型，点击大模型名称进入模型主页， 右上角有下载代码，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ollama run gemma3</span><br><span class="line">ollama run llama3:8b</span><br><span class="line">ollama run deepseek-r1:7b</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/06/18/bigmodels/image-20250618231343394.png" alt="image-20250618231343394"></p>
+<h2 id="4-启动模型成功"><a href="#4-启动模型成功" class="headerlink" title="4.启动模型成功"></a>4.启动模型成功</h2><p>访问<a target="_blank" rel="noopener" href="http://127.0.0.1:11434/%EF%BC%8C%E5%87%BA%E7%8E%B0**Ollama">http://127.0.0.1:11434/，出现**Ollama</a> is running**代表启动成功</p>
+<p><img src="/2025/06/18/bigmodels/image-20250618231923272.png" alt="image-20250618231923272"></p>
+<h3 id="ollama相关语句"><a href="#ollama相关语句" class="headerlink" title="ollama相关语句"></a>ollama相关语句</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ollama list #查看现有模型列表</span><br><span class="line">ollama run 模型名称  #本地部署模型</span><br><span class="line">ollama create 模型名称 -f .\Modelfile #根据配置文件Modelfile创建本地模型</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="二、使用docker仅安装Open-webui"><a href="#二、使用docker仅安装Open-webui" class="headerlink" title="二、使用docker仅安装Open-webui"></a>二、使用docker仅安装Open-webui</h1><h2 id="1-docker-desktop安装"><a href="#1-docker-desktop安装" class="headerlink" title="1.docker desktop安装"></a>1.docker desktop安装</h2><p>这一步可能有错误，比如说安装时wsl报错</p>
+<p>(Docker Desktop - WSL update failed,安装ubuntu，安装适用于 Linux 的 Windows 子系统)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl --update #更新 Windows 子系统 (WSL)</span><br><span class="line">wsl --list --online  #查看微软官方提供的子系统</span><br><span class="line">wsl --install -d ubuntu  #下载ubuntu</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-打开Hyper-V功能（没打开的话）"><a href="#2-打开Hyper-V功能（没打开的话）" class="headerlink" title="2.打开Hyper-V功能（没打开的话）"></a>2.打开Hyper-V功能（没打开的话）</h2><p>打开“控制面板-&gt;程序-&gt;启用或关闭Windows功能”→重启电脑后安装成功→Windows工具中可以看到Hyper-V已安装成功。</p>
+<h2 id="3-下载open-webui镜像并启动容器"><a href="#3-下载open-webui镜像并启动容器" class="headerlink" title="3.下载open-webui镜像并启动容器"></a>3.下载open-webui镜像并启动容器</h2><p>docker run -d -p 3000:8080 –add-host&#x3D;host.docker.internal:host-gateway -v open-webui:&#x2F;app&#x2F;backend&#x2F;data –name open-webui –restart always ghcr.io&#x2F;open-webui&#x2F;open-webui:main</p>
+<p><img src="/2025/06/18/bigmodels/image-20250618232809741.png" alt="image-20250618232809741"></p>
+<h2 id="4-确定运行"><a href="#4-确定运行" class="headerlink" title="4.确定运行"></a>4.确定运行</h2><p>访问地址：<a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000/</a></p>
+<h2 id="5-注册"><a href="#5-注册" class="headerlink" title="5.注册"></a>5.注册</h2><p>刚开始需要注册管理员</p>
+<p>Amamg  <a href="mailto:&#55;&#x38;&#54;&#51;&#x35;&#x35;&#56;&#53;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#55;&#x38;&#54;&#51;&#x35;&#x35;&#56;&#53;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#x6d;</a> </p>
+<h2 id="6-离线部署（暂时没有尝试）"><a href="#6-离线部署（暂时没有尝试）" class="headerlink" title="6.离线部署（暂时没有尝试）"></a>6.离线部署（暂时没有尝试）</h2><p>若要离线部署，</p>
+<p>1.获取IMAGE ID ： 3d935ad7dc43<br>Docker images<br>2.docker save -o open-webui.tar 3d935ad7dc43<br>3.在离线的机器上装载镜像<br>docker load -i open-webui.tar<br>4.启动容器<br>docker run -d -p 3000:8080 –add-host&#x3D;host.docker.internal:host-gateway -v open-webui:&#x2F;app&#x2F;backend&#x2F;data –name open-webui –restart always ghcr.io&#x2F;open-webui&#x2F;open-webui:main<br>5.访问地址<br><a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000/</a></p>
+<p>需要注意的问题，open-webui使用GPU时docker启动容器的代码可能不一样</p>
+<h1 id="三、使用AnythingLLM搭建本地知识库"><a href="#三、使用AnythingLLM搭建本地知识库" class="headerlink" title="三、使用AnythingLLM搭建本地知识库"></a>三、使用AnythingLLM搭建本地知识库</h1><p>如果想要对知识库进行更加灵活的掌控，我们需要一个额外的软件：AnythingLLM，这个软件包含了所有Open WebUI的能力，并且额外支持了以下能力<br>·	选择文本嵌入模型<br>·	选择向量数据库</p>
+<p><a target="_blank" rel="noopener" href="https://anythingllm.com/desktop">Download AnythingLLM for Desktop</a></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="1-选择大模型（ollama）"><a href="#1-选择大模型（ollama）" class="headerlink" title="1.选择大模型（ollama）"></a>1.选择大模型（ollama）</h3><p><img src="/2025/06/18/bigmodels/image-20250618233258862.png" alt="image-20250618233258862"></p>
+<p><img src="/2025/06/18/bigmodels/image-20250618233305606.png" alt="image-20250618233305606"></p>
+<h3 id="2-选择文本嵌入模型和向量数据库（默认）"><a href="#2-选择文本嵌入模型和向量数据库（默认）" class="headerlink" title="2.选择文本嵌入模型和向量数据库（默认）"></a>2.选择文本嵌入模型和向量数据库（默认）</h3><p><img src="/2025/06/18/bigmodels/image-20250618233328755.png" alt="image-20250618233328755"></p>
+<h3 id="3-创建工作区并嵌入文档"><a href="#3-创建工作区并嵌入文档" class="headerlink" title="3.创建工作区并嵌入文档"></a>3.创建工作区并嵌入文档</h3><p>创建自己的工作区→上传文档在工作区进行文本嵌入<br>点击上传文件→点击后移动到工作区→保存并嵌入</p>
+<p><img src="/2025/06/18/bigmodels/image-20250618233356023.png" alt="image-20250618233356023"></p>
+<h3 id="4-选择对话模式"><a href="#4-选择对话模式" class="headerlink" title="4.选择对话模式"></a>4.选择对话模式</h3><p>angthingllm提供了两种对话模式，chat（训练数据+上传的文档）和query模式（仅依赖于文件） 进入工作区界面，点击右边的设置按钮→聊天设置（聊天和查询）</p>
+<p><img src="/2025/06/18/bigmodels/image-20250618233419080.png" alt="image-20250618233419080"></p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="1-本地nvm配置"><a href="#1-本地nvm配置" class="headerlink" title="1.本地nvm配置"></a>1.本地nvm配置</h2><p><a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows/releases">https://github.com/coreybutler/nvm-windows/releases</a></p>
+<h2 id="2-相关知识（不一定对，引用的）"><a href="#2-相关知识（不一定对，引用的）" class="headerlink" title="2.  相关知识（不一定对，引用的）"></a>2.  相关知识（不一定对，引用的）</h2><p>RAG技术</p>
+<p>Open-webui一般有两种使用方式，一种是直接对话，一种是RAG能力，可以让模型根据文档的内容回答问题（用户输入口上传文件）</p>
+<p><img src="/2025/06/18/bigmodels/image-20250618233546332.png" alt="image-20250618233546332"></p>
+<p><strong>文档加载（Document Loading） ：</strong><br>从多种不同来源加载文档。LangChain提供了100多种不同的文档加载器，包括PDF在内的非结构化的数据、SQL在内的结构化的数据，以及Python、Java之类的代码等<br>文本加载器（Document Loaders）就是将用户提供的文本加载到内存中，便于进行后续的处理<br><strong>· 文本分割（Splitting） ：</strong><br>    文本分割器（（Text Splitters））把Documents 切分为指定大小的块，我把它们称为“文档块”或者“文档片”文本切割通常有以下几个原因<br>·为了更好的进行文本嵌入以及向量数据库的存储<br>·通常大语言模型都有上下文的限制，如果不进行切割，文本在传递给大模型的时候可能超出上下文限制导致大模型随机丢失信息<br>    <strong>文本切割器的工作流程</strong><br>    ·将文本切割成小的，语义上有意义的块（通常是句子）<br>    ·开始将这些小块组成一个较大的块，直到达到某个块的大小（这个会通过某种函数测量）<br>    ·一旦达到该大小，就将该块作为自己的文本片段，并开始创建一个新的文本块，同时保留一些重叠（以保持块之间的上下文）。<br><strong>· 存储（Storage）</strong>： 存储涉及到两个环节，分别是：<br>将切分好的文档块进行嵌入（Embedding）转换成向量的形式<br>将Embedding后的向量数据存储到向量数据库<br><strong>· 检索（Retrieval） ：</strong><br>一旦数据进入向量数据库，我们仍然需要将数据检索出来，我们会通过某种检索算法找到与输入问题相似的嵌入片，这里主要利用了大模型的能力<br><strong>· Output（输出） ：</strong><br>把问题以及检索出来的嵌入片一起提交给LLM，LLM会通过问题和检索出来的提示一起来生成更加合理的答案<br>涉及到：</p>
+<p><strong>文本嵌入模型（Text Embedding models）</strong><br>文本嵌入模型是用来将文本转换成数值向量的工具，这些向量能够捕捉文本的语义信息，使得相似的文本在向量空间中彼此接近。这对于各种自然语言处理任务，如文本相似性比较、聚类和检索等，都是非常有用的。下面是一段对嵌入的解释<br>词嵌入（Word Embedding）是自然语言处理和机器学习中的一个概念，它将文字或词语转换为一系列数字，通常是一个向量。简单地说，词嵌入就是一个为每个词分配的数字列表。这些数字不是随机的，而是捕获了这个词的含义和它在文本中的上下文。因此，语义上相似或相关的词在这个数字空间中会比较接近。</p>
+<p>举个例子，通过某种词嵌入技术，我们可能会得到：<br>“国王” -&gt; [1.2, 0.5, 3.1, …]<br>“皇帝” -&gt; [1.3, 0.6, 2.9, …]<br>“苹果” -&gt; [0.9, -1.2, 0.3, …]<br>从这些向量中，我们可以看到“国王”和“皇帝”这两个词的向量在某种程度上是相似的，而与“苹果”这个词相比，它们的向量则相差很大，因为这两个概念在语义上是不同的。<br>词嵌入的优点是，它提供了一种将文本数据转化为计算机可以理解和处理的形式，同时保留了词语之间的语义关系。这在许多自然语言处理任务中都是非常有用的，比如文本分类、机器翻译和情感分析等。</p>
+<p><strong>向量数据库（Vector Stores）</strong></p>
+<p>向量存储（Vector stores）是用于存储和检索文本嵌入向量的工具。这些向量是文本数据的数值表示，它们使得计算机能够理解和处理自然语言。向量存储对于支持复杂的搜索和检索任务至关重要，尤其是在处理大量文本数据时。<br>向量存储的主要功能包括：<br>高效地存储大量的文本向量<br>快速检索与给定向量最相似的文本向量<br>支持复杂的查询操作，如范围搜索和最近邻搜索</p>
+<h2 id="3-参考教程"><a href="#3-参考教程" class="headerlink" title="3. 参考教程"></a>3. 参考教程</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43012017/article/details/138253446">【AI】Ollama+OpenWebUI+llama3本地部署保姆级教程，没有连接互联网一样可以使用AI大模型！！！_ollama webui-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1906422234278500148">只需三步，手把手教你部署本地大模型以及搭建个人知识库！！ - 知乎</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">amang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/06/18/bigmodels/">http://example.com/2025/06/18/bigmodels/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Happy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Ollama-OpenWebUI-%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9E%8B%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/">Ollama+OpenWebUI+其他模型本地部署</a></div><div class="post_share"><div class="social-share" data-image="/img/p3.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/06/18/bigmodels-datasets/"><img class="prev-cover" src="/img/p3.jpg" onerror="onerror=null;src='/img/diang.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2025/06/06/influxdb%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"><img class="next-cover" src="/img/w1.jpg" onerror="onerror=null;src='/img/diang.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">influxdb学习笔记（二）</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/xiangyang.jpg" onerror="this.onerror=null;this.src='/img/diang.gif'" alt="avatar"/></div><div class="author-info__name">amang</div><div class="author-info__description">成为一个可靠的人</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%89%E8%A3%85%E5%8F%8A%E9%85%8D%E7%BD%AEOllama"><span class="toc-number">1.</span> <span class="toc-text">一、安装及配置Ollama</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BDollama"><span class="toc-number">1.1.</span> <span class="toc-text">1.下载ollama</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AEOllamaa%E6%A8%A1%E5%9E%8B%E8%B7%AF%E5%BE%84"><span class="toc-number">1.2.</span> <span class="toc-text">2.配置Ollamaa模型路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%8B%E8%BD%BDollama%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.3.</span> <span class="toc-text">3.下载ollama模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%9E%8B%E6%88%90%E5%8A%9F"><span class="toc-number">1.4.</span> <span class="toc-text">4.启动模型成功</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ollama%E7%9B%B8%E5%85%B3%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.4.1.</span> <span class="toc-text">ollama相关语句</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8docker%E4%BB%85%E5%AE%89%E8%A3%85Open-webui"><span class="toc-number">2.</span> <span class="toc-text">二、使用docker仅安装Open-webui</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-docker-desktop%E5%AE%89%E8%A3%85"><span class="toc-number">2.1.</span> <span class="toc-text">1.docker desktop安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%89%93%E5%BC%80Hyper-V%E5%8A%9F%E8%83%BD%EF%BC%88%E6%B2%A1%E6%89%93%E5%BC%80%E7%9A%84%E8%AF%9D%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">2.打开Hyper-V功能（没打开的话）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%8B%E8%BD%BDopen-webui%E9%95%9C%E5%83%8F%E5%B9%B6%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text">3.下载open-webui镜像并启动容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%A1%AE%E5%AE%9A%E8%BF%90%E8%A1%8C"><span class="toc-number">2.4.</span> <span class="toc-text">4.确定运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%B3%A8%E5%86%8C"><span class="toc-number">2.5.</span> <span class="toc-text">5.注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%A6%BB%E7%BA%BF%E9%83%A8%E7%BD%B2%EF%BC%88%E6%9A%82%E6%97%B6%E6%B2%A1%E6%9C%89%E5%B0%9D%E8%AF%95%EF%BC%89"><span class="toc-number">2.6.</span> <span class="toc-text">6.离线部署（暂时没有尝试）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%BD%BF%E7%94%A8AnythingLLM%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93"><span class="toc-number">3.</span> <span class="toc-text">三、使用AnythingLLM搭建本地知识库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">3.1.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%80%89%E6%8B%A9%E5%A4%A7%E6%A8%A1%E5%9E%8B%EF%BC%88ollama%EF%BC%89"><span class="toc-number">3.1.1.</span> <span class="toc-text">1.选择大模型（ollama）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%89%E6%8B%A9%E6%96%87%E6%9C%AC%E5%B5%8C%E5%85%A5%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93%EF%BC%88%E9%BB%98%E8%AE%A4%EF%BC%89"><span class="toc-number">3.1.2.</span> <span class="toc-text">2.选择文本嵌入模型和向量数据库（默认）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E5%B7%A5%E4%BD%9C%E5%8C%BA%E5%B9%B6%E5%B5%8C%E5%85%A5%E6%96%87%E6%A1%A3"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.创建工作区并嵌入文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%80%89%E6%8B%A9%E5%AF%B9%E8%AF%9D%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.4.</span> <span class="toc-text">4.选择对话模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">4.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9C%AC%E5%9C%B0nvm%E9%85%8D%E7%BD%AE"><span class="toc-number">4.1.</span> <span class="toc-text">1.本地nvm配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%EF%BC%88%E4%B8%8D%E4%B8%80%E5%AE%9A%E5%AF%B9%EF%BC%8C%E5%BC%95%E7%94%A8%E7%9A%84%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">2.  相关知识（不一定对，引用的）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8F%82%E8%80%83%E6%95%99%E7%A8%8B"><span class="toc-number">4.3.</span> <span class="toc-text">3. 参考教程</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/10/25/sanic%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E6%89%8B%E5%86%8C/" title="sanic开发框架api接口说明手册"><img src="/img/p5.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="sanic开发框架api接口说明手册"/></a><div class="content"><a class="title" href="/2025/10/25/sanic%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E6%89%8B%E5%86%8C/" title="sanic开发框架api接口说明手册">sanic开发框架api接口说明手册</a><time datetime="2025-10-24T22:38:52.000Z" title="发表于 2025-10-25 06:38:52">2025-10-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/24/%E4%BD%BF%E7%94%A8dolphinscheduler%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" title="使用dolphinscheduler设置定时任务"><img src="/img/p4.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="使用dolphinscheduler设置定时任务"/></a><div class="content"><a class="title" href="/2025/10/24/%E4%BD%BF%E7%94%A8dolphinscheduler%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" title="使用dolphinscheduler设置定时任务">使用dolphinscheduler设置定时任务</a><time datetime="2025-10-24T11:01:48.000Z" title="发表于 2025-10-24 19:01:48">2025-10-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/27/%E8%B7%9F%E7%9D%80%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0langchain/" title="跟着吴恩达学习langchain"><img src="/img/p6.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="跟着吴恩达学习langchain"/></a><div class="content"><a class="title" href="/2025/08/27/%E8%B7%9F%E7%9D%80%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0langchain/" title="跟着吴恩达学习langchain">跟着吴恩达学习langchain</a><time datetime="2025-08-27T14:34:20.000Z" title="发表于 2025-08-27 22:34:20">2025-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/10/7.chatwoot+vue+n8n/" title="chatwoot"><img src="/img/p5.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="chatwoot"/></a><div class="content"><a class="title" href="/2025/07/10/7.chatwoot+vue+n8n/" title="chatwoot">chatwoot</a><time datetime="2025-07-10T13:06:15.000Z" title="发表于 2025-07-10 21:06:15">2025-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/10/chatwoot/" title="chatwoot"><img src="/img/p5.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="chatwoot"/></a><div class="content"><a class="title" href="/2025/07/10/chatwoot/" title="chatwoot">chatwoot</a><time datetime="2025-07-10T13:06:15.000Z" title="发表于 2025-07-10 21:06:15">2025-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By amang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

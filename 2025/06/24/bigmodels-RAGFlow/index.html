@@ -1,0 +1,218 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>bigmodels-RAGFlow | Happy</title><meta name="keywords" content="ragflow学习笔记1"><meta name="author" content="amang"><meta name="copyright" content="amang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[TOC] 1.修改虚拟最大内存映射区域数vm.max_map_count此值设置进程可以具有的最大内存映射区域数。其默认值为 65530。虽然大多数应用程序需要的映射少于 1000 个，但减小此值可能会导致异常行为，并且当进程达到限制时，系统将引发内存不足错误。 本机使用的是docker desktop对的wsl2后端，参考官网说明，使用以下代码修改，但是这种修改是每次重启都需要修改一次。 ws">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bigmodels-RAGFlow">
+<meta property="og:url" content="http://example.com/2025/06/24/bigmodels-RAGFlow/index.html">
+<meta property="og:site_name" content="Happy">
+<meta property="og:description" content="[TOC] 1.修改虚拟最大内存映射区域数vm.max_map_count此值设置进程可以具有的最大内存映射区域数。其默认值为 65530。虽然大多数应用程序需要的映射少于 1000 个，但减小此值可能会导致异常行为，并且当进程达到限制时，系统将引发内存不足错误。 本机使用的是docker desktop对的wsl2后端，参考官网说明，使用以下代码修改，但是这种修改是每次重启都需要修改一次。 ws">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/w1.jpg">
+<meta property="article:published_time" content="2025-06-24T13:09:16.000Z">
+<meta property="article:modified_time" content="2025-06-24T14:21:14.103Z">
+<meta property="article:author" content="amang">
+<meta property="article:tag" content="ragflow学习笔记1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/w1.jpg"><link rel="shortcut icon" href="/img/xiangyang.jpg"><link rel="canonical" href="http://example.com/2025/06/24/bigmodels-RAGFlow/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'bigmodels-RAGFlow',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-06-24 22:21:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/xiangyang.jpg" onerror="onerror=null;src='/img/diang.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/w1.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Happy</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">bigmodels-RAGFlow</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-24T13:09:16.000Z" title="发表于 2025-06-24 21:09:16">2025-06-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-24T14:21:14.103Z" title="更新于 2025-06-24 22:21:14">2025-06-24</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="bigmodels-RAGFlow"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>[TOC]</p>
+<h1 id="1-修改虚拟最大内存映射区域数"><a href="#1-修改虚拟最大内存映射区域数" class="headerlink" title="1.修改虚拟最大内存映射区域数"></a>1.修改虚拟最大内存映射区域数</h1><p><strong>vm.max_map_count</strong>此值设置进程可以具有的最大内存映射区域数。其默认值为 65530。虽然大多数应用程序需要的映射少于 1000 个，但减小此值可能会导致异常行为，并且当进程达到限制时，系统将引发内存不足错误。</p>
+<p>本机使用的是docker desktop对的wsl2后端，参考官网说明，使用以下代码修改，但是这种修改是每次重启都需要修改一次。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wsl -d docker-desktop -u root</span><br><span class="line">sysctl -w vm.max_map_count=262144</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="2-克隆存储库"><a href="#2-克隆存储库" class="headerlink" title="2.克隆存储库"></a>2.克隆存储库</h1><p>将ragflow的github代码克隆到本地</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/infiniflow/ragflow.git</span><br><span class="line">cd ragflow/docker</span><br><span class="line">git checkout -f v0.19.1</span><br></pre></td></tr></table></figure>
+
+<p>要下载不同于 的 RAGFlow 版本，在使用启动服务器之前在 docker&#x2F;.env 中相应地更新变量。</p>
+<h1 id="3-启动"><a href="#3-启动" class="headerlink" title="3.启动"></a>3.启动</h1><p>有两种方式，一个是CPU一个是GPU方式，我选用GPU的方式启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 使用CPU执行嵌入和deepdoc任务:</span><br><span class="line">$ docker compose -f docker-compose.yml up -d</span><br><span class="line"></span><br><span class="line"># 使用GPU加速执行嵌入和deepdoc任务:</span><br><span class="line"># docker compose -f docker-compose-gpu.yml up -d</span><br></pre></td></tr></table></figure>
+
+<p>启动的过程中发现报错，发现本机的80端口被占用了，因此将docker-compose-gpu.yml文件中的ports端口映射更改为8080:80，参考bug及解决的第3点</p>
+<h1 id="4-检查服务器启动状态"><a href="#4-检查服务器启动状态" class="headerlink" title="4.检查服务器启动状态"></a>4.检查服务器启动状态</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker logs -f ragflow-server</span><br></pre></td></tr></table></figure>
+
+<p>进入<a target="_blank" rel="noopener" href="http://localhost:8080/%EF%BC%8C%E7%9C%8B%E5%88%B0%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E5%8D%B3%E4%BB%A3%E8%A1%A8%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2ragflow%E5%AE%8C%E6%88%90%EF%BC%8C**%E5%9C%A8%E9%A6%96%E9%A1%B5%E5%AE%8C%E6%88%90%E6%B3%A8%E5%86%8C%E3%80%82">http://localhost:8080/，看到登录界面即代表本地部署ragflow完成，**在首页完成注册。</a>**</p>
+<h1 id="5-部署ollama模型"><a href="#5-部署ollama模型" class="headerlink" title="5.部署ollama模型"></a>5.部署ollama模型</h1><p>RAGFlow 是一个 RAG 引擎，需要与 LLM 合作才能提供接地气、<strong>无幻觉</strong>的问答功能。使用 Ollama、Xinference 或其他框架部署和运行本地模型。具体还可以参考官网教程：<a target="_blank" rel="noopener" href="https://ragflow.io/docs/v0.19.1/deploy_local_llm">Deploy local models | RAGFlow</a></p>
+<h2 id="（1）找到ollama模型并保证路径可访问"><a href="#（1）找到ollama模型并保证路径可访问" class="headerlink" title="（1）找到ollama模型并保证路径可访问"></a>（1）找到ollama模型并保证路径可访问</h2><p>同一台主机，如果 RAGFlow 是从源代码启动的，并且 Ollama 与 RAGFlow 在同一台主机上运行，请检查是否可以从 RAGFlow 的主机访问 Olama，<strong>打开cmd，输入下述代码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl http://localhost:11434/</span><br><span class="line"></span><br><span class="line">打印出如下结果代表访问成功</span><br><span class="line">&gt; Ollama is running</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="（2）添加ollama"><a href="#（2）添加ollama" class="headerlink" title="（2）添加ollama"></a>（2）添加ollama</h2><p>前提：<strong>本地ollama部署并启动</strong>，从官网下载相对应的模型到本地：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ollama pull deepseek-r1:7b</span><br><span class="line">ollama pull shaw/dmeta-embedding-zh</span><br><span class="line">ollama pull qwen3:8b</span><br><span class="line">ollama ls #查看已经下载的模型</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/06/24/bigmodels-RAGFlow/image-20250624213715541.png" alt="image-20250624213715541"></p>
+<p><strong>登录账号</strong>后点<strong>击个人头像</strong>，进入<strong>配置界面</strong></p>
+<p><img src="/2025/06/24/bigmodels-RAGFlow/image-20250624212915102.png" alt="image-20250624212915102"></p>
+<p>在待添加的模型下方找到<strong>ollama</strong>，点击<strong>添加模型</strong>，配置参数如下：</p>
+<p><img src="/2025/06/24/bigmodels-RAGFlow/image-20250624212955313.png" alt="image-20250624212955313"></p>
+<p>tips：如果配置不成功，点击模型类型为chat的时候报错：<strong>Fail to access embedding model(shaw&#x2F;dmeta-embedding-zh:latest).[Errno 111] Connection refused</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在用户变量中添加 OLLAMA_HOST  0.0.0.0:11434</span><br><span class="line">并在模型url中配置为 host.docker.internal:11434</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2025/06/24/bigmodels-RAGFlow/image-20250624214249611.png" alt="image-20250624214249611"></p>
+<p>配置好后如图所示：</p>
+<p><img src="/2025/06/24/bigmodels-RAGFlow/image-20250624214749361.png" alt="image-20250624214749361"></p>
+<h1 id="6-设置默认模型"><a href="#6-设置默认模型" class="headerlink" title="6.设置默认模型"></a>6.设置默认模型</h1><p><img src="/2025/06/24/bigmodels-RAGFlow/image-20250624214642557.png" alt="image-20250624214642557"></p>
+<p><img src="/2025/06/24/bigmodels-RAGFlow/image-20250624214829029.png" alt="image-20250624214829029"></p>
+<h1 id="7-创建知识库并上传本地文件"><a href="#7-创建知识库并上传本地文件" class="headerlink" title="7.创建知识库并上传本地文件"></a>7.创建知识库并上传本地文件</h1><p>点击知识库→创建知识库→输入知识库名称→新增本地文件</p>
+<p><img src="/2025/06/24/bigmodels-RAGFlow/image-20250624215013008.png" alt="image-20250624215013008"></p>
+<p><img src="/2025/06/24/bigmodels-RAGFlow/image-20250624215158406.png" alt="image-20250624215158406"></p>
+<p>等待解析状态为成功，</p>
+<h1 id="8-基于本地知识库开启对话"><a href="#8-基于本地知识库开启对话" class="headerlink" title="8.基于本地知识库开启对话"></a>8.基于本地知识库开启对话</h1><p>聊天→新建助理→设置→开始聊天</p>
+<p><img src="/2025/06/24/bigmodels-RAGFlow/image-20250624215345107.png" alt="image-20250624215345107"></p>
+<p><img src="/2025/06/24/bigmodels-RAGFlow/image-20250624215424404.png" alt="image-20250624215424404"></p>
+<p>设置完成后就可以开启对话了</p>
+<h1 id="bug及解决"><a href="#bug及解决" class="headerlink" title="bug及解决"></a>bug及解决</h1><h3 id="1-使用docker启动ragflow的时候报错"><a href="#1-使用docker启动ragflow的时候报错" class="headerlink" title="1.使用docker启动ragflow的时候报错"></a>1.使用docker启动ragflow的时候报错</h3><p><strong>Error response from daemon: Get “<a target="_blank" rel="noopener" href="https://registry-1.docker.io/v2/&quot;">https://registry-1.docker.io/v2/&quot;</a>: context deadline exceeded</strong></p>
+<p>解决方案，修改docker镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;builder&quot;: &#123;</span><br><span class="line">    &quot;gc&quot;: &#123;</span><br><span class="line">      &quot;defaultKeepStorage&quot;: &quot;20GB&quot;,</span><br><span class="line">      &quot;enabled&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;experimental&quot;: false,</span><br><span class="line">  &quot;features&quot;: &#123;</span><br><span class="line">    &quot;buildkit&quot;: true</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;registry-mirrors&quot;: [</span><br><span class="line">    &quot;https://82m9ar63.mirror.aliyuncs.com&quot;,</span><br><span class="line">    &quot;http://hub-mirror.c.163.com&quot;,</span><br><span class="line">    &quot;https://docker.mirrors.ustc.edu.cn&quot;,</span><br><span class="line">    &quot;https://docker-cf.registry.cyou&quot;,</span><br><span class="line">    &quot;https://dockercf.jsdelivr.fyi&quot;,</span><br><span class="line">    &quot;https://docker.jsdelivr.fyi&quot;,</span><br><span class="line">    &quot;https://dockertest.jsdelivr.fyi&quot;,</span><br><span class="line">    &quot;https://mirror.aliyuncs.com&quot;,</span><br><span class="line">    &quot;https://dockerproxy.com&quot;,</span><br><span class="line">    &quot;https://mirror.baidubce.com&quot;,</span><br><span class="line">    &quot;https://docker.m.daocloud.io&quot;,</span><br><span class="line">    &quot;https://docker.nju.edu.cn&quot;,</span><br><span class="line">    &quot;https://docker.mirrors.sjtug.sjtu.edu.cn&quot;,</span><br><span class="line">    &quot;https://docker.mirrors.ustc.edu.cn&quot;,</span><br><span class="line">    &quot;https://mirror.iscas.ac.cn&quot;,</span><br><span class="line">    &quot;https://docker.rainbond.cc&quot;,</span><br><span class="line">    &quot;https://do.nark.eu.org&quot;,</span><br><span class="line">    &quot;https://dc.j8.work&quot;,</span><br><span class="line">    &quot;https://dockerproxy.com&quot;,</span><br><span class="line">    &quot;https://gst6rzl9.mirror.aliyuncs.com&quot;,</span><br><span class="line">    &quot;https://registry.docker-cn.com&quot;,</span><br><span class="line">    &quot;http://hub-mirror.c.163.com&quot;,</span><br><span class="line">    &quot;http://mirrors.ustc.edu.cn/&quot;,</span><br><span class="line">    &quot;https://mirrors.tuna.tsinghua.edu.cn/&quot;,</span><br><span class="line">    &quot;http://mirrors.sohu.com/&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-端口被占用"><a href="#2-端口被占用" class="headerlink" title="2.端口被占用"></a>2.端口被占用</h3><p><strong>Error response from daemon: Ports are not available: exposing port TCP 0.0.0.0:80 -&gt; 127.0.0.1:0: listen tcp 0.0.0.0:80: bind: An attempt was made to access a socket in a way forbidden by its access permissions.</strong></p>
+<p>查看端口</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">netstat -ano | findstr :80</span><br></pre></td></tr></table></figure>
+
+<p>将docker-compose-gpu.yml文件中的ports端口映射更改为8080:80</p>
+<h3 id="3-配置ollama时报错"><a href="#3-配置ollama时报错" class="headerlink" title="3.配置ollama时报错"></a>3.配置ollama时报错</h3><p><strong>Fail to access embedding model(shaw&#x2F;dmeta-embedding-zh:latest).[Errno 111] Connection refused</strong></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/21917097605">RAGflow+Ollama本地布署填坑 - 知乎</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在用户变量中添加 OLLAMA_HOST 0.0.0.0:11434；</span><br><span class="line">并在模型url中配置为 host.docker.internal:11434；</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h1><ol>
+<li><p><a target="_blank" rel="noopener" href="https://ragflow.io/docs/v0.19.1/#v0.19.1">Get started | RAGFlow</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qingkahui24689/article/details/144421519">【万字详解】手把手带你一步步搭建RAGFlow（超干货）_ragflow安装教程-CSDN博客</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_76168381/article/details/145991136">一文读懂RAGFlow：从 0 到 1教你搭建RAG知识库-CSDN博客</a></p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">amang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/06/24/bigmodels-RAGFlow/">http://example.com/2025/06/24/bigmodels-RAGFlow/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Happy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ragflow%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">ragflow学习笔记1</a></div><div class="post_share"><div class="social-share" data-image="/img/w1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/06/26/n8n-supabaselocal/"><img class="prev-cover" src="/img/w1.jpg" onerror="onerror=null;src='/img/diang.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">n8n+supabaselocal</div></div></a></div><div class="next-post pull-right"><a href="/2025/06/18/bigmodels-Llama-factory-ollama/"><img class="next-cover" src="/img/w1.jpg" onerror="onerror=null;src='/img/diang.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">bigmodels:Llama-factory+ollama</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/xiangyang.jpg" onerror="this.onerror=null;this.src='/img/diang.gif'" alt="avatar"/></div><div class="author-info__name">amang</div><div class="author-info__description">成为一个可靠的人</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BF%AE%E6%94%B9%E8%99%9A%E6%8B%9F%E6%9C%80%E5%A4%A7%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84%E5%8C%BA%E5%9F%9F%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">1.修改虚拟最大内存映射区域数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%85%8B%E9%9A%86%E5%AD%98%E5%82%A8%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">2.克隆存储库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%90%AF%E5%8A%A8"><span class="toc-number">3.</span> <span class="toc-text">3.启动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%A3%80%E6%9F%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%AF%E5%8A%A8%E7%8A%B6%E6%80%81"><span class="toc-number">4.</span> <span class="toc-text">4.检查服务器启动状态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E9%83%A8%E7%BD%B2ollama%E6%A8%A1%E5%9E%8B"><span class="toc-number">5.</span> <span class="toc-text">5.部署ollama模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E6%89%BE%E5%88%B0ollama%E6%A8%A1%E5%9E%8B%E5%B9%B6%E4%BF%9D%E8%AF%81%E8%B7%AF%E5%BE%84%E5%8F%AF%E8%AE%BF%E9%97%AE"><span class="toc-number">5.1.</span> <span class="toc-text">（1）找到ollama模型并保证路径可访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E6%B7%BB%E5%8A%A0ollama"><span class="toc-number">5.2.</span> <span class="toc-text">（2）添加ollama</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E6%A8%A1%E5%9E%8B"><span class="toc-number">6.</span> <span class="toc-text">6.设置默认模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E5%88%9B%E5%BB%BA%E7%9F%A5%E8%AF%86%E5%BA%93%E5%B9%B6%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">7.创建知识库并上传本地文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E5%9F%BA%E4%BA%8E%E6%9C%AC%E5%9C%B0%E7%9F%A5%E8%AF%86%E5%BA%93%E5%BC%80%E5%90%AF%E5%AF%B9%E8%AF%9D"><span class="toc-number">8.</span> <span class="toc-text">8.基于本地知识库开启对话</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#bug%E5%8F%8A%E8%A7%A3%E5%86%B3"><span class="toc-number">9.</span> <span class="toc-text">bug及解决</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8docker%E5%90%AF%E5%8A%A8ragflow%E7%9A%84%E6%97%B6%E5%80%99%E6%8A%A5%E9%94%99"><span class="toc-number">9.0.1.</span> <span class="toc-text">1.使用docker启动ragflow的时候报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8"><span class="toc-number">9.0.2.</span> <span class="toc-text">2.端口被占用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AEollama%E6%97%B6%E6%8A%A5%E9%94%99"><span class="toc-number">9.0.3.</span> <span class="toc-text">3.配置ollama时报错</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E5%86%85%E5%AE%B9"><span class="toc-number">10.</span> <span class="toc-text">参考内容</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/10/25/sanic%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E6%89%8B%E5%86%8C/" title="sanic开发框架api接口说明手册"><img src="/img/p5.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="sanic开发框架api接口说明手册"/></a><div class="content"><a class="title" href="/2025/10/25/sanic%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6api%E6%8E%A5%E5%8F%A3%E8%AF%B4%E6%98%8E%E6%89%8B%E5%86%8C/" title="sanic开发框架api接口说明手册">sanic开发框架api接口说明手册</a><time datetime="2025-10-24T22:38:52.000Z" title="发表于 2025-10-25 06:38:52">2025-10-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/10/24/%E4%BD%BF%E7%94%A8dolphinscheduler%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" title="使用dolphinscheduler设置定时任务"><img src="/img/p4.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="使用dolphinscheduler设置定时任务"/></a><div class="content"><a class="title" href="/2025/10/24/%E4%BD%BF%E7%94%A8dolphinscheduler%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" title="使用dolphinscheduler设置定时任务">使用dolphinscheduler设置定时任务</a><time datetime="2025-10-24T11:01:48.000Z" title="发表于 2025-10-24 19:01:48">2025-10-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/27/%E8%B7%9F%E7%9D%80%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0langchain/" title="跟着吴恩达学习langchain"><img src="/img/p6.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="跟着吴恩达学习langchain"/></a><div class="content"><a class="title" href="/2025/08/27/%E8%B7%9F%E7%9D%80%E5%90%B4%E6%81%A9%E8%BE%BE%E5%AD%A6%E4%B9%A0langchain/" title="跟着吴恩达学习langchain">跟着吴恩达学习langchain</a><time datetime="2025-08-27T14:34:20.000Z" title="发表于 2025-08-27 22:34:20">2025-08-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/10/7.chatwoot+vue+n8n/" title="chatwoot"><img src="/img/p5.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="chatwoot"/></a><div class="content"><a class="title" href="/2025/07/10/7.chatwoot+vue+n8n/" title="chatwoot">chatwoot</a><time datetime="2025-07-10T13:06:15.000Z" title="发表于 2025-07-10 21:06:15">2025-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/10/chatwoot/" title="chatwoot"><img src="/img/p5.jpg" onerror="this.onerror=null;this.src='/img/diang.jpg'" alt="chatwoot"/></a><div class="content"><a class="title" href="/2025/07/10/chatwoot/" title="chatwoot">chatwoot</a><time datetime="2025-07-10T13:06:15.000Z" title="发表于 2025-07-10 21:06:15">2025-07-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By amang</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
